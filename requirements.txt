@@ -1,0 +1,27 @@
+# Seeded for Phase A, Day 1 (ingestion) only.
+# Add each phase's deps when that phase starts, rather than front-loading —
+# keeps the diff history honest about what was actually needed when.
+
+requests>=2.31
+python-dotenv>=1.0
+pandas>=2.0
+lxml>=5.0        # parsing SEC filing HTML/XML
+beautifulsoup4>=4.12
+
+# --- Added Phase A, Day 3+ (embeddings/retrieval) ---
+# sentence-transformers
+# qdrant-client
+# rank_bm25
+
+# --- Added Phase B (agent/generation/eval) ---
+# groq
+# scikit-learn   # bootstrap CI helpers
+
+# --- Added Phase C (LoRA fine-tune) ---
+# peft
+# transformers
+# torch
+
+# --- Added Phase C/D (deployment) ---
+# fastapi
+# uvicorn

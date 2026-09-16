@@ -1,0 +1,50 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Env / secrets ---
+.env
+*.env.local
+
+# --- Data (raw pulls + processed artifacts stay out of git; regenerate via ingestion scripts) ---
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Eval set IS tracked (hand-labeled, small, and it's the artifact worth showing) — do not ignore data/eval_set/
+
+# --- Models / checkpoints ---
+*.pt
+*.bin
+*.safetensors
+models/
+checkpoints/
+lora_adapters/
+
+# --- Vector DB / caches ---
+qdrant_storage/
+.groq_cache/
+*.sqlite3
+*.db
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# --- Docker ---
+*.log
