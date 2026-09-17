@@ -7,6 +7,7 @@ python-dotenv>=1.0
 pandas>=2.0
 lxml>=5.0        # parsing SEC filing HTML/XML
 beautifulsoup4>=4.12
+pytest>=8.0       # for tests/test_chunker.py, tests/test_section_splitter.py
 
 # --- Added Phase A, Day 3+ (embeddings/retrieval) ---
 # sentence-transformers
