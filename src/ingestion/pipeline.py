@@ -44,6 +44,20 @@ CHUNKS_DIR = OUT_DIR / "chunks"
 XBRL_DIR = OUT_DIR / "xbrl"
 
 
+def make_chunk_id(ticker: str, accession_number: str, item_key: str, chunk_index: int) -> str:
+    """
+    Globally unique, stable chunk identifier. `chunk_index` alone is NOT unique
+    across a ticker's file — chunk_text() restarts it at 0 for every section, so
+    two different filings' item_1a chunk 0 would otherwise collide. Accession
+    number is per-filing-unique (SEC-assigned), so
+    ticker + accession_number + item_key + chunk_index is unique across the
+    entire corpus. Pulled out as its own function so it's unit-testable without
+    network access (see tests/test_pipeline.py).
+    """
+    accession_nodash = accession_number.replace("-", "")
+    return f"{ticker}_{accession_nodash}_{item_key}_{chunk_index:04d}"
+
+
 def process_company(ticker: str, cik: str) -> dict:
     log.info("=== %s (CIK %s) ===", ticker, cik)
     summary = {"ticker": ticker, "cik": cik, "filings_processed": 0, "chunks_written": 0}
@@ -89,8 +103,13 @@ def process_company(ticker: str, cik: str) -> dict:
                 chunks = chunk_text(section_text, metadata=base_metadata)
                 for c in chunks:
                     record = {
+                        "chunk_id": make_chunk_id(
+                            ticker, filing["accession_number"], item_key, c.chunk_index
+                        ),
                         "text": c.text,
                         "chunk_index": c.chunk_index,
+                        "start_word": c.start_word,
+                        "end_word": c.end_word,
                         **c.metadata,
                     }
                     out_f.write(json.dumps(record) + "\n")
