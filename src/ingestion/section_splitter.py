@@ -72,23 +72,49 @@ change.
 KNOWN, DELIBERATELY UNFIXED LIMITATION (decided Phase A Day 1, after 6
 iterations against real data — documented rather than chased further):
 10-Q Item 1 (Financial Statements) truncates to ~90-115 words for MSFT,
-GOOGL, NVDA, and ORCL specifically. Root cause, confirmed via
-scripts/inspect_matches.py: these filings' master TOC has a bare "Item 1."
-entry whose gap to the next TOC line happens to exceed both the
-TOC-gap-threshold AND get a false title borrowed from an adjacent "PART I.
-FINANCIAL INFORMATION" divider (which is itself title-cased, so the
-uppercase-start guard doesn't catch it). Each attempted fix for this
-resurrected a previously-fixed bug elsewhere (chasing it broke AMZN/META
-to zero chunks at one point). Accepted as-is because: (1) 10-K Item 1
-(Business) and all other target sections are unaffected and correct for
-all 8 companies; (2) Item 1's content (raw financial statement tables) is
-already covered better by the XBRL/SQL path than free-text retrieval would
-cover it; (3) the eval question set's single-hop and multi-hop numeric
-questions target Item 1A/Item 7/Item 2 and XBRL data, not Item 1 prose.
-If this becomes a real problem later: the fix is closing the loophole
-structurally (require the borrowed title to ALSO independently pass
-TOC_GAP_THRESHOLD_CHARS against ITS OWN next-match gap, not just exist)
-rather than pattern-matching another one-off case.
+GOOGL, NVDA, ORCL, and META specifically (the original diagnosis found 4 of
+these; real Day 3 data against the full 8-company corpus showed META has
+the identical symptom too — a documentation correction, not a new bug).
+Root cause, confirmed via scripts/inspect_matches.py: these filings' master
+TOC has a bare "Item 1." entry whose gap to the next TOC line happens to
+exceed both the TOC-gap-threshold AND get a false title borrowed from an
+adjacent "PART I. FINANCIAL INFORMATION" divider (which is itself
+title-cased, so the uppercase-start guard doesn't catch it). Each attempted
+fix for this resurrected a previously-fixed bug elsewhere (chasing it broke
+AMZN/META to zero chunks at one point). Accepted as-is because: (1) 10-K
+Item 1 (Business) and all other target sections are unaffected and correct
+for all 8 companies; (2) Item 1's content (raw financial statement tables)
+is already covered better by the XBRL/SQL path than free-text retrieval
+would cover it; (3) the eval question set's single-hop and multi-hop
+numeric questions target Item 1A/Item 7/Item 2 and XBRL data, not Item 1
+prose. If this becomes a real problem later: the fix is closing the
+loophole structurally (require the borrowed title to ALSO independently
+pass TOC_GAP_THRESHOLD_CHARS against ITS OWN next-match gap, not just
+exist) rather than pattern-matching another one-off case.
+
+BUG #7 — FOUND AND FIXED (Day 3, against live Oracle 10-K data): a real
+Item 1A header can be split MID-WORD across a tag boundary, not just
+between words. Oracle's 10-K renders "Item 1A." and the first letter of its
+title in one tag/line ("Item 1A.\tR"), then the rest of the word in the
+next ("isk Factors"). Bug 5's original fix (see above) only triggered its
+lookahead-to-next-line when the current line's remainder was COMPLETELY
+EMPTY, which is true for a whole-word split (Amazon/Meta's case) but false
+here — the remainder is "R", a single non-empty character, so the lookahead
+never fired and Oracle's entire Item 1A section (and by extension the
+158,622 characters that should have been its own section) was silently
+absorbed into Item 1 instead. Confirmed via scripts/inspect_matches.py:
+the match list for Oracle's 10-K jumped directly from "Item 1. Business"
+(with an anomalously huge gap to the next match) to "Item 1B", skipping
+Item 1A entirely — and scripts/diagnose_orcl_item1a.py located the real
+header text and its exact "R" / "isk Factors" split via repr() on the raw
+characters. Fix: trigger the lookahead whenever has_title is False
+(regardless of whether remainder is empty or a short fragment), and
+concatenate remainder + the next line WITHOUT a space before re-checking
+title validity — this correctly reconstructs "R" + "isk Factors" =
+"Risk Factors" for the mid-word case while leaving the original
+whole-word-split behavior unchanged (remainder == "" means combined ==
+next_stripped, identical to before). Regression test:
+test_split_finds_title_split_mid_word_across_tag_boundary.
 """
 
 import re
@@ -163,24 +189,33 @@ def _find_all_item_matches(text: str) -> list[ItemMatch]:
     are needed.
 
     The title check looks at this line first, then — only if this line's
-    remainder is empty — scans forward past any blank lines (whitespace
-    text nodes between tags produce these; skip up to 3) for a title on a
-    later line. Real filings don't reliably keep the item number and its
-    title in the same tag: get_text(separator="\\n") inserts a break at
-    every tag boundary, so "<b>Item 1A.</b> <span>Risk Factors</span>" in
-    two adjacent tags becomes two lines with blank lines between them from
-    the whitespace in the source HTML. Some filers' templates split it
-    this way on every single header (Amazon, Meta — the whole filing
-    produced zero matches without this), some do it inconsistently
-    (Oracle, Microsoft, Alphabet — specific sections went missing), some
-    never do it (Apple, Nvidia, Broadcom — worked without this).
+    remainder doesn't already pass the title check — scans forward past any
+    blank lines (whitespace text nodes between tags produce these; skip up
+    to 3) for a title on a later line, concatenated directly onto whatever
+    remainder this line had (no space inserted). Real filings don't
+    reliably keep the item number and its title in the same tag:
+    get_text(separator="\\n") inserts a break at every tag boundary, so
+    "<b>Item 1A.</b> <span>Risk Factors</span>" in two adjacent tags
+    becomes two lines with blank lines between them from the whitespace in
+    the source HTML. Some filers' templates split it this way on every
+    single header (Amazon, Meta — the whole filing produced zero matches
+    without this), some do it inconsistently (Oracle, Microsoft, Alphabet —
+    specific sections went missing), some never do it (Apple, Nvidia,
+    Broadcom — worked without this). Oracle goes a step further: its split
+    can land MID-WORD, not just between words ("Item 1A." + "R" on one
+    line, "isk Factors" continuing on the next) — concatenating remainder
+    and the next line directly (not "remainder + ' ' + next_stripped") is
+    what makes "R" + "isk Factors" reassemble into "Risk Factors" correctly
+    for that case while leaving the empty-remainder / whole-word-split case
+    unchanged.
 
     Two guards keep this from over-matching: the candidate line must NOT
     itself be another "Item N" match (two bare item numbers near each
-    other is a TOC/index listing, not a split title) — and it must start
-    with an uppercase letter, since real section titles always do
-    ("Risk Factors", "RISK FACTORS") while unrelated prose sitting after a
-    TOC's last entry usually doesn't ("more information about our...").
+    other is a TOC/index listing, not a split title) — and the combined
+    (remainder + next line) text must start with an uppercase letter, since
+    real section titles always do ("Risk Factors", "RISK FACTORS") while
+    unrelated prose sitting after a TOC's last entry usually doesn't ("more
+    information about our...").
     """
     lines = text.split("\n")
     line_offsets = []
@@ -201,7 +236,7 @@ def _find_all_item_matches(text: str) -> list[ItemMatch]:
         remainder = stripped[m.end():]
         has_title = _has_real_title(remainder)
 
-        if not has_title and not remainder.strip():
+        if not has_title:
             j = i + 1
             skipped = 0
             while j < len(lines) and not lines[j].strip() and skipped < 3:
@@ -209,12 +244,27 @@ def _find_all_item_matches(text: str) -> list[ItemMatch]:
                 skipped += 1
             if j < len(lines):
                 next_stripped = lines[j].strip()
+                # Concatenate directly, no space: this covers two distinct real shapes.
+                # (1) remainder == "" (Bug 5's original AMZN/META case): the WHOLE title is
+                #     on the next line, so combined == next_stripped, unchanged from before.
+                # (2) remainder is a short non-empty fragment, e.g. "R" (found via live ORCL
+                #     data, Sep 17): the header's own line ends mid-word — "R" from "Item 1A.
+                #     R" — and the rest of the word ("isk Factors") continues on the next
+                #     line/tag. Concatenating without a space reconstructs "Risk Factors"
+                #     correctly; a space would break it into two words. This is a more
+                #     extreme version of Bug 5's tag-boundary split: there, the split fell
+                #     cleanly between words; here, it falls inside one. Requiring the
+                #     COMBINED string to start uppercase and pass the title-length check
+                #     (rather than checking next_stripped alone) is what makes this work for
+                #     mid-word splits, since the continuation line itself starts lowercase
+                #     ("isk Factors") and would fail an isupper() check on its own.
+                combined = remainder + next_stripped
                 if (
                     next_stripped
                     and len(next_stripped) <= MAX_HEADER_LINE_CHARS
                     and not ITEM_HEADER_PATTERN.match(next_stripped)
-                    and next_stripped[0].isupper()
-                    and _has_real_title(next_stripped)
+                    and combined[:1].isupper()
+                    and _has_real_title(combined)
                 ):
                     has_title = True
 

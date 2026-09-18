@@ -39,14 +39,40 @@ the value's own true fiscal year. A period ending 2022-10-30 showed up tagged fy
 reporting it as a comparative. The dedup key from fix #2 above still included `fy`, so all
 four survived as if they were different periods — this directly threatened the multi-hop-
 numeric eval questions ("two most recent fiscal years"), which need real periods to be
-distinct and correctly counted. Fixed: dedup key is now `(ticker, metric, form, end)` —
+distinct and correctly counted. Fixed: dedup key became `(ticker, metric, form, end)` —
 `end` is the real, reliable period identifier; `fy` is not, since it reflects which filing
 reported the value rather than the value's own period. Among duplicates, the
 earliest-`filed` occurrence is kept (the original filing, not a later restatement copy).
 If duplicates for the same real period report genuinely DIFFERENT values, that's now
 logged as a warning rather than silently resolved, since that would be an actual
-restatement worth a manual look, not a repeat-reporting artifact. See
-`tests/test_xbrl_extractor.py::test_extract_key_metrics_dedupes_same_period_reported_across_multiple_filings`.
+restatement worth a manual look, not a repeat-reporting artifact.
+
+**2c. `src/ingestion/xbrl_extractor.py` — fix #2b's dedup key was still too loose (found
+against the actual pipeline run across all 8 companies)**
+Running the pipeline for real flooded the logs with "2-3 DIFFERENT reported values" warnings
+on nearly every 10-Q period, for every company, for both metrics — too uniform across the
+whole corpus to be genuine restatements. Root cause: duration-type XBRL facts (revenue, net
+income) are defined by a (start, end) PAIR, not by `end` alone. A 10-Q routinely reports the
+SAME metric under the SAME tag with the SAME end date but TWO different start dates — once
+for the standalone quarter ("three months ended") and once for the fiscal-year-to-date
+cumulative ("six/nine months ended"). Both numbers are correct and real; they are NOT
+duplicates. Fix #2b's key (`end` only, no `start`) collapsed these into false conflicts.
+Fixed: dedup key is now `(ticker, metric, form, start, end)`, so quarter-only and
+YTD-cumulative facts correctly survive as separate rows. **Known follow-up, deliberately not
+solved here** (matches Day 1's scope — extract and save, don't build the SQL table yet):
+this table now legitimately contains both quarterly and YTD figures for many 10-Q periods,
+distinguishable only by `start`; a "quarterly revenue" question needs the ~1-quarter-duration
+row specifically, which is a Phase B (Day 8) SQL-table-build concern, not a Day 1 one.
+
+**2d. Bug in the fix for 2c itself, caught by its own regression test**: adding `start` to
+the conflict-detection `groupby()` call meant any fact with `start=None` (common for real
+10-K annual facts, and NaN generally) silently dropped out of that group entirely —
+`pandas.groupby()` excludes NaN-keyed rows by default. The actual dedup (`drop_duplicates`)
+wasn't affected, only the diagnostic warning silently stopped firing for facts with a
+missing `start`. Fixed with `groupby(..., dropna=False)`.
+
+See `tests/test_xbrl_extractor.py` — 5 new tests across 2b/2c/2d, including one that pins
+the `dropna=False` fix specifically so it can't silently regress.
 
 **3. Day 3 eval-harness scripts didn't match this repo's real field names**
 Built in a prior session without access to this repo, so they assumed `company`/`section`
@@ -68,21 +94,79 @@ with a fallback + warning for chunks written before this fix.
 
 ## Test count
 
-16 original → **40** (12 new: 4 for `make_chunk_id`, 8 for `xbrl_extractor.py` — 5 from the
-tag-merge fix, 3 from the duplicate-period fix) + 12 for the Day 3 scoring code = 40 passing,
-0 failing.
+16 original → **45** (17 new: 4 for `make_chunk_id`, 11 for `xbrl_extractor.py` across
+fixes 2, 2b, 2c, 2d, 2 for the Oracle mid-word title-split fix) + 12 for the Day 3 scoring
+code = 45 passing, 0 failing.
 
 ## After applying this update
 
-Your `data/processed/xbrl/*_facts.csv` files were generated BEFORE fix #2b and still have
-the duplicate-period problem. Re-run `python -m src.ingestion.pipeline` (safe to re-run —
-it overwrites `data/processed/` deterministically) to regenerate them with the fix applied,
-before doing any numeric analysis or filling in `gold_sql_description` answers.
+Two independent reasons to re-run the pipeline before doing anything else:
 
-## What's still genuinely not done (not a bug — needs your real corpus)
+1. Your `data/processed/xbrl/*_facts.csv` files were generated before fixes 2c/2d and still
+   have the quarter-vs-YTD false-conflict-warning problem (harmless — no bad data was written,
+   `drop_duplicates` wasn't affected — but you'll want a clean log to see any real conflicts).
+2. Your `data/processed/chunks/ORCL.jsonl` was generated before the Item 1A mid-word-split fix
+   and has zero `item_1a` chunks for Oracle, with that content currently folded into `item_1`
+   instead. Only ORCL is affected — every other company's chunks are unaffected by this fix.
 
-`gold_chunk_ids` are empty for all 20 single-hop questions, and `gold_sql_description`
-fields are specs rather than numbers, for the reason explained in `src/eval/README.md`:
-this session never had your `data/processed/` chunks or XBRL figures, only the repo's
-source code. Run `python -m src.ingestion.pipeline` locally, then
-`python scripts/label_eval_set.py` to fill in real ground truth before Day 5.
+Re-run `python -m src.ingestion.pipeline` (safe to re-run — overwrites `data/processed/`
+deterministically) to regenerate everything with both fixes applied. Expect the XBRL warning
+flood to disappear entirely, and ORCL's `inspect_chunks` output to show a normal `item_1a` row
+per filing instead of none — then `sh_019` can finally be labeled.
+
+## Day 3 labeling session (Sep 17) — findings
+
+**3. GENUINE BUG, not previously documented — found, diagnosed, AND FIXED:
+`src/ingestion/section_splitter.py` never detected Oracle's real Item 1A header.**
+First surfaced via `python -m scripts.inspect_chunks`: all 4 ORCL 10-Ks show `item_1` and
+`item_7` rows but no `item_1a` row at all, unlike every other company. Confirmed by
+`scripts/label_eval_set.py`'s candidates for `sh_019`: both were 10-Q boilerplate deferring
+to "the factors discussed in Part I, Item 1A ... of our Annual Report on Form 10-K" — i.e.
+the system could find references TO Oracle's Risk Factors section but never extracted the
+section itself. Root cause narrowed via `python -m scripts.inspect_matches ORCL --form 10-K
+--index 0`: the match list jumped from `Item 1. Business` (gap of 158,622 characters — 5-10x
+every other company's Item 1 span) straight to `Item 1B`, skipping Item 1A entirely. Exact
+mechanism pinpointed via `scripts/diagnose_orcl_item1a.py`, which found the real header text
+split **mid-word** across a tag boundary: `'Item 1A.\tR'` on one line, `'isk Factors'`
+continuing on the next — a more extreme version of the Day 1 AMZN/META tag-split bug (Bug 5),
+which only handled splits falling cleanly *between* words. The lookahead-to-next-line logic
+only fired when the current line's remainder was **completely empty** (`not remainder.strip()`),
+which is true for a whole-word split but false here — the remainder is `"R"`, a non-empty
+single character — so the lookahead never triggered and Oracle's entire Item 1A section was
+silently absorbed into Item 1.
+
+**Fixed**: the lookahead now triggers whenever `has_title` is False (not just when remainder
+is empty), and concatenates `remainder + next_line` **without inserting a space** before
+re-checking title validity — `"R" + "isk Factors"` correctly reassembles into `"Risk Factors"`,
+while the original empty-remainder case (`"" + next_line`) is unchanged. Regression tests:
+`test_split_finds_title_split_mid_word_across_tag_boundary`,
+`test_split_mid_word_title_combines_without_inserting_a_space`. **`sh_019` can now be labeled
+— re-run the ingestion pipeline first (see "After applying this update" below), then
+`scripts/label_eval_set.py` or `scripts/search_chunks.py` for Oracle specifically.**
+
+**4. Documentation correction, not a code bug: the Day 1 log's list of companies affected by
+the known 10-Q Item 1 truncation limitation (MSFT/GOOGL/NVDA/ORCL) is incomplete.** Real
+`inspect_chunks` output shows META has the IDENTICAL symptom (~100-108 words, every 10-Q,
+consistently) but was never listed. The underlying limitation and its accepted-tradeoff
+reasoning (documented in `section_splitter.py`'s module docstring) still hold — this is a
+correction to which companies it affects (5, not 4), not a new problem or a reason to revisit
+the accept-as-is decision.
+
+**5. Hand-labeling results for the 20 single-hop questions**: user ran
+`scripts/label_eval_set.py` but skipped every question (0/20 labeled by hand). Claude
+reviewed all 20 candidate sets against the actual filing text and applied labels via the new
+`scripts/apply_reviewed_labels.py`. Round 1: 11 labeled directly from `label_eval_set.py`'s
+top-8 keyword candidates, 9 left unresolved. Round 2, using `scripts/search_chunks.py`'s
+wider (top-20, full-text) search: 8 more resolved with real filing text. Round 3, after the
+section_splitter fix (bug #3 above) unblocked Oracle's Item 1A content: the last question,
+`sh_019`, resolved. **Final: 20/20 single-hop questions labeled**, all with real,
+verified gold `chunk_id`s and reasoning recorded in each question's `notes` field.
+
+## Status as of Sep 17 (end of Day 3 labeling)
+
+All 20 single-hop questions are labeled with real, verified gold `chunk_id`s against the
+actual corpus. `gold_sql_description` fields for the 20 multi-hop-numeric questions remain
+specs rather than hardcoded numbers on purpose — those get consumed directly once the SQL
+tool exists in Phase B (Oct 8); no separate labeling step is needed for them. The eval
+harness (Recall@k/MRR/bootstrap CI + keyword baseline) is built, tested (45/45 passing), and
+ready to score any retriever built from Day 5 onward.

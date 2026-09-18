@@ -182,3 +182,99 @@ def test_extract_key_metrics_logs_warning_on_genuine_value_conflict(caplog):
     with caplog.at_level(logging.WARNING):
         extract_key_metrics(company_facts, "AVGO", years_back=6)
     assert any("DIFFERENT reported values" in rec.message for rec in caplog.records)
+
+
+def test_extract_key_metrics_keeps_quarterly_and_ytd_facts_separate():
+    """
+    Regression test for the real bug found against the actual pipeline run
+    across all 8 companies: a 10-Q reports the SAME metric under the SAME
+    tag with the SAME end date but TWO different start dates — once for the
+    standalone quarter ("three months ended") and once for the fiscal-
+    year-to-date cumulative ("six months ended"). Both are correct, real,
+    different numbers. The dedup key without `start` collapsed these into a
+    false "conflicting value" warning on nearly every 10-Q period, for
+    every company, for both metrics — this reproduces that exact shape:
+    same end date, two different start dates, two different (both correct)
+    values, no filed-date signal to fall back on.
+    """
+    company_facts = {
+        "facts": {
+            "us-gaap": {
+                "RevenueFromContractWithCustomerExcludingAssessedTax": {
+                    "units": {"USD": [
+                        # standalone quarter: Jan 1 - Apr 1 (3 months)
+                        _fact(100, "2023-04-01", fy=2023, fp="Q2", form="10-Q",
+                              start="2023-01-01", filed="2023-05-01"),
+                        # year-to-date cumulative: Oct 1 (fiscal year start) - Apr 1 (6 months)
+                        _fact(220, "2023-04-01", fy=2023, fp="Q2", form="10-Q",
+                              start="2022-10-01", filed="2023-05-01"),
+                    ]}
+                },
+                "NetIncomeLoss": {"units": {"USD": []}},
+            }
+        }
+    }
+    df = extract_key_metrics(company_facts, "AAPL", years_back=6)
+    revenue_rows = df[df["metric"] == "revenue"]
+
+    assert len(revenue_rows) == 2, "quarter-only and YTD-cumulative facts must NOT be collapsed into one"
+    assert set(revenue_rows["val"]) == {100, 220}
+    assert set(revenue_rows["start"]) == {"2023-01-01", "2022-10-01"}
+
+
+def test_extract_key_metrics_no_false_conflict_warning_for_quarterly_vs_ytd(caplog):
+    """Counterpart to the test above: the quarter-vs-YTD case must NOT trigger
+    the genuine-restatement warning, since it isn't a conflict at all."""
+    import logging
+    company_facts = {
+        "facts": {
+            "us-gaap": {
+                "RevenueFromContractWithCustomerExcludingAssessedTax": {
+                    "units": {"USD": [
+                        _fact(100, "2023-04-01", fy=2023, fp="Q2", form="10-Q",
+                              start="2023-01-01", filed="2023-05-01"),
+                        _fact(220, "2023-04-01", fy=2023, fp="Q2", form="10-Q",
+                              start="2022-10-01", filed="2023-05-01"),
+                    ]}
+                },
+                "NetIncomeLoss": {"units": {"USD": []}},
+            }
+        }
+    }
+    with caplog.at_level(logging.WARNING):
+        extract_key_metrics(company_facts, "AAPL", years_back=6)
+    assert not any("DIFFERENT reported values" in rec.message for rec in caplog.records)
+
+
+def test_extract_key_metrics_conflict_warning_fires_even_with_null_start(caplog):
+    """
+    Regression test for a bug in the conflict-warning code ITSELF, caught
+    while fixing the quarter-vs-YTD issue above: pandas.groupby() silently
+    DROPS rows whose group key contains NaN/None by default. Once `start`
+    became part of the dedup/conflict grouping key, any fact with a missing
+    `start` (common for real 10-K annual facts, and the default in this
+    test file's _fact() helper) would silently never be checked for
+    conflicts at all — the warning just wouldn't fire, with no error.
+    Requires groupby(..., dropna=False). This exact scenario (two facts,
+    same everything except val, start=None on both) is what the ORIGINAL
+    restatement-warning test used and it passed for the wrong reason before
+    `start` existed in the key — this test pins the dropna=False fix so it
+    can't silently regress again.
+    """
+    import logging
+    company_facts = {
+        "facts": {
+            "us-gaap": {
+                "RevenueFromContractWithCustomerExcludingAssessedTax": {
+                    "units": {"USD": [
+                        _fact(1000, "2022-10-30", fy=2022, filed="2022-12-15"),  # start=None
+                        _fact(1050, "2022-10-30", fy=2023, filed="2023-12-14"),  # start=None, different value
+                    ]}
+                },
+                "NetIncomeLoss": {"units": {"USD": []}},
+            }
+        }
+    }
+    with caplog.at_level(logging.WARNING):
+        extract_key_metrics(company_facts, "AVGO", years_back=6)
+    assert any("DIFFERENT reported values" in rec.message for rec in caplog.records)

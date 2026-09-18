@@ -80,16 +80,42 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
 
     Fix: `end` (the period's actual end date) is the reliable identifier of
     a real fiscal period; `fy` is not, because it reflects which filing
-    reported the value rather than the value's own period. Dedup key is now
-    (ticker, metric, form, end) — fy/fp are kept as informational columns
-    but no longer part of identity. Among duplicates for the same real
-    period, the earliest-FILED occurrence is kept (sorted by `filed` before
-    dropping), since that's the original filing for that period rather than
-    a later comparative restatement, and its `fy` tag is the one most likely
-    to actually match the period. If duplicates for the same period report
-    DIFFERENT values (a real restatement, not just a repeat), that's logged
-    as a warning rather than silently resolved — worth a human look, not a
-    silent pick.
+    reported the value rather than the value's own period.
+
+    SECOND REAL BUG, found one layer deeper (via the actual pipeline run
+    against all 8 companies, not anticipated up front): dropping `fy` from
+    the dedup key was necessary but not sufficient. Duration-type XBRL facts
+    (revenue, net income) are defined by a (start, end) PAIR, not by `end`
+    alone — a 10-Q routinely reports the SAME metric under the SAME tag with
+    the SAME end date but TWO different start dates: once for the
+    standalone quarter ("three months ended") and once for the fiscal-
+    year-to-date cumulative ("six/nine months ended"). Both are correct,
+    both are real, and they are NOT duplicates of each other. Keying dedup
+    on (ticker, metric, form, end) without `start` collapsed these into
+    false "conflicting value" warnings on nearly every 10-Q period, for
+    every company, for both metrics when run against real data — that
+    uniformity across the whole corpus (not sporadic, not company-specific)
+    was the tell that something structural was wrong, not that 8 companies
+    had independently restated the same quarters.
+
+    Fix: dedup key is now (ticker, metric, form, start, end) — a real
+    period is defined by its full (start, end) span, so quarter-only and
+    year-to-date-cumulative facts correctly survive as separate, distinct
+    rows instead of being forced into a false conflict. Genuine same-period
+    duplicates (identical start AND end, reported again later as a
+    comparative) still collapse correctly, keeping the earliest-filed
+    occurrence and logging a real warning only when start, end, form, AND
+    metric all match but val still differs.
+
+    KNOWN FOLLOW-UP, not fixed here (deliberately — matches the plan's
+    Day 1 scope: extract and save, don't build the SQL table yet; that's
+    Phase B, Day 8): this table now legitimately contains BOTH the
+    quarter-only and year-to-date figures for many 10-Q periods,
+    distinguishable only by `start`. A question like "quarterly revenue for
+    Q2" needs the row whose (end - start) is ~1 quarter, not the YTD row —
+    Phase B's SQL table build needs to select on duration, not just pull
+    "the" row for a period. Left as an explicit TODO for that phase rather
+    than silently guessed at now.
     """
     cutoff = date.today() - timedelta(days=365 * years_back)
     rows = []
@@ -129,19 +155,23 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
     df = pd.DataFrame(rows, columns=all_columns)
 
     if not df.empty:
-        dup_key = ["ticker", "metric", "form", "end"]
+        dup_key = ["ticker", "metric", "form", "start", "end"]
         # Flag genuine restatements (same real period, different reported value)
         # before resolving duplicates — these are data-quality signals worth a
-        # human look, not something to silently paper over.
+        # human look, not something to silently paper over. dropna=False is
+        # required: pandas.groupby() drops rows with a NaN/None group key by
+        # default, and `start` is None for plenty of real facts (10-K annuals
+        # in particular) — without dropna=False those periods silently never
+        # get checked for conflicts at all.
         conflicting = (
-            df.groupby(dup_key)["val"].nunique().reset_index(name="n_distinct_vals")
+            df.groupby(dup_key, dropna=False)["val"].nunique().reset_index(name="n_distinct_vals")
         )
         conflicting = conflicting[conflicting["n_distinct_vals"] > 1]
         for _, row in conflicting.iterrows():
             log.warning(
-                "%s: %s %s ending %s has %d DIFFERENT reported values across "
+                "%s: %s %s period %s to %s has %d DIFFERENT reported values across "
                 "filings (possible restatement, not just a duplicate) — verify manually",
-                row["ticker"], row["metric"], row["form"], row["end"], row["n_distinct_vals"],
+                row["ticker"], row["metric"], row["form"], row["start"], row["end"], row["n_distinct_vals"],
             )
 
         # Prefer the earliest-filed occurrence per real period (the original

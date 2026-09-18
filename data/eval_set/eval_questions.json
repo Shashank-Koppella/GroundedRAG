@@ -7,10 +7,12 @@
     "target_item_key": "item_1a",
     "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AAPL_000032019324000123_item_1a_0010"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Concentration/supply-chain risk theme; directly tests the kind of question the corpus was chosen for."
+    "notes": "Concentration/supply-chain risk theme; directly tests the kind of question the corpus was chosen for. | Labeled by Claude, confidence=HIGH: Explicitly names China/India/Japan/S.Korea/Taiwan/Vietnam manufacturing concentration."
   },
   {
     "id": "sh_002",
@@ -20,10 +22,12 @@
     "target_item_key": "item_7",
     "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AAPL_000032019325000079_item_7_0004"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services.' Exact driver statement."
   },
   {
     "id": "sh_003",
@@ -33,10 +37,13 @@
     "target_item_key": "item_1a",
     "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AAPL_000032019325000079_item_1a_0042",
+      "AAPL_000032019324000123_item_1a_0042"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer."
   },
   {
     "id": "sh_004",
@@ -46,10 +53,12 @@
     "target_item_key": "item_1a",
     "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "MSFT_000119312526323660_item_1a_0008"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=MODERATE: About customers' purchasing/deployment decisions not materializing as expected \u2014 plausible capacity-investment risk framing, but preview didn't show an explicit 'AI infrastructure capacity' phrase. Verify full text."
   },
   {
     "id": "sh_005",
@@ -59,10 +68,13 @@
     "target_item_key": "item_7",
     "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "MSFT_000119312526323660_item_7_0008",
+      "MSFT_000119312526323660_item_7_0012"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2026): 'Intelligent Cloud revenue increased driven by Azure' plus the detailed breakout ('Azure and other cloud services revenue grew 41% driven by demand for services across the platform')."
   },
   {
     "id": "sh_006",
@@ -72,10 +84,12 @@
     "target_item_key": "item_1a",
     "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "MSFT_000119312526323660_item_1a_0041"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=MODERATE: Covers cybersecurity REGULATORY cost risk specifically, not necessarily a 'we could suffer a data breach' risk factor, which may be a separate chunk not in the top 8. Verify full text."
   },
   {
     "id": "sh_007",
@@ -85,10 +99,12 @@
     "target_item_key": "item_1a",
     "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "GOOGL_000165204426000018_item_1a_0040"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Explicitly mentions 'competition matters' alongside claims/lawsuits/regulatory investigations."
   },
   {
     "id": "sh_008",
@@ -98,10 +114,13 @@
     "target_item_key": "item_7",
     "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "GOOGL_000165204426000018_item_7_0009",
+      "GOOGL_000165204426000018_item_7_0021"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): Cloud-specific fluctuation factors (customer usage/demand/supply availability) plus the explicit operating-income driver (revenue increase, partially offset by infrastructure usage costs and compensation expenses)."
   },
   {
     "id": "sh_009",
@@ -111,10 +130,12 @@
     "target_item_key": "item_7",
     "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "GOOGL_000165204425000014_item_7_0024"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'a decrease in employee compensation expenses of $285 million, primarily due to a decrease in average headcount' \u2014 a real headcount-driven opex statement, but from the prior (FY2024) 10-K, and the second wider search still didn't surface a cleaner multi-year headcount TREND narrative. Best available."
   },
   {
     "id": "sh_010",
@@ -124,10 +145,12 @@
     "target_item_key": "item_1a",
     "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AMZN_000101872426000004_item_1a_0001"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-02-06): the full 'We Face Intense Competition' risk factor, explicitly naming 'physical, e-commerce, and omnichannel retail' competitors, pricing pressure, and resource disparities."
   },
   {
     "id": "sh_011",
@@ -137,10 +160,12 @@
     "target_item_key": "item_7",
     "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AMZN_000101872426000004_item_7_0025"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased sales, partially offset by spending on technology infrastructure... to support AWS business growth.'"
   },
   {
     "id": "sh_012",
@@ -150,10 +175,12 @@
     "target_item_key": "item_1a",
     "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AMZN_000101872424000161_item_1a_0017"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses fulfillment/data center capacity risk and cost of adding capacity."
   },
   {
     "id": "sh_013",
@@ -163,10 +190,12 @@
     "target_item_key": "item_1a",
     "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "META_000162828026003942_item_1a_0011"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicitly names 'changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google' \u2014 the App Store/platform-policy risk."
   },
   {
     "id": "sh_014",
@@ -176,10 +205,12 @@
     "target_item_key": "item_7",
     "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "META_000162828026003942_item_7_0010"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'significant investments in our RL efforts' (RL = Reality Labs) but preview didn't show the actual operating-loss figures. Verify full text \u2014 may need a neighboring chunk with the $ numbers."
   },
   {
     "id": "sh_015",
@@ -189,10 +220,13 @@
     "target_item_key": "item_1a",
     "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "NVDA_000104581026000021_item_1a_0050",
+      "NVDA_000104581026000021_item_1a_0052"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses export control restrictions on AI/GPU products, from the most recent 10-K."
   },
   {
     "id": "sh_016",
@@ -202,10 +236,12 @@
     "target_item_key": "item_7",
     "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "NVDA_000104581026000021_item_7_0015"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=MODERATE: Says revenue 'primarily attributable to the Compute & Networking segment' \u2014 Data Center is a platform WITHIN that segment, not a perfect 1:1 match to the question's exact segment name. Verify full text."
   },
   {
     "id": "sh_017",
@@ -215,10 +251,12 @@
     "target_item_key": "item_1a",
     "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AVGO_000173016825000121_item_1a_0012"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicit customer concentration risk factor with real numbers (top 5 customers ~40% of net revenue; distributors 48%) \u2014 exactly the risk factor the question asks about."
   },
   {
     "id": "sh_018",
@@ -228,10 +266,13 @@
     "target_item_key": "item_7",
     "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "AVGO_000173016825000121_item_7_0001",
+      "AVGO_000173016825000121_item_7_0002"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Directly describes both segments (semiconductor solutions; infrastructure software) and their relationship."
   },
   {
     "id": "sh_019",
@@ -241,10 +282,13 @@
     "target_item_key": "item_1a",
     "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "ORCL_000119312526277521_item_1a_0022",
+      "ORCL_000119312526277521_item_1a_0023"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-06-22, the same filing the mid-word title-split bug was diagnosed against): explicitly names OCI's multicloud competition with 'Microsoft Azure, Amazon Web Services and Google Cloud' and the risk that this strategy could lead customers to migrate away from Oracle's cloud offerings. This question was unlabelable before the section_splitter.py fix \u2014 Oracle's Item 1A content didn't exist in the corpus at all until it was re-extracted."
   },
   {
     "id": "sh_020",
@@ -254,10 +298,13 @@
     "target_item_key": "item_7",
     "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
     "gold_answer_type": "chunk",
-    "gold_chunk_ids": [],
+    "gold_chunk_ids": [
+      "ORCL_000095017025087926_item_7_0002",
+      "ORCL_000095017025087926_item_7_0005"
+    ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": ""
+    "notes": "Labeled by Claude, confidence=HIGH: Directly lists cloud/license revenue components and drivers (contract renewals, customer satisfaction, pricing)."
   },
   {
     "id": "mhn_001",

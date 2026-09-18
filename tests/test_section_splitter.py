@@ -310,3 +310,67 @@ def test_split_does_not_treat_two_bare_toc_entries_as_split_title():
     text = "Item 1.\nItem 1A.\nItem 7.\nmore text unrelated to any item"
     matches = _find_all_item_matches(text)
     assert matches == []
+
+
+# --- Regression test for the real ORCL bug found via scripts/diagnose_orcl_item1a.py ---
+# Oracle's 10-K splits its Item 1A header MID-WORD across a tag boundary, not just
+# between words like the AMZN/META case above: "Item 1A." and a single stray "R"
+# land on one line, and the rest of the title ("isk Factors") continues on the next.
+# The original Bug 5 fix only looked ahead when the current line's remainder was
+# COMPLETELY EMPTY, which is true for a whole-word split but false here (remainder
+# is "R", a non-empty single character) — so the lookahead never fired and the
+# entire Item 1A section was silently absorbed into Item 1 in the real corpus.
+FAKE_10K_WITH_MID_WORD_SPLIT_TITLE_HTML = """
+<html><body>
+<div>
+  <p>Item 1.</p>
+  <p>Item 1A.</p>
+  <p>Item 1B.</p>
+</div>
+<div>
+  <h2>Item 1.</h2>
+  <span>Business</span>
+  <p>{business_body}</p>
+  <p>Item 1A.\tR</p>
+  <span>isk Factors</span>
+  <p>{risk_body}</p>
+  <h2>Item 1B.</h2>
+  <span>Unresolved Staff Comments</span>
+  <p>{item1b_body}</p>
+</div>
+</body></html>
+""".format(
+    business_body=" ".join(["business"] * 200),
+    risk_body=" ".join(["risk"] * 200),
+    item1b_body=" ".join(["staffcomment"] * 50),
+)
+
+TARGET_ITEMS_10K_WITH_1B = {
+    "item_1": "Business",
+    "item_1a": "Risk Factors",
+    "item_1b": "Unresolved Staff Comments",
+}
+
+
+def test_split_finds_title_split_mid_word_across_tag_boundary():
+    text = html_to_text(FAKE_10K_WITH_MID_WORD_SPLIT_TITLE_HTML)
+    sections = split_into_items(text, TARGET_ITEMS_10K_WITH_1B)
+
+    assert "item_1a" in sections, "Item 1A must be found even though its title split mid-word ('R' / 'isk Factors')"
+    # the real content ("risk" x200) must be captured as its own section, not
+    # silently absorbed into item_1
+    assert sections["item_1a"].count("risk") >= 190
+    # item_1 must NOT have swallowed item_1a's content
+    assert "risk" not in sections["item_1"]
+    assert sections["item_1"].count("business") >= 190
+
+
+def test_split_mid_word_title_combines_without_inserting_a_space():
+    # Direct unit check on the matcher itself: "R" + "isk Factors" must combine
+    # into a real title ("Risk Factors"), not fail because "R isk Factors" (with
+    # an inserted space) reads as nonsense that still happens to pass length
+    # checks for the wrong reason. This pins the exact concatenation behavior.
+    text = "Item 1A.\tR\nisk Factors\nSome real risk factor content follows here."
+    matches = _find_all_item_matches(text)
+    assert len(matches) == 1
+    assert matches[0].item_number == "1a"
