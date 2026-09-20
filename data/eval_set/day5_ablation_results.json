@@ -1,0 +1,2543 @@
+{
+  "keyword_baseline": {
+    "n_scored": 20,
+    "n_skipped_unlabeled": 0,
+    "recall_at_k": {
+      "1": {
+        "mean": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "3": {
+        "mean": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "5": {
+        "mean": 0.05,
+        "ci_95": [
+          0.0,
+          0.15
+        ]
+      },
+      "10": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      }
+    },
+    "mrr": {
+      "mean": 0.015000000000000003,
+      "ci_95": [
+        0.0,
+        0.04
+      ]
+    },
+    "per_question": [
+      {
+        "id": "sh_001",
+        "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+        "gold": [
+          "AAPL_000032019324000123_item_1a_0010"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000006_item_1_0013",
+          "AAPL_000032019323000106_item_1a_0043",
+          "AAPL_000032019323000106_item_7_0009",
+          "AAPL_000032019326000006_item_1_0012",
+          "AAPL_000032019326000006_item_2_0010",
+          "AAPL_000032019325000079_item_1a_0002",
+          "AAPL_000032019325000079_item_1a_0043",
+          "AAPL_000032019325000079_item_7_0009",
+          "AAPL_000032019325000073_item_1_0014",
+          "AAPL_000032019325000057_item_1_0014"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_002",
+        "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+        "gold": [
+          "AAPL_000032019325000079_item_7_0004"
+        ],
+        "retrieved": [
+          "AAPL_000032019323000106_item_1a_0019",
+          "AAPL_000032019326000006_item_1_0006",
+          "AAPL_000032019325000079_item_7_0002",
+          "AAPL_000032019325000073_item_2_0003",
+          "AAPL_000032019325000057_item_1_0007",
+          "AAPL_000032019325000008_item_2_0002",
+          "AAPL_000032019322000108_item_1a_0021",
+          "AAPL_000032019326000020_item_1_0007",
+          "AAPL_000032019326000020_item_1_0018",
+          "AAPL_000032019326000020_item_1a_0004"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_003",
+        "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+        "gold": [
+          "AAPL_000032019325000079_item_1a_0042",
+          "AAPL_000032019324000123_item_1a_0042",
+          "AAPL_000032019325000079_item_1a_0041"
+        ],
+        "retrieved": [
+          "AAPL_000032019326000020_item_1_0012",
+          "AAPL_000032019326000013_item_1_0012",
+          "AAPL_000032019326000006_item_1_0011",
+          "AAPL_000032019324000123_item_1a_0041",
+          "AAPL_000032019324000081_item_1_0013",
+          "AAPL_000032019324000006_item_1_0011",
+          "AAPL_000032019323000106_item_1a_0042",
+          "AAPL_000032019323000077_item_1_0013",
+          "AAPL_000032019323000064_item_1_0013",
+          "AAPL_000032019323000006_item_1_0011"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_004",
+        "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0008"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_7_0002",
+          "MSFT_000119312526191507_item_2_0003",
+          "MSFT_000119312526027207_item_2_0003",
+          "MSFT_000095017024118967_item_2_0003",
+          "MSFT_000095017023054855_item_2_0003",
+          "MSFT_000119312526027207_item_1a_0033",
+          "MSFT_000119312525256321_item_2_0003",
+          "MSFT_000095017025100235_item_7_0002",
+          "MSFT_000095017025061046_item_2_0003",
+          "MSFT_000095017025010491_item_2_0003"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_005",
+        "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+        "gold": [
+          "MSFT_000119312526323660_item_7_0008",
+          "MSFT_000119312526323660_item_7_0012"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_1_0008",
+          "MSFT_000119312526323660_item_7_0004",
+          "MSFT_000119312526323660_item_7_0005",
+          "MSFT_000119312526323660_item_7_0010",
+          "MSFT_000119312526191507_item_2_0005",
+          "MSFT_000119312526027207_item_2_0005",
+          "MSFT_000095017025100235_item_7_0006",
+          "MSFT_000095017025061046_item_2_0005",
+          "MSFT_000095017025061046_item_2_0007",
+          "MSFT_000095017025010491_item_2_0006"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_006",
+        "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0041"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_1_0000",
+          "MSFT_000119312526323660_item_1_0024",
+          "MSFT_000119312526191507_item_1a_0034",
+          "MSFT_000119312526191507_item_2_0000",
+          "MSFT_000119312526027207_item_1a_0033",
+          "MSFT_000119312526027207_item_2_0000",
+          "MSFT_000119312525256321_item_1a_0033",
+          "MSFT_000119312525256321_item_2_0000",
+          "MSFT_000095017025100235_item_1_0000",
+          "MSFT_000095017025100235_item_1_0029"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_007",
+        "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+        "gold": [
+          "GOOGL_000165204426000018_item_1a_0040"
+        ],
+        "retrieved": [
+          "GOOGL_000165204424000118_item_1a_0000",
+          "GOOGL_000165204425000014_item_7_0000",
+          "GOOGL_000165204424000022_item_7_0000",
+          "GOOGL_000165204426000018_item_7_0000",
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000062_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000",
+          "GOOGL_000165204425000014_item_1a_0038",
+          "GOOGL_000165204424000022_item_1_0021",
+          "GOOGL_000165204424000022_item_1a_0036"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_008",
+        "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+        "gold": [
+          "GOOGL_000165204426000018_item_7_0009",
+          "GOOGL_000165204426000018_item_7_0021"
+        ],
+        "retrieved": [
+          "GOOGL_000165204426000018_item_1_0009",
+          "GOOGL_000165204425000043_item_2_0010",
+          "GOOGL_000165204425000014_item_7_0003",
+          "GOOGL_000165204424000022_item_1_0005",
+          "GOOGL_000165204424000022_item_1_0006",
+          "GOOGL_000165204424000022_item_7_0003",
+          "GOOGL_000165204423000070_item_2_0016",
+          "GOOGL_000165204426000071_item_2_0000",
+          "GOOGL_000165204426000071_item_2_0012",
+          "GOOGL_000165204426000071_item_2_0019"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_009",
+        "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+        "gold": [
+          "GOOGL_000165204425000014_item_7_0024"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000014_item_7_0013",
+          "GOOGL_000165204426000018_item_1a_0040",
+          "GOOGL_000165204426000018_item_7_0000",
+          "GOOGL_000165204426000018_item_7_0014",
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000091_item_2_0010",
+          "GOOGL_000165204425000062_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000",
+          "GOOGL_000165204425000014_item_7_0000",
+          "GOOGL_000165204425000014_item_7_0024"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.1
+      },
+      {
+        "id": "sh_010",
+        "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+        "gold": [
+          "AMZN_000101872426000004_item_1a_0001"
+        ],
+        "retrieved": [
+          "AMZN_000101872422000023_item_1a_0004",
+          "AMZN_000101872426000026_item_1a_0005",
+          "AMZN_000101872426000014_item_1a_0005",
+          "AMZN_000101872426000004_item_1_0000",
+          "AMZN_000101872426000004_item_1a_0005",
+          "AMZN_000101872425000123_item_1a_0000",
+          "AMZN_000101872425000123_item_1a_0005",
+          "AMZN_000101872425000086_item_1a_0000",
+          "AMZN_000101872425000086_item_1a_0005",
+          "AMZN_000101872425000036_item_1a_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_011",
+        "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+        "gold": [
+          "AMZN_000101872426000004_item_7_0026"
+        ],
+        "retrieved": [
+          "AMZN_000101872426000014_item_2_0019",
+          "AMZN_000101872426000004_item_7_0024",
+          "AMZN_000101872425000123_item_2_0021",
+          "AMZN_000101872425000036_item_2_0019",
+          "AMZN_000101872426000026_item_1_0051",
+          "AMZN_000101872426000026_item_2_0027",
+          "AMZN_000101872426000004_item_7_0030",
+          "AMZN_000101872425000123_item_1_0008",
+          "AMZN_000101872425000123_item_2_0029",
+          "AMZN_000101872425000086_item_2_0027"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_012",
+        "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+        "gold": [
+          "AMZN_000101872424000161_item_1a_0017"
+        ],
+        "retrieved": [
+          "AMZN_000101872426000026_item_1a_0017",
+          "AMZN_000101872426000026_item_1a_0034",
+          "AMZN_000101872426000026_item_2_0001",
+          "AMZN_000101872426000014_item_1a_0017",
+          "AMZN_000101872426000014_item_1a_0034",
+          "AMZN_000101872426000014_item_2_0001",
+          "AMZN_000101872426000004_item_1a_0017",
+          "AMZN_000101872426000004_item_1a_0028",
+          "AMZN_000101872426000004_item_1a_0034",
+          "AMZN_000101872425000123_item_1a_0029"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_013",
+        "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+        "gold": [
+          "META_000162828026003942_item_1a_0011"
+        ],
+        "retrieved": [
+          "META_000162828026050705_item_1a_0013",
+          "META_000162828026028526_item_1a_0013",
+          "META_000162828026028526_item_1a_0128",
+          "META_000162828026003942_item_1_0012",
+          "META_000162828026003942_item_1a_0013",
+          "META_000162828026003942_item_1a_0127",
+          "META_000162828025047240_item_1a_0127",
+          "META_000162828025036791_item_1a_0066",
+          "META_000132680125000054_item_1a_0066",
+          "META_000132680125000054_item_1a_0124"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_014",
+        "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+        "gold": [
+          "META_000162828026003942_item_7_0010"
+        ],
+        "retrieved": [
+          "META_000162828026050705_item_2_0017",
+          "META_000162828026003942_item_1_0004",
+          "META_000162828025047240_item_2_0017",
+          "META_000132680125000054_item_2_0017",
+          "META_000132680125000017_item_1_0005",
+          "META_000162828026050705_item_2_0022",
+          "META_000162828026028526_item_2_0016",
+          "META_000162828026028526_item_2_0017",
+          "META_000162828026028526_item_2_0021",
+          "META_000162828026003942_item_1_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_015",
+        "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+        "gold": [
+          "NVDA_000104581026000021_item_1a_0050",
+          "NVDA_000104581026000021_item_1a_0052"
+        ],
+        "retrieved": [
+          "NVDA_000104581024000124_item_2_0007",
+          "NVDA_000104581026000075_item_1a_0010",
+          "NVDA_000104581026000075_item_1a_0020",
+          "NVDA_000104581026000075_item_2_0000",
+          "NVDA_000104581026000052_item_1a_0027",
+          "NVDA_000104581026000052_item_2_0000",
+          "NVDA_000104581026000021_item_1_0028",
+          "NVDA_000104581026000021_item_1a_0061",
+          "NVDA_000104581026000021_item_1a_0062",
+          "NVDA_000104581026000021_item_1a_0063"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_016",
+        "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+        "gold": [
+          "NVDA_000104581026000021_item_7_0015"
+        ],
+        "retrieved": [
+          "NVDA_000104581026000052_item_2_0008",
+          "NVDA_000104581026000052_item_2_0010",
+          "NVDA_000104581026000021_item_7_0000",
+          "NVDA_000104581025000209_item_2_0002",
+          "NVDA_000104581025000116_item_2_0002",
+          "NVDA_000104581024000264_item_2_0012",
+          "NVDA_000104581024000124_item_2_0014",
+          "NVDA_000104581024000029_item_7_0009",
+          "NVDA_000104581026000075_item_2_0007",
+          "NVDA_000104581026000021_item_1_0027"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_017",
+        "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+        "gold": [
+          "AVGO_000173016825000121_item_1a_0012"
+        ],
+        "retrieved": [
+          "AVGO_000173016825000121_item_1_0027",
+          "AVGO_000173016824000139_item_1_0037",
+          "AVGO_000173016824000099_item_2_0000",
+          "AVGO_000173016824000080_item_2_0000",
+          "AVGO_000173016824000023_item_2_0000",
+          "AVGO_000173016823000077_item_2_0000",
+          "AVGO_000173016823000064_item_2_0000",
+          "AVGO_000173016823000008_item_2_0000",
+          "AVGO_000173016824000099_item_2_0001",
+          "AVGO_000173016824000080_item_2_0001"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_018",
+        "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+        "gold": [
+          "AVGO_000173016825000121_item_7_0001",
+          "AVGO_000173016825000121_item_7_0002"
+        ],
+        "retrieved": [
+          "AVGO_000173016825000098_item_1_0010",
+          "AVGO_000173016825000064_item_1_0009",
+          "AVGO_000173016823000077_item_1_0010",
+          "AVGO_000173016823000064_item_1_0009",
+          "AVGO_000173016826000080_item_2_0001",
+          "AVGO_000173016826000054_item_1_0008",
+          "AVGO_000173016826000054_item_2_0001",
+          "AVGO_000173016826000016_item_2_0001",
+          "AVGO_000173016825000098_item_1_0009",
+          "AVGO_000173016825000064_item_1_0008"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_019",
+        "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+        "gold": [
+          "ORCL_000119312526277521_item_1a_0022",
+          "ORCL_000119312526277521_item_1a_0023"
+        ],
+        "retrieved": [
+          "ORCL_000095017024075605_item_1_0039",
+          "ORCL_000095017025087926_item_1_0035",
+          "ORCL_000095017024075605_item_1a_0008",
+          "ORCL_000119312526277521_item_1a_0000",
+          "ORCL_000119312526277521_item_1a_0022",
+          "ORCL_000095017025087926_item_1a_0009",
+          "ORCL_000095017024075605_item_1_0000",
+          "ORCL_000095017023028914_item_1_0000",
+          "ORCL_000095017023028914_item_1_0001",
+          "ORCL_000095017023028914_item_1_0038"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.2
+      },
+      {
+        "id": "sh_020",
+        "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+        "gold": [
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017025087926_item_7_0005"
+        ],
+        "retrieved": [
+          "ORCL_000119312526389274_item_2_0003",
+          "ORCL_000119312526389274_item_2_0004",
+          "ORCL_000119312526277521_item_7_0003",
+          "ORCL_000119312525200095_item_2_0002",
+          "ORCL_000095017025087926_item_1_0027",
+          "ORCL_000095017025087926_item_7_0001",
+          "ORCL_000095017025087926_item_7_0003",
+          "ORCL_000095017025037143_item_2_0001",
+          "ORCL_000095017024134973_item_2_0001",
+          "ORCL_000095017024104905_item_2_0001"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      }
+    ]
+  },
+  "bm25": {
+    "n_scored": 20,
+    "n_skipped_unlabeled": 0,
+    "recall_at_k": {
+      "1": {
+        "mean": 0.05,
+        "ci_95": [
+          0.0,
+          0.15
+        ]
+      },
+      "3": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "5": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "10": {
+        "mean": 0.15,
+        "ci_95": [
+          0.0,
+          0.3
+        ]
+      }
+    },
+    "mrr": {
+      "mean": 0.08214285714285714,
+      "ci_95": [
+        0.0,
+        0.20714285714285716
+      ]
+    },
+    "per_question": [
+      {
+        "id": "sh_001",
+        "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+        "gold": [
+          "AAPL_000032019324000123_item_1a_0010"
+        ],
+        "retrieved": [
+          "AAPL_000032019323000106_item_1a_0043",
+          "AAPL_000032019325000079_item_1a_0043",
+          "AAPL_000032019324000123_item_1a_0044",
+          "AAPL_000032019322000108_item_1a_0045",
+          "AAPL_000032019325000079_item_1_0002",
+          "AAPL_000032019324000123_item_1_0002",
+          "AAPL_000032019323000106_item_1_0002",
+          "AAPL_000032019323000106_item_7_0009",
+          "AAPL_000032019324000006_item_2_0009",
+          "AAPL_000032019322000108_item_1a_0046"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_002",
+        "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+        "gold": [
+          "AAPL_000032019325000079_item_7_0004"
+        ],
+        "retrieved": [
+          "AAPL_000032019325000079_item_1a_0021",
+          "AAPL_000032019324000123_item_1a_0022",
+          "AAPL_000032019323000106_item_1a_0019",
+          "AAPL_000032019324000069_item_2_0002",
+          "AAPL_000032019326000006_item_1_0006",
+          "AAPL_000032019323000006_item_1_0008",
+          "AAPL_000032019325000057_item_2_0014",
+          "AAPL_000032019325000008_item_2_0002",
+          "AAPL_000032019323000106_item_1a_0035",
+          "AAPL_000032019325000057_item_1_0007"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_003",
+        "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+        "gold": [
+          "AAPL_000032019325000079_item_1a_0042",
+          "AAPL_000032019324000123_item_1a_0042",
+          "AAPL_000032019325000079_item_1a_0041"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000006_item_1_0011",
+          "AAPL_000032019323000064_item_1_0013",
+          "AAPL_000032019326000013_item_1_0012",
+          "AAPL_000032019323000077_item_1_0013",
+          "AAPL_000032019326000020_item_1_0012",
+          "AAPL_000032019325000057_item_1_0012",
+          "AAPL_000032019325000008_item_1_0011",
+          "AAPL_000032019325000073_item_1_0012",
+          "AAPL_000032019324000069_item_1_0012",
+          "AAPL_000032019324000081_item_1_0012"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_004",
+        "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0008"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_7_0002",
+          "MSFT_000119312526027207_item_2_0017",
+          "MSFT_000119312526323660_item_7_0011",
+          "MSFT_000095017023054855_item_2_0003",
+          "MSFT_000119312526027207_item_2_0011",
+          "MSFT_000095017024118967_item_2_0003",
+          "MSFT_000095017025100235_item_7_0002",
+          "MSFT_000119312526027207_item_2_0003",
+          "MSFT_000119312526027207_item_2_0010",
+          "MSFT_000119312526191507_item_2_0017"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_005",
+        "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+        "gold": [
+          "MSFT_000119312526323660_item_7_0008",
+          "MSFT_000119312526323660_item_7_0012"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_7_0005",
+          "MSFT_000095017024048288_item_2_0006",
+          "MSFT_000095017025061046_item_2_0007",
+          "MSFT_000095017025061046_item_2_0008",
+          "MSFT_000119312525256321_item_2_0007",
+          "MSFT_000119312526027207_item_2_0007",
+          "MSFT_000119312526191507_item_2_0007",
+          "MSFT_000095017025100235_item_7_0006",
+          "MSFT_000119312526323660_item_7_0006",
+          "MSFT_000095017024087843_item_1_0017"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_006",
+        "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0041"
+        ],
+        "retrieved": [
+          "MSFT_000119312526191507_item_2_0000",
+          "MSFT_000119312526027207_item_2_0000",
+          "MSFT_000119312525256321_item_2_0000",
+          "MSFT_000095017025061046_item_2_0000",
+          "MSFT_000095017025010491_item_2_0000",
+          "MSFT_000095017024118967_item_2_0000",
+          "MSFT_000095017024048288_item_2_0000",
+          "MSFT_000095017024008814_item_2_0000",
+          "MSFT_000095017023054855_item_2_0000",
+          "MSFT_000095017023014423_item_2_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_007",
+        "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+        "gold": [
+          "GOOGL_000165204426000018_item_1a_0040"
+        ],
+        "retrieved": [
+          "GOOGL_000165204424000118_item_1a_0000",
+          "GOOGL_000165204425000014_item_1a_0038",
+          "GOOGL_000165204425000014_item_7_0000",
+          "GOOGL_000165204424000022_item_7_0000",
+          "GOOGL_000165204424000022_item_1a_0036",
+          "GOOGL_000165204426000018_item_7_0000",
+          "GOOGL_000165204426000018_item_1a_0040",
+          "GOOGL_000165204425000014_item_1a_0040",
+          "GOOGL_000165204424000118_item_1a_0001",
+          "GOOGL_000165204425000091_item_2_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.14285714285714285
+      },
+      {
+        "id": "sh_008",
+        "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+        "gold": [
+          "GOOGL_000165204426000018_item_7_0009",
+          "GOOGL_000165204426000018_item_7_0021"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204426000018_item_7_0020",
+          "GOOGL_000165204425000043_item_2_0019",
+          "GOOGL_000165204426000048_item_2_0018",
+          "GOOGL_000165204426000018_item_1_0000",
+          "GOOGL_000165204425000014_item_1_0000",
+          "GOOGL_000165204424000022_item_1_0000",
+          "GOOGL_000165204425000014_item_7_0018",
+          "GOOGL_000165204425000062_item_2_0022",
+          "GOOGL_000165204423000070_item_2_0016"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_009",
+        "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+        "gold": [
+          "GOOGL_000165204425000014_item_7_0024"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204426000018_item_7_0000",
+          "GOOGL_000165204424000053_item_1a_0002",
+          "GOOGL_000165204423000070_item_2_0023",
+          "GOOGL_000165204426000018_item_1a_0052",
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000062_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000",
+          "GOOGL_000165204425000014_item_1a_0050",
+          "GOOGL_000165204423000094_item_2_0000"
+        ],
+        "recall@1": 1,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 1.0
+      },
+      {
+        "id": "sh_010",
+        "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+        "gold": [
+          "AMZN_000101872426000004_item_1a_0001"
+        ],
+        "retrieved": [
+          "AMZN_000101872424000161_item_1a_0005",
+          "AMZN_000101872424000130_item_1a_0005",
+          "AMZN_000101872424000083_item_1a_0005",
+          "AMZN_000101872424000008_item_1a_0005",
+          "AMZN_000101872425000123_item_1a_0005",
+          "AMZN_000101872425000086_item_1a_0005",
+          "AMZN_000101872425000036_item_1a_0005",
+          "AMZN_000101872425000004_item_1a_0005",
+          "AMZN_000101872423000018_item_1a_0005",
+          "AMZN_000101872423000012_item_1a_0005"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_011",
+        "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+        "gold": [
+          "AMZN_000101872426000004_item_7_0026"
+        ],
+        "retrieved": [
+          "AMZN_000101872423000018_item_1_0025",
+          "AMZN_000101872426000014_item_2_0019",
+          "AMZN_000101872425000123_item_1_0008",
+          "AMZN_000101872423000004_item_7_0022",
+          "AMZN_000101872426000026_item_2_0017",
+          "AMZN_000101872425000036_item_2_0015",
+          "AMZN_000101872424000083_item_2_0016",
+          "AMZN_000101872426000004_item_7_0024",
+          "AMZN_000101872425000036_item_1_0038",
+          "AMZN_000101872425000036_item_2_0019"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_012",
+        "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+        "gold": [
+          "AMZN_000101872424000161_item_1a_0017"
+        ],
+        "retrieved": [
+          "AMZN_000101872425000086_item_2_0017",
+          "AMZN_000101872423000012_item_2_0019",
+          "AMZN_000101872423000008_item_2_0017",
+          "AMZN_000101872423000018_item_2_0020",
+          "AMZN_000101872425000123_item_1a_0017",
+          "AMZN_000101872425000086_item_1a_0017",
+          "AMZN_000101872425000036_item_1a_0017",
+          "AMZN_000101872422000023_item_1a_0015",
+          "AMZN_000101872425000123_item_2_0017",
+          "AMZN_000101872422000023_item_2_0020"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_013",
+        "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+        "gold": [
+          "META_000162828026003942_item_1a_0011"
+        ],
+        "retrieved": [
+          "META_000132680125000017_item_1_0023",
+          "META_000162828026003942_item_1_0000",
+          "META_000132680125000017_item_1_0000",
+          "META_000132680125000017_item_1_0005",
+          "META_000132680125000054_item_2_0021",
+          "META_000132680124000081_item_1a_0111",
+          "META_000162828026003942_item_1_0012",
+          "META_000162828025036791_item_1a_0115",
+          "META_000132680125000017_item_1a_0124",
+          "META_000162828026028526_item_1a_0117"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_014",
+        "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+        "gold": [
+          "META_000162828026003942_item_7_0010"
+        ],
+        "retrieved": [
+          "META_000162828026003942_item_1_0004",
+          "META_000162828026003942_item_1_0003",
+          "META_000132680125000017_item_1_0005",
+          "META_000132680125000017_item_1_0000",
+          "META_000162828026003942_item_1_0002",
+          "META_000132680125000017_item_1_0004",
+          "META_000162828026003942_item_1_0000",
+          "META_000132680125000054_item_2_0017",
+          "META_000162828025047240_item_2_0017",
+          "META_000132680124000081_item_1a_0049"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_015",
+        "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+        "gold": [
+          "NVDA_000104581026000021_item_1a_0050",
+          "NVDA_000104581026000021_item_1a_0052"
+        ],
+        "retrieved": [
+          "NVDA_000104581022000166_item_2_0001",
+          "NVDA_000104581025000209_item_1a_0019",
+          "NVDA_000104581026000075_item_1a_0020",
+          "NVDA_000104581025000230_item_1a_0030",
+          "NVDA_000104581024000316_item_2_0001",
+          "NVDA_000104581024000264_item_2_0001",
+          "NVDA_000104581024000124_item_2_0001",
+          "NVDA_000104581023000093_item_2_0001",
+          "NVDA_000104581023000175_item_2_0001",
+          "NVDA_000104581025000230_item_2_0001"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_016",
+        "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+        "gold": [
+          "NVDA_000104581026000021_item_7_0015"
+        ],
+        "retrieved": [
+          "NVDA_000104581023000017_item_1_0012",
+          "NVDA_000104581024000029_item_7_0009",
+          "NVDA_000104581025000023_item_1_0007",
+          "NVDA_000104581024000029_item_1_0007",
+          "NVDA_000104581024000029_item_1_0010",
+          "NVDA_000104581022000166_item_2_0014",
+          "NVDA_000104581023000017_item_1_0008",
+          "NVDA_000104581026000021_item_1_0008",
+          "NVDA_000104581023000175_item_2_0001",
+          "NVDA_000104581025000023_item_1_0011"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_017",
+        "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+        "gold": [
+          "AVGO_000173016825000121_item_1a_0012"
+        ],
+        "retrieved": [
+          "AVGO_000173016822000118_item_1_0031",
+          "AVGO_000173016824000099_item_2_0000",
+          "AVGO_000173016824000080_item_2_0000",
+          "AVGO_000173016824000023_item_2_0000",
+          "AVGO_000173016823000077_item_2_0000",
+          "AVGO_000173016823000064_item_2_0000",
+          "AVGO_000173016823000008_item_2_0000",
+          "AVGO_000173016825000121_item_1_0027",
+          "AVGO_000173016823000096_item_1_0032",
+          "AVGO_000173016824000099_item_2_0001"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_018",
+        "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+        "gold": [
+          "AVGO_000173016825000121_item_7_0001",
+          "AVGO_000173016825000121_item_7_0002"
+        ],
+        "retrieved": [
+          "AVGO_000173016824000080_item_1_0008",
+          "AVGO_000173016825000064_item_1_0008",
+          "AVGO_000173016825000021_item_1_0007",
+          "AVGO_000173016824000023_item_1_0007",
+          "AVGO_000173016825000098_item_1_0009",
+          "AVGO_000173016823000064_item_1_0009",
+          "AVGO_000173016824000099_item_1_0010",
+          "AVGO_000173016823000077_item_1_0010",
+          "AVGO_000173016826000016_item_1_0006",
+          "AVGO_000173016823000008_item_1_0007"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_019",
+        "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+        "gold": [
+          "ORCL_000119312526277521_item_1a_0022",
+          "ORCL_000119312526277521_item_1a_0023"
+        ],
+        "retrieved": [
+          "ORCL_000095017023028914_item_1_0017",
+          "ORCL_000119312526277521_item_1_0015",
+          "ORCL_000095017024075605_item_1_0000",
+          "ORCL_000095017024075605_item_1a_0008",
+          "ORCL_000095017023028914_item_1_0016",
+          "ORCL_000119312526277521_item_1_0012",
+          "ORCL_000095017025087926_item_1_0014",
+          "ORCL_000095017025087926_item_1_0016",
+          "ORCL_000119312526277521_item_1_0013",
+          "ORCL_000095017024075605_item_1_0014"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_020",
+        "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+        "gold": [
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017025087926_item_7_0005"
+        ],
+        "retrieved": [
+          "ORCL_000095017023028914_item_7_0002",
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017023047713_item_2_0002",
+          "ORCL_000156459023003413_item_2_0002",
+          "ORCL_000156459022039278_item_2_0002",
+          "ORCL_000095017024075605_item_7_0002",
+          "ORCL_000095017025087926_item_7_0003",
+          "ORCL_000095017025087926_item_1_0005",
+          "ORCL_000095017024075605_item_7_0003",
+          "ORCL_000095017023028914_item_1_0006"
+        ],
+        "recall@1": 0,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.5
+      }
+    ]
+  },
+  "bm25_sql_sanity": {
+    "n_numeric_questions_checked": 22,
+    "n_false_confidence_flags": 22,
+    "note": "Any non-zero flag here means the retriever will confidently hand prose to a numeric question if nothing routes it to SQL first \u2014 expected until the agent exists (Phase B), tracked here as a baseline to compare against.",
+    "details": [
+      {
+        "id": "mhn_001",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_002",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_003",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_004",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_005",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_006",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_007",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_008",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_009",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_010",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_011",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_012",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_013",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_014",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_015",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_016",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_019",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_020",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      }
+    ]
+  },
+  "hybrid_rrf": {
+    "n_scored": 20,
+    "n_skipped_unlabeled": 0,
+    "recall_at_k": {
+      "1": {
+        "mean": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "3": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "5": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "10": {
+        "mean": 0.35,
+        "ci_95": [
+          0.15,
+          0.55
+        ]
+      }
+    },
+    "mrr": {
+      "mean": 0.07950396825396824,
+      "ci_95": [
+        0.021111111111111112,
+        0.14825396825396825
+      ]
+    },
+    "per_question": [
+      {
+        "id": "sh_001",
+        "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+        "gold": [
+          "AAPL_000032019324000123_item_1a_0010"
+        ],
+        "retrieved": [
+          "AAPL_000032019323000106_item_1a_0043",
+          "AAPL_000032019325000079_item_1a_0002",
+          "AAPL_000032019324000123_item_1a_0002",
+          "AAPL_000032019322000108_item_1a_0046",
+          "AAPL_000032019323000106_item_1a_0002",
+          "AAPL_000032019324000123_item_1a_0009",
+          "AAPL_000032019325000079_item_1a_0043",
+          "AAPL_000032019324000123_item_1a_0044",
+          "AAPL_000032019324000123_item_1a_0010",
+          "AAPL_000032019325000057_item_1a_0004"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.1111111111111111
+      },
+      {
+        "id": "sh_002",
+        "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+        "gold": [
+          "AAPL_000032019325000079_item_7_0004"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000069_item_2_0002",
+          "AAPL_000032019326000006_item_1_0006",
+          "AAPL_000032019325000057_item_1_0007",
+          "AAPL_000032019323000106_item_1a_0019",
+          "AAPL_000032019325000008_item_2_0002",
+          "AAPL_000032019324000081_item_1_0008",
+          "AAPL_000032019323000006_item_1_0008",
+          "AAPL_000032019323000006_item_1_0007",
+          "AAPL_000032019323000006_item_2_0002",
+          "AAPL_000032019324000069_item_1_0008"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_003",
+        "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+        "gold": [
+          "AAPL_000032019325000079_item_1a_0042",
+          "AAPL_000032019324000123_item_1a_0042",
+          "AAPL_000032019325000079_item_1a_0041"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000006_item_1_0011",
+          "AAPL_000032019323000077_item_1_0013",
+          "AAPL_000032019326000013_item_1_0012",
+          "AAPL_000032019326000020_item_1_0012",
+          "AAPL_000032019323000106_item_1a_0042",
+          "AAPL_000032019323000064_item_1_0013",
+          "AAPL_000032019322000108_item_1a_0043",
+          "AAPL_000032019325000079_item_1a_0041",
+          "AAPL_000032019324000123_item_1a_0041",
+          "AAPL_000032019322000108_item_1a_0044"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.125
+      },
+      {
+        "id": "sh_004",
+        "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0008"
+        ],
+        "retrieved": [
+          "MSFT_000095017025100235_item_1a_0024",
+          "MSFT_000095017024048288_item_1a_0027",
+          "MSFT_000119312526323660_item_7_0002",
+          "MSFT_000095017023035122_item_1a_0025",
+          "MSFT_000119312526027207_item_2_0003",
+          "MSFT_000095017023054855_item_2_0003",
+          "MSFT_000156459022035087_item_1a_0023",
+          "MSFT_000095017024118967_item_2_0003",
+          "MSFT_000095017023014423_item_1a_0022",
+          "MSFT_000119312525256321_item_2_0003"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_005",
+        "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+        "gold": [
+          "MSFT_000119312526323660_item_7_0008",
+          "MSFT_000119312526323660_item_7_0012"
+        ],
+        "retrieved": [
+          "MSFT_000119312526323660_item_7_0005",
+          "MSFT_000095017024048288_item_2_0006",
+          "MSFT_000095017025061046_item_2_0008",
+          "MSFT_000119312525256321_item_2_0007",
+          "MSFT_000095017024118967_item_2_0001",
+          "MSFT_000119312526191507_item_2_0001",
+          "MSFT_000119312526027207_item_2_0001",
+          "MSFT_000095017025100235_item_7_0006",
+          "MSFT_000119312525256321_item_2_0001",
+          "MSFT_000095017025061046_item_2_0007"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_006",
+        "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0041"
+        ],
+        "retrieved": [
+          "MSFT_000119312526191507_item_1a_0014",
+          "MSFT_000119312526191507_item_1a_0034",
+          "MSFT_000095017024008814_item_1a_0011",
+          "MSFT_000095017024048288_item_1a_0011",
+          "MSFT_000095017025100235_item_1_0029",
+          "MSFT_000119312526191507_item_1a_0013",
+          "MSFT_000095017025100235_item_1a_0033",
+          "MSFT_000119312525256321_item_1a_0033",
+          "MSFT_000119312526323660_item_1a_0041",
+          "MSFT_000095017024118967_item_2_0005"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.1111111111111111
+      },
+      {
+        "id": "sh_007",
+        "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+        "gold": [
+          "GOOGL_000165204426000018_item_1a_0040"
+        ],
+        "retrieved": [
+          "GOOGL_000165204424000118_item_1a_0000",
+          "GOOGL_000165204426000018_item_1a_0040",
+          "GOOGL_000165204424000022_item_1a_0036",
+          "GOOGL_000165204425000014_item_1a_0029",
+          "GOOGL_000165204425000014_item_1a_0000",
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000",
+          "GOOGL_000165204425000062_item_2_0000",
+          "GOOGL_000165204425000014_item_1a_0017",
+          "GOOGL_000165204425000014_item_1a_0040"
+        ],
+        "recall@1": 0,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.5
+      },
+      {
+        "id": "sh_008",
+        "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+        "gold": [
+          "GOOGL_000165204426000018_item_7_0009",
+          "GOOGL_000165204426000018_item_7_0021"
+        ],
+        "retrieved": [
+          "GOOGL_000165204423000070_item_2_0016",
+          "GOOGL_000165204425000014_item_7_0018",
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204426000071_item_2_0020",
+          "GOOGL_000165204425000014_item_1_0000",
+          "GOOGL_000165204425000043_item_2_0019",
+          "GOOGL_000165204423000070_item_2_0000",
+          "GOOGL_000165204423000094_item_2_0000",
+          "GOOGL_000165204424000022_item_1_0013",
+          "GOOGL_000165204426000018_item_1_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_009",
+        "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+        "gold": [
+          "GOOGL_000165204425000014_item_7_0024"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000",
+          "GOOGL_000165204425000062_item_2_0000",
+          "GOOGL_000165204423000070_item_2_0000",
+          "GOOGL_000165204423000094_item_2_0000",
+          "GOOGL_000165204426000018_item_7_0000",
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204424000022_item_7_0000",
+          "GOOGL_000165204425000014_item_7_0000",
+          "GOOGL_000165204424000053_item_2_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.14285714285714285
+      },
+      {
+        "id": "sh_010",
+        "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+        "gold": [
+          "AMZN_000101872426000004_item_1a_0001"
+        ],
+        "retrieved": [
+          "AMZN_000101872422000023_item_1a_0000",
+          "AMZN_000101872424000161_item_1a_0000",
+          "AMZN_000101872424000130_item_1a_0000",
+          "AMZN_000101872423000012_item_1a_0000",
+          "AMZN_000101872423000018_item_1a_0000",
+          "AMZN_000101872424000083_item_1a_0000",
+          "AMZN_000101872425000086_item_1a_0000",
+          "AMZN_000101872425000123_item_1a_0000",
+          "AMZN_000101872424000008_item_1a_0005",
+          "AMZN_000101872423000008_item_1a_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_011",
+        "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+        "gold": [
+          "AMZN_000101872426000004_item_7_0026"
+        ],
+        "retrieved": [
+          "AMZN_000101872426000014_item_2_0019",
+          "AMZN_000101872425000004_item_7_0025",
+          "AMZN_000101872425000036_item_2_0019",
+          "AMZN_000101872425000004_item_7_0024",
+          "AMZN_000101872426000004_item_7_0025",
+          "AMZN_000101872426000014_item_2_0020",
+          "AMZN_000101872425000036_item_2_0020",
+          "AMZN_000101872424000083_item_2_0013",
+          "AMZN_000101872426000004_item_7_0024",
+          "AMZN_000101872423000004_item_7_0025"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_012",
+        "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+        "gold": [
+          "AMZN_000101872424000161_item_1a_0017"
+        ],
+        "retrieved": [
+          "AMZN_000101872425000123_item_1a_0017",
+          "AMZN_000101872425000086_item_1a_0017",
+          "AMZN_000101872425000036_item_1a_0017",
+          "AMZN_000101872425000086_item_2_0017",
+          "AMZN_000101872422000023_item_1a_0015",
+          "AMZN_000101872422000023_item_2_0020",
+          "AMZN_000101872423000012_item_2_0019",
+          "AMZN_000101872425000004_item_1a_0028",
+          "AMZN_000101872423000008_item_2_0017",
+          "AMZN_000101872425000123_item_2_0017"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_013",
+        "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+        "gold": [
+          "META_000162828026003942_item_1a_0011"
+        ],
+        "retrieved": [
+          "META_000132680124000069_item_1a_0120",
+          "META_000132680125000054_item_1a_0122",
+          "META_000132680125000017_item_1a_0124",
+          "META_000132680124000081_item_1a_0119",
+          "META_000162828026028526_item_1a_0007",
+          "META_000162828026050705_item_1a_0007",
+          "META_000162828026050705_item_1a_0013",
+          "META_000162828026028526_item_1a_0013",
+          "META_000162828026028526_item_1a_0128",
+          "META_000132680124000081_item_1a_0111"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_014",
+        "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+        "gold": [
+          "META_000162828026003942_item_7_0010"
+        ],
+        "retrieved": [
+          "META_000132680124000081_item_1a_0049",
+          "META_000132680124000069_item_1a_0049",
+          "META_000132680125000017_item_1a_0050",
+          "META_000162828025047240_item_1a_0051",
+          "META_000162828026003942_item_1_0003",
+          "META_000162828026003942_item_1a_0052",
+          "META_000162828026003942_item_1_0004",
+          "META_000162828025036791_item_1a_0051",
+          "META_000162828025036791_item_2_0017",
+          "META_000132680125000017_item_1_0005"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_015",
+        "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+        "gold": [
+          "NVDA_000104581026000021_item_1a_0050",
+          "NVDA_000104581026000021_item_1a_0052"
+        ],
+        "retrieved": [
+          "NVDA_000104581025000209_item_1a_0019",
+          "NVDA_000104581026000075_item_1a_0020",
+          "NVDA_000104581025000230_item_1a_0030",
+          "NVDA_000104581024000124_item_1a_0026",
+          "NVDA_000104581025000023_item_1_0027",
+          "NVDA_000104581026000021_item_1a_0062",
+          "NVDA_000104581023000017_item_1a_0000",
+          "NVDA_000104581025000023_item_1a_0060",
+          "NVDA_000104581025000116_item_1a_0022",
+          "NVDA_000104581023000093_item_1a_0036"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_016",
+        "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+        "gold": [
+          "NVDA_000104581026000021_item_7_0015"
+        ],
+        "retrieved": [
+          "NVDA_000104581024000029_item_7_0009",
+          "NVDA_000104581025000023_item_1_0007",
+          "NVDA_000104581024000029_item_1_0007",
+          "NVDA_000104581024000264_item_2_0012",
+          "NVDA_000104581025000209_item_2_0011",
+          "NVDA_000104581024000029_item_1_0005",
+          "NVDA_000104581024000124_item_2_0014",
+          "NVDA_000104581023000017_item_7_0007",
+          "NVDA_000104581023000175_item_2_0007",
+          "NVDA_000104581023000175_item_2_0008"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_017",
+        "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+        "gold": [
+          "AVGO_000173016825000121_item_1a_0012"
+        ],
+        "retrieved": [
+          "AVGO_000173016825000121_item_1_0027",
+          "AVGO_000173016825000098_item_1a_0044",
+          "AVGO_000173016824000139_item_1a_0041",
+          "AVGO_000173016826000054_item_2_0001",
+          "AVGO_000173016826000080_item_2_0001",
+          "AVGO_000173016826000016_item_2_0001",
+          "AVGO_000173016826000016_item_1a_0044",
+          "AVGO_000173016826000054_item_1a_0045",
+          "AVGO_000173016822000118_item_1_0031",
+          "AVGO_000173016822000118_item_1a_0031"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_018",
+        "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+        "gold": [
+          "AVGO_000173016825000121_item_7_0001",
+          "AVGO_000173016825000121_item_7_0002"
+        ],
+        "retrieved": [
+          "AVGO_000173016824000080_item_1_0008",
+          "AVGO_000173016825000064_item_1_0008",
+          "AVGO_000173016825000098_item_1_0009",
+          "AVGO_000173016826000016_item_1_0006",
+          "AVGO_000173016825000021_item_1_0007",
+          "AVGO_000173016824000023_item_1_0007",
+          "AVGO_000173016826000080_item_1_0008",
+          "AVGO_000173016826000054_item_1_0007",
+          "AVGO_000173016823000008_item_1_0007",
+          "AVGO_000173016823000064_item_1_0008"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_019",
+        "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+        "gold": [
+          "ORCL_000119312526277521_item_1a_0022",
+          "ORCL_000119312526277521_item_1a_0023"
+        ],
+        "retrieved": [
+          "ORCL_000095017024075605_item_1a_0008",
+          "ORCL_000119312526277521_item_1_0012",
+          "ORCL_000095017023028914_item_1_0015",
+          "ORCL_000095017023028914_item_1_0017",
+          "ORCL_000095017024075605_item_1_0039",
+          "ORCL_000095017025087926_item_1_0013",
+          "ORCL_000095017025087926_item_1_0035",
+          "ORCL_000095017024075605_item_1_0014",
+          "ORCL_000119312526277521_item_1_0011",
+          "ORCL_000119312526277521_item_1a_0022"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.1
+      },
+      {
+        "id": "sh_020",
+        "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+        "gold": [
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017025087926_item_7_0005"
+        ],
+        "retrieved": [
+          "ORCL_000095017023028914_item_7_0002",
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017024075605_item_7_0002",
+          "ORCL_000156459023003413_item_2_0001",
+          "ORCL_000156459022039278_item_2_0001",
+          "ORCL_000095017023047713_item_2_0001",
+          "ORCL_000156459023003413_item_2_0002",
+          "ORCL_000095017024134973_item_2_0001",
+          "ORCL_000095017025037143_item_2_0001",
+          "ORCL_000095017024075605_item_1_0007"
+        ],
+        "recall@1": 0,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.5
+      }
+    ]
+  },
+  "hybrid_sql_sanity": {
+    "n_numeric_questions_checked": 22,
+    "n_false_confidence_flags": 22,
+    "note": "Any non-zero flag here means the retriever will confidently hand prose to a numeric question if nothing routes it to SQL first \u2014 expected until the agent exists (Phase B), tracked here as a baseline to compare against.",
+    "details": [
+      {
+        "id": "mhn_001",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_002",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_003",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_004",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_005",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_006",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_007",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_008",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_009",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_010",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_011",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_012",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_013",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_014",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_015",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_016",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_019",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_020",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      }
+    ]
+  },
+  "hybrid_reranked": {
+    "n_scored": 20,
+    "n_skipped_unlabeled": 0,
+    "recall_at_k": {
+      "1": {
+        "mean": 0.1,
+        "ci_95": [
+          0.0,
+          0.25
+        ]
+      },
+      "3": {
+        "mean": 0.15,
+        "ci_95": [
+          0.0,
+          0.3
+        ]
+      },
+      "5": {
+        "mean": 0.2,
+        "ci_95": [
+          0.05,
+          0.4
+        ]
+      },
+      "10": {
+        "mean": 0.25,
+        "ci_95": [
+          0.1,
+          0.45
+        ]
+      }
+    },
+    "mrr": {
+      "mean": 0.13291666666666666,
+      "ci_95": [
+        0.01875,
+        0.27625
+      ]
+    },
+    "per_question": [
+      {
+        "id": "sh_001",
+        "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+        "gold": [
+          "AAPL_000032019324000123_item_1a_0010"
+        ],
+        "retrieved": [
+          "AAPL_000032019323000106_item_1a_0043",
+          "AAPL_000032019324000123_item_1a_0009",
+          "AAPL_000032019322000108_item_1a_0043",
+          "AAPL_000032019322000108_item_1a_0012",
+          "AAPL_000032019324000123_item_1a_0002",
+          "AAPL_000032019325000057_item_1a_0004",
+          "AAPL_000032019323000106_item_1a_0002",
+          "AAPL_000032019324000123_item_1a_0010",
+          "AAPL_000032019322000108_item_1a_0046",
+          "AAPL_000032019325000079_item_1a_0002"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 1,
+        "reciprocal_rank": 0.125
+      },
+      {
+        "id": "sh_002",
+        "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+        "gold": [
+          "AAPL_000032019325000079_item_7_0004"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000081_item_2_0003",
+          "AAPL_000032019323000077_item_1_0008",
+          "AAPL_000032019323000106_item_7_0002",
+          "AAPL_000032019323000106_item_1a_0019",
+          "AAPL_000032019324000081_item_1_0008",
+          "AAPL_000032019326000020_item_1a_0004",
+          "AAPL_000032019323000006_item_1_0008",
+          "AAPL_000032019323000006_item_1_0007",
+          "AAPL_000032019325000057_item_1_0007",
+          "AAPL_000032019324000006_item_2_0003"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_003",
+        "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+        "gold": [
+          "AAPL_000032019325000079_item_1a_0042",
+          "AAPL_000032019324000123_item_1a_0042",
+          "AAPL_000032019325000079_item_1a_0041"
+        ],
+        "retrieved": [
+          "AAPL_000032019324000006_item_1_0011",
+          "AAPL_000032019322000108_item_1a_0043",
+          "AAPL_000032019325000079_item_1a_0041",
+          "AAPL_000032019323000106_item_1a_0042",
+          "AAPL_000032019324000081_item_1_0013",
+          "AAPL_000032019326000013_item_1_0012",
+          "AAPL_000032019323000064_item_1_0013",
+          "AAPL_000032019323000077_item_1_0013",
+          "AAPL_000032019325000073_item_1_0013",
+          "AAPL_000032019324000123_item_1a_0043"
+        ],
+        "recall@1": 0,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.3333333333333333
+      },
+      {
+        "id": "sh_004",
+        "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0008"
+        ],
+        "retrieved": [
+          "MSFT_000119312525256321_item_2_0003",
+          "MSFT_000119312526191507_item_2_0003",
+          "MSFT_000119312526027207_item_2_0003",
+          "MSFT_000095017023054855_item_2_0003",
+          "MSFT_000119312525256321_item_1a_0005",
+          "MSFT_000095017024118967_item_2_0003",
+          "MSFT_000095017025061046_item_2_0003",
+          "MSFT_000095017025010491_item_2_0003",
+          "MSFT_000119312526323660_item_7_0002",
+          "MSFT_000095017025100235_item_1a_0024"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_005",
+        "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+        "gold": [
+          "MSFT_000119312526323660_item_7_0008",
+          "MSFT_000119312526323660_item_7_0012"
+        ],
+        "retrieved": [
+          "MSFT_000095017025061046_item_2_0010",
+          "MSFT_000095017024118967_item_2_0010",
+          "MSFT_000095017025061046_item_2_0008",
+          "MSFT_000119312525256321_item_2_0007",
+          "MSFT_000119312526191507_item_2_0011",
+          "MSFT_000095017024048288_item_2_0006",
+          "MSFT_000095017023035122_item_7_0008",
+          "MSFT_000095017024087843_item_7_0007",
+          "MSFT_000119312526191507_item_2_0007",
+          "MSFT_000095017025100235_item_7_0005"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_006",
+        "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+        "gold": [
+          "MSFT_000119312526323660_item_1a_0041"
+        ],
+        "retrieved": [
+          "MSFT_000095017024008814_item_1a_0011",
+          "MSFT_000095017024048288_item_1a_0011",
+          "MSFT_000119312526191507_item_1a_0014",
+          "MSFT_000119312526323660_item_1a_0013",
+          "MSFT_000095017025100235_item_1a_0033",
+          "MSFT_000156459022035087_item_1a_0023",
+          "MSFT_000156459023000733_item_1a_0010",
+          "MSFT_000156459022035087_item_1a_0010",
+          "MSFT_000119312525256321_item_1a_0013",
+          "MSFT_000095017023014423_item_1a_0010"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_007",
+        "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+        "gold": [
+          "GOOGL_000165204426000018_item_1a_0040"
+        ],
+        "retrieved": [
+          "GOOGL_000165204424000118_item_1a_0000",
+          "GOOGL_000165204425000014_item_1a_0000",
+          "GOOGL_000165204425000014_item_1a_0029",
+          "GOOGL_000165204424000053_item_1a_0000",
+          "GOOGL_000165204426000018_item_1a_0040",
+          "GOOGL_000165204425000014_item_1a_0038",
+          "GOOGL_000165204424000079_item_1a_0000",
+          "GOOGL_000165204424000022_item_1a_0016",
+          "GOOGL_000165204426000048_item_1a_0000",
+          "GOOGL_000165204426000071_item_1a_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 0.2
+      },
+      {
+        "id": "sh_008",
+        "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+        "gold": [
+          "GOOGL_000165204426000018_item_7_0009",
+          "GOOGL_000165204426000018_item_7_0021"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204424000022_item_7_0007",
+          "GOOGL_000165204426000018_item_1a_0003",
+          "GOOGL_000165204426000071_item_2_0020",
+          "GOOGL_000165204423000070_item_2_0016",
+          "GOOGL_000165204425000014_item_7_0018",
+          "GOOGL_000165204425000014_item_7_0000",
+          "GOOGL_000165204425000043_item_2_0020",
+          "GOOGL_000165204424000022_item_7_0026",
+          "GOOGL_000165204424000022_item_7_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_009",
+        "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+        "gold": [
+          "GOOGL_000165204425000014_item_7_0024"
+        ],
+        "retrieved": [
+          "GOOGL_000165204425000014_item_7_0024",
+          "GOOGL_000165204423000070_item_2_0009",
+          "GOOGL_000165204424000053_item_2_0020",
+          "GOOGL_000165204426000018_item_7_0020",
+          "GOOGL_000165204424000053_item_2_0010",
+          "GOOGL_000165204423000070_item_2_0000",
+          "GOOGL_000165204423000094_item_2_0000",
+          "GOOGL_000165204423000070_item_2_0023",
+          "GOOGL_000165204425000091_item_2_0000",
+          "GOOGL_000165204425000043_item_2_0000"
+        ],
+        "recall@1": 1,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 1.0
+      },
+      {
+        "id": "sh_010",
+        "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+        "gold": [
+          "AMZN_000101872426000004_item_1a_0001"
+        ],
+        "retrieved": [
+          "AMZN_000101872425000123_item_1a_0005",
+          "AMZN_000101872425000086_item_1a_0005",
+          "AMZN_000101872425000036_item_1a_0005",
+          "AMZN_000101872424000008_item_1a_0005",
+          "AMZN_000101872424000161_item_1a_0005",
+          "AMZN_000101872424000130_item_1a_0005",
+          "AMZN_000101872424000083_item_1a_0005",
+          "AMZN_000101872426000004_item_1_0000",
+          "AMZN_000101872423000004_item_1_0000",
+          "AMZN_000101872424000008_item_1_0000"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_011",
+        "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+        "gold": [
+          "AMZN_000101872426000004_item_7_0026"
+        ],
+        "retrieved": [
+          "AMZN_000101872426000014_item_2_0020",
+          "AMZN_000101872425000004_item_7_0025",
+          "AMZN_000101872424000083_item_2_0013",
+          "AMZN_000101872426000004_item_7_0025",
+          "AMZN_000101872426000026_item_2_0023",
+          "AMZN_000101872423000004_item_7_0018",
+          "AMZN_000101872423000008_item_2_0013",
+          "AMZN_000101872425000004_item_7_0016",
+          "AMZN_000101872425000086_item_1_0039",
+          "AMZN_000101872423000004_item_7_0022"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_012",
+        "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+        "gold": [
+          "AMZN_000101872424000161_item_1a_0017"
+        ],
+        "retrieved": [
+          "AMZN_000101872425000036_item_1a_0017",
+          "AMZN_000101872425000086_item_1a_0017",
+          "AMZN_000101872425000123_item_1a_0017",
+          "AMZN_000101872425000004_item_1a_0028",
+          "AMZN_000101872422000023_item_1a_0015",
+          "AMZN_000101872423000008_item_1a_0026",
+          "AMZN_000101872424000008_item_7_0001",
+          "AMZN_000101872425000004_item_7_0001",
+          "AMZN_000101872423000004_item_7_0001",
+          "AMZN_000101872423000008_item_2_0017"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_013",
+        "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+        "gold": [
+          "META_000162828026003942_item_1a_0011"
+        ],
+        "retrieved": [
+          "META_000132680124000081_item_1a_0111",
+          "META_000162828026028526_item_1a_0128",
+          "META_000162828026028526_item_1a_0122",
+          "META_000162828025036791_item_1a_0120",
+          "META_000132680124000081_item_1a_0116",
+          "META_000132680125000054_item_1a_0124",
+          "META_000132680125000017_item_1a_0118",
+          "META_000132680124000069_item_1a_0120",
+          "META_000162828026003942_item_1a_0127",
+          "META_000132680125000054_item_1a_0119"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_014",
+        "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+        "gold": [
+          "META_000162828026003942_item_7_0010"
+        ],
+        "retrieved": [
+          "META_000132680124000069_item_1a_0049",
+          "META_000132680125000017_item_1a_0050",
+          "META_000132680125000054_item_2_0025",
+          "META_000162828025036791_item_1a_0051",
+          "META_000162828026003942_item_1a_0052",
+          "META_000132680125000054_item_1a_0051",
+          "META_000162828026028526_item_1a_0052",
+          "META_000162828026028526_item_2_0017",
+          "META_000162828026028526_item_2_0024",
+          "META_000162828025047240_item_1a_0052"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_015",
+        "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+        "gold": [
+          "NVDA_000104581026000021_item_1a_0050",
+          "NVDA_000104581026000021_item_1a_0052"
+        ],
+        "retrieved": [
+          "NVDA_000104581023000017_item_1a_0000",
+          "NVDA_000104581025000023_item_1_0027",
+          "NVDA_000104581025000116_item_1a_0000",
+          "NVDA_000104581026000075_item_1a_0020",
+          "NVDA_000104581025000230_item_1a_0030",
+          "NVDA_000104581024000124_item_1a_0000",
+          "NVDA_000104581023000093_item_1a_0000",
+          "NVDA_000104581026000021_item_1a_0063",
+          "NVDA_000104581024000124_item_1a_0026",
+          "NVDA_000104581023000017_item_1_0026"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_016",
+        "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+        "gold": [
+          "NVDA_000104581026000021_item_7_0015"
+        ],
+        "retrieved": [
+          "NVDA_000104581024000029_item_7_0009",
+          "NVDA_000104581024000124_item_2_0014",
+          "NVDA_000104581024000264_item_2_0012",
+          "NVDA_000104581024000124_item_2_0010",
+          "NVDA_000104581024000124_item_2_0011",
+          "NVDA_000104581026000021_item_7_0014",
+          "NVDA_000104581023000017_item_7_0007",
+          "NVDA_000104581025000116_item_2_0012",
+          "NVDA_000104581025000023_item_7_0017",
+          "NVDA_000104581025000230_item_2_0011"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_017",
+        "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+        "gold": [
+          "AVGO_000173016825000121_item_1a_0012"
+        ],
+        "retrieved": [
+          "AVGO_000173016822000118_item_1a_0031",
+          "AVGO_000173016825000098_item_1a_0044",
+          "AVGO_000173016826000016_item_1a_0044",
+          "AVGO_000173016826000054_item_1a_0045",
+          "AVGO_000173016824000139_item_1a_0041",
+          "AVGO_000173016825000021_item_1a_0060",
+          "AVGO_000173016825000064_item_1a_0042",
+          "AVGO_000173016823000077_item_1a_0028",
+          "AVGO_000173016824000080_item_1a_0047",
+          "AVGO_000173016825000098_item_1a_0063"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_018",
+        "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+        "gold": [
+          "AVGO_000173016825000121_item_7_0001",
+          "AVGO_000173016825000121_item_7_0002"
+        ],
+        "retrieved": [
+          "AVGO_000173016824000080_item_1_0008",
+          "AVGO_000173016826000016_item_1_0006",
+          "AVGO_000173016823000008_item_2_0003",
+          "AVGO_000173016823000077_item_2_0003",
+          "AVGO_000173016823000064_item_2_0003",
+          "AVGO_000173016824000080_item_2_0003",
+          "AVGO_000173016824000080_item_1_0009",
+          "AVGO_000173016825000064_item_1_0008",
+          "AVGO_000173016826000080_item_1_0008",
+          "AVGO_000173016825000098_item_1_0009"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_019",
+        "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+        "gold": [
+          "ORCL_000119312526277521_item_1a_0022",
+          "ORCL_000119312526277521_item_1a_0023"
+        ],
+        "retrieved": [
+          "ORCL_000095017024075605_item_1_0039",
+          "ORCL_000095017025087926_item_1_0035",
+          "ORCL_000119312526277521_item_1_0012",
+          "ORCL_000095017023028914_item_1_0015",
+          "ORCL_000095017025087926_item_1_0013",
+          "ORCL_000095017023028914_item_1_0039",
+          "ORCL_000119312526277521_item_1a_0000",
+          "ORCL_000095017023028914_item_1a_0007",
+          "ORCL_000095017023028914_item_1_0001",
+          "ORCL_000119312526277521_item_1_0033"
+        ],
+        "recall@1": 0,
+        "recall@3": 0,
+        "recall@5": 0,
+        "recall@10": 0,
+        "reciprocal_rank": 0.0
+      },
+      {
+        "id": "sh_020",
+        "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+        "gold": [
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017025087926_item_7_0005"
+        ],
+        "retrieved": [
+          "ORCL_000095017025087926_item_7_0002",
+          "ORCL_000095017024075605_item_7_0002",
+          "ORCL_000095017023028914_item_7_0002",
+          "ORCL_000095017023028914_item_1_0007",
+          "ORCL_000095017024075605_item_1_0007",
+          "ORCL_000095017024029904_item_2_0022",
+          "ORCL_000095017023069682_item_2_0002",
+          "ORCL_000095017024029904_item_2_0002",
+          "ORCL_000095017025037143_item_2_0002",
+          "ORCL_000095017024134973_item_2_0002"
+        ],
+        "recall@1": 1,
+        "recall@3": 1,
+        "recall@5": 1,
+        "recall@10": 1,
+        "reciprocal_rank": 1.0
+      }
+    ]
+  },
+  "hybrid_reranked_sql_sanity": {
+    "n_numeric_questions_checked": 22,
+    "n_false_confidence_flags": 22,
+    "note": "Any non-zero flag here means the retriever will confidently hand prose to a numeric question if nothing routes it to SQL first \u2014 expected until the agent exists (Phase B), tracked here as a baseline to compare against.",
+    "details": [
+      {
+        "id": "mhn_001",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_002",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_003",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_004",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_005",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_006",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_007",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_008",
+        "ticker": "AMZN",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_009",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_010",
+        "ticker": "META",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_011",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_012",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_013",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_014",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_015",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_016",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "AAPL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_017",
+        "ticker": "MSFT",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "NVDA",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_018",
+        "ticker": "AVGO",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_019",
+        "ticker": "GOOGL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      },
+      {
+        "id": "mhn_020",
+        "ticker": "ORCL",
+        "n_chunks_returned": 5,
+        "false_confidence_flag": true
+      }
+    ]
+  }
+}

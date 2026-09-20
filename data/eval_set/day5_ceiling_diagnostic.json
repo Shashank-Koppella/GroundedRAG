@@ -1,0 +1,412 @@
+[
+  {
+    "id": "sh_001",
+    "ticker": "AAPL",
+    "gold": "AAPL_000032019324000123_item_1a_0010",
+    "bm25_rank": 24,
+    "dense_rank": 14,
+    "hybrid_rank": 9,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": 6,
+    "hard_negatives": [
+      "AAPL_000032019323000106_item_1a_0043",
+      "AAPL_000032019325000079_item_1a_0002",
+      "AAPL_000032019324000123_item_1a_0002",
+      "AAPL_000032019322000108_item_1a_0046",
+      "AAPL_000032019323000106_item_1a_0002",
+      "AAPL_000032019324000123_item_1a_0009",
+      "AAPL_000032019325000079_item_1a_0043",
+      "AAPL_000032019324000123_item_1a_0044"
+    ]
+  },
+  {
+    "id": "sh_002",
+    "ticker": "AAPL",
+    "gold": "AAPL_000032019325000079_item_7_0004",
+    "bm25_rank": null,
+    "dense_rank": 100,
+    "hybrid_rank": 181,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "AAPL_000032019324000069_item_2_0002",
+      "AAPL_000032019326000006_item_1_0006",
+      "AAPL_000032019325000057_item_1_0007",
+      "AAPL_000032019323000106_item_1a_0019",
+      "AAPL_000032019325000008_item_2_0002",
+      "AAPL_000032019324000081_item_1_0008",
+      "AAPL_000032019323000006_item_1_0008",
+      "AAPL_000032019323000006_item_1_0007",
+      "AAPL_000032019323000006_item_2_0002",
+      "AAPL_000032019324000069_item_1_0008"
+    ]
+  },
+  {
+    "id": "sh_003",
+    "ticker": "AAPL",
+    "gold": "AAPL_000032019325000079_item_1a_0042",
+    "bm25_rank": 23,
+    "dense_rank": 2,
+    "hybrid_rank": 8,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": 8,
+    "hard_negatives": [
+      "AAPL_000032019324000006_item_1_0011",
+      "AAPL_000032019323000077_item_1_0013",
+      "AAPL_000032019326000013_item_1_0012",
+      "AAPL_000032019326000020_item_1_0012",
+      "AAPL_000032019323000106_item_1a_0042",
+      "AAPL_000032019323000064_item_1_0013",
+      "AAPL_000032019322000108_item_1a_0043"
+    ]
+  },
+  {
+    "id": "sh_004",
+    "ticker": "MSFT",
+    "gold": "MSFT_000119312526323660_item_1a_0008",
+    "bm25_rank": null,
+    "dense_rank": 145,
+    "hybrid_rank": 236,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "MSFT_000095017025100235_item_1a_0024",
+      "MSFT_000095017024048288_item_1a_0027",
+      "MSFT_000119312526323660_item_7_0002",
+      "MSFT_000095017023035122_item_1a_0025",
+      "MSFT_000119312526027207_item_2_0003",
+      "MSFT_000095017023054855_item_2_0003",
+      "MSFT_000156459022035087_item_1a_0023",
+      "MSFT_000095017024118967_item_2_0003",
+      "MSFT_000095017023014423_item_1a_0022",
+      "MSFT_000119312525256321_item_2_0003"
+    ]
+  },
+  {
+    "id": "sh_005",
+    "ticker": "MSFT",
+    "gold": "MSFT_000119312526323660_item_7_0008",
+    "bm25_rank": 174,
+    "dense_rank": 54,
+    "hybrid_rank": 147,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "MSFT_000119312526323660_item_7_0005",
+      "MSFT_000095017024048288_item_2_0006",
+      "MSFT_000095017025061046_item_2_0008",
+      "MSFT_000119312525256321_item_2_0007",
+      "MSFT_000095017024118967_item_2_0001",
+      "MSFT_000119312526191507_item_2_0001",
+      "MSFT_000119312526027207_item_2_0001",
+      "MSFT_000095017025100235_item_7_0006",
+      "MSFT_000119312525256321_item_2_0001",
+      "MSFT_000095017025061046_item_2_0007"
+    ]
+  },
+  {
+    "id": "sh_006",
+    "ticker": "MSFT",
+    "gold": "MSFT_000119312526323660_item_1a_0041",
+    "bm25_rank": 34,
+    "dense_rank": 59,
+    "hybrid_rank": 9,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "MSFT_000119312526191507_item_1a_0014",
+      "MSFT_000119312526191507_item_1a_0034",
+      "MSFT_000095017024008814_item_1a_0011",
+      "MSFT_000095017024048288_item_1a_0011",
+      "MSFT_000095017025100235_item_1_0029",
+      "MSFT_000119312526191507_item_1a_0013",
+      "MSFT_000095017025100235_item_1a_0033",
+      "MSFT_000119312525256321_item_1a_0033"
+    ]
+  },
+  {
+    "id": "sh_007",
+    "ticker": "GOOGL",
+    "gold": "GOOGL_000165204426000018_item_1a_0040",
+    "bm25_rank": 7,
+    "dense_rank": 14,
+    "hybrid_rank": 2,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "GOOGL_000165204424000118_item_1a_0000"
+    ]
+  },
+  {
+    "id": "sh_008",
+    "ticker": "GOOGL",
+    "gold": "GOOGL_000165204426000018_item_7_0009",
+    "bm25_rank": 165,
+    "dense_rank": 42,
+    "hybrid_rank": 68,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "GOOGL_000165204423000070_item_2_0016",
+      "GOOGL_000165204425000014_item_7_0018",
+      "GOOGL_000165204425000014_item_7_0024",
+      "GOOGL_000165204426000071_item_2_0020",
+      "GOOGL_000165204425000014_item_1_0000",
+      "GOOGL_000165204425000043_item_2_0019",
+      "GOOGL_000165204423000094_item_2_0000",
+      "GOOGL_000165204423000070_item_2_0000",
+      "GOOGL_000165204424000022_item_1_0013",
+      "GOOGL_000165204426000018_item_1_0000"
+    ]
+  },
+  {
+    "id": "sh_009",
+    "ticker": "GOOGL",
+    "gold": "GOOGL_000165204425000014_item_7_0024",
+    "bm25_rank": 1,
+    "dense_rank": 23,
+    "hybrid_rank": 7,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "GOOGL_000165204425000091_item_2_0000",
+      "GOOGL_000165204425000043_item_2_0000",
+      "GOOGL_000165204425000062_item_2_0000",
+      "GOOGL_000165204423000094_item_2_0000",
+      "GOOGL_000165204423000070_item_2_0000",
+      "GOOGL_000165204426000018_item_7_0000"
+    ]
+  },
+  {
+    "id": "sh_010",
+    "ticker": "AMZN",
+    "gold": "AMZN_000101872426000004_item_1a_0001",
+    "bm25_rank": 49,
+    "dense_rank": 40,
+    "hybrid_rank": 37,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "AMZN_000101872422000023_item_1a_0000",
+      "AMZN_000101872423000018_item_1a_0000",
+      "AMZN_000101872424000161_item_1a_0000",
+      "AMZN_000101872424000083_item_1a_0000",
+      "AMZN_000101872423000008_item_1a_0000",
+      "AMZN_000101872424000130_item_1a_0000",
+      "AMZN_000101872425000123_item_1a_0000",
+      "AMZN_000101872425000086_item_1a_0000",
+      "AMZN_000101872423000012_item_1a_0000",
+      "AMZN_000101872424000008_item_1a_0005"
+    ]
+  },
+  {
+    "id": "sh_011",
+    "ticker": "AMZN",
+    "gold": "AMZN_000101872426000004_item_7_0026",
+    "bm25_rank": 109,
+    "dense_rank": 19,
+    "hybrid_rank": 18,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": 5,
+    "hard_negatives": [
+      "AMZN_000101872426000014_item_2_0019",
+      "AMZN_000101872425000004_item_7_0025",
+      "AMZN_000101872425000036_item_2_0019",
+      "AMZN_000101872425000004_item_7_0024",
+      "AMZN_000101872426000004_item_7_0025",
+      "AMZN_000101872426000014_item_2_0020",
+      "AMZN_000101872425000036_item_2_0020",
+      "AMZN_000101872424000083_item_2_0013",
+      "AMZN_000101872423000004_item_7_0016",
+      "AMZN_000101872426000004_item_7_0024"
+    ]
+  },
+  {
+    "id": "sh_012",
+    "ticker": "AMZN",
+    "gold": "AMZN_000101872424000161_item_1a_0017",
+    "bm25_rank": 42,
+    "dense_rank": 16,
+    "hybrid_rank": 15,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "AMZN_000101872425000123_item_1a_0017",
+      "AMZN_000101872425000086_item_1a_0017",
+      "AMZN_000101872425000036_item_1a_0017",
+      "AMZN_000101872425000086_item_2_0017",
+      "AMZN_000101872422000023_item_1a_0015",
+      "AMZN_000101872422000023_item_2_0020",
+      "AMZN_000101872423000012_item_2_0019",
+      "AMZN_000101872425000004_item_1a_0028",
+      "AMZN_000101872423000008_item_2_0017",
+      "AMZN_000101872425000123_item_2_0017"
+    ]
+  },
+  {
+    "id": "sh_013",
+    "ticker": "META",
+    "gold": "META_000162828026003942_item_1a_0011",
+    "bm25_rank": 68,
+    "dense_rank": 121,
+    "hybrid_rank": 60,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "META_000132680124000069_item_1a_0120",
+      "META_000132680125000054_item_1a_0122",
+      "META_000132680125000017_item_1a_0124",
+      "META_000132680124000081_item_1a_0119",
+      "META_000162828026050705_item_1a_0007",
+      "META_000162828026028526_item_1a_0007",
+      "META_000162828026050705_item_1a_0013",
+      "META_000162828026028526_item_1a_0013",
+      "META_000162828026028526_item_1a_0128",
+      "META_000132680124000081_item_1a_0111"
+    ]
+  },
+  {
+    "id": "sh_014",
+    "ticker": "META",
+    "gold": "META_000162828026003942_item_7_0010",
+    "bm25_rank": 108,
+    "dense_rank": null,
+    "hybrid_rank": 170,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "META_000132680124000081_item_1a_0049",
+      "META_000132680124000069_item_1a_0049",
+      "META_000132680125000017_item_1a_0050",
+      "META_000162828025047240_item_1a_0051",
+      "META_000162828026003942_item_1_0003",
+      "META_000162828026003942_item_1a_0052",
+      "META_000162828026003942_item_1_0004",
+      "META_000162828025036791_item_1a_0051",
+      "META_000162828025036791_item_2_0017",
+      "META_000132680125000017_item_1_0005"
+    ]
+  },
+  {
+    "id": "sh_015",
+    "ticker": "NVDA",
+    "gold": "NVDA_000104581026000021_item_1a_0050",
+    "bm25_rank": 63,
+    "dense_rank": 41,
+    "hybrid_rank": 68,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "NVDA_000104581025000209_item_1a_0019",
+      "NVDA_000104581026000075_item_1a_0020",
+      "NVDA_000104581025000230_item_1a_0030",
+      "NVDA_000104581024000124_item_1a_0026",
+      "NVDA_000104581025000023_item_1_0027",
+      "NVDA_000104581026000021_item_1a_0062",
+      "NVDA_000104581023000017_item_1a_0000",
+      "NVDA_000104581025000023_item_1a_0060",
+      "NVDA_000104581025000116_item_1a_0022",
+      "NVDA_000104581023000093_item_1a_0036"
+    ]
+  },
+  {
+    "id": "sh_016",
+    "ticker": "NVDA",
+    "gold": "NVDA_000104581026000021_item_7_0015",
+    "bm25_rank": null,
+    "dense_rank": null,
+    "hybrid_rank": null,
+    "in_reranker_pool_top50": false,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "NVDA_000104581024000029_item_7_0009",
+      "NVDA_000104581025000023_item_1_0007",
+      "NVDA_000104581024000029_item_1_0007",
+      "NVDA_000104581024000264_item_2_0012",
+      "NVDA_000104581025000209_item_2_0011",
+      "NVDA_000104581024000029_item_1_0005",
+      "NVDA_000104581024000124_item_2_0014",
+      "NVDA_000104581023000017_item_7_0007",
+      "NVDA_000104581023000175_item_2_0007",
+      "NVDA_000104581023000175_item_2_0008"
+    ]
+  },
+  {
+    "id": "sh_017",
+    "ticker": "AVGO",
+    "gold": "AVGO_000173016825000121_item_1a_0012",
+    "bm25_rank": 83,
+    "dense_rank": 7,
+    "hybrid_rank": 14,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "AVGO_000173016825000121_item_1_0027",
+      "AVGO_000173016826000080_item_2_0001",
+      "AVGO_000173016825000098_item_1a_0044",
+      "AVGO_000173016824000139_item_1a_0041",
+      "AVGO_000173016826000054_item_2_0001",
+      "AVGO_000173016826000016_item_2_0001",
+      "AVGO_000173016826000016_item_1a_0044",
+      "AVGO_000173016826000054_item_1a_0045",
+      "AVGO_000173016822000118_item_1_0031",
+      "AVGO_000173016822000118_item_1a_0031"
+    ]
+  },
+  {
+    "id": "sh_018",
+    "ticker": "AVGO",
+    "gold": "AVGO_000173016825000121_item_7_0001",
+    "bm25_rank": 44,
+    "dense_rank": 30,
+    "hybrid_rank": 35,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "AVGO_000173016824000080_item_1_0008",
+      "AVGO_000173016825000064_item_1_0008",
+      "AVGO_000173016825000098_item_1_0009",
+      "AVGO_000173016826000016_item_1_0006",
+      "AVGO_000173016825000021_item_1_0007",
+      "AVGO_000173016824000023_item_1_0007",
+      "AVGO_000173016826000080_item_1_0008",
+      "AVGO_000173016826000054_item_1_0007",
+      "AVGO_000173016823000008_item_1_0007",
+      "AVGO_000173016823000064_item_1_0008"
+    ]
+  },
+  {
+    "id": "sh_019",
+    "ticker": "ORCL",
+    "gold": "ORCL_000119312526277521_item_1a_0022",
+    "bm25_rank": 21,
+    "dense_rank": 6,
+    "hybrid_rank": 10,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "ORCL_000095017024075605_item_1a_0008",
+      "ORCL_000119312526277521_item_1_0012",
+      "ORCL_000095017023028914_item_1_0015",
+      "ORCL_000095017023028914_item_1_0017",
+      "ORCL_000095017024075605_item_1_0039",
+      "ORCL_000095017025087926_item_1_0013",
+      "ORCL_000095017025087926_item_1_0035",
+      "ORCL_000095017024075605_item_1_0014",
+      "ORCL_000119312526277521_item_1_0011"
+    ]
+  },
+  {
+    "id": "sh_020",
+    "ticker": "ORCL",
+    "gold": "ORCL_000095017025087926_item_7_0002",
+    "bm25_rank": 2,
+    "dense_rank": 2,
+    "hybrid_rank": 2,
+    "in_reranker_pool_top50": true,
+    "adjacent_chunk_in_top10_rank": null,
+    "hard_negatives": [
+      "ORCL_000095017023028914_item_7_0002"
+    ]
+  }
+]

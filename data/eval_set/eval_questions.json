@@ -39,11 +39,12 @@
     "gold_answer_type": "chunk",
     "gold_chunk_ids": [
       "AAPL_000032019325000079_item_1a_0042",
-      "AAPL_000032019324000123_item_1a_0042"
+      "AAPL_000032019324000123_item_1a_0042",
+      "AAPL_000032019325000079_item_1a_0041"
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer."
+    "notes": "Labeled by Claude, confidence=HIGH: Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer. | CORRECTED Day 5: added a third gold chunk_id after the adjacent-chunk near-miss diagnostic. _0041 and _0042 (of the 2025 filing, 000032019325000079) are two overlapping-window chunks of ONE continuous foreign-currency-risk paragraph -- _0041 states the general USD exposure, _0042 continues with hedging/derivative details. Verified by reading both chunks' full text directly; both genuinely answer the question, so scoring against only _0042 was penalizing the retriever for finding an equally-correct chunk from the same passage. The pre-existing second gold id (the 2024 filing's near-identical boilerplate) is untouched."
   },
   {
     "id": "sh_004",
@@ -161,11 +162,11 @@
     "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
     "gold_answer_type": "chunk",
     "gold_chunk_ids": [
-      "AMZN_000101872426000004_item_7_0025"
+      "AMZN_000101872426000004_item_7_0026"
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased sales, partially offset by spending on technology infrastructure... to support AWS business growth.'"
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased sales, partially offset by spending on technology infrastructure... to support AWS business growth.' | CORRECTED Day 5: gold label was WRONG, not a near-miss. The originally-labeled _0025 discusses the FTC lawsuit settlement and North America/International segment operating income -- it never mentions AWS. The actual AWS driver sentence ('the increase in AWS operating income in 2025...is primarily due to increased sales, partially offset by spending on technology infrastructure') is in _0026, one chunk further, found by reading forward past the automated +/-1 adjacency check during the Day 5 near-miss investigation. This was a genuine Day 3 labeling error, not a chunking artifact."
   },
   {
     "id": "sh_012",

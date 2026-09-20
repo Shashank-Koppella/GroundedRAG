@@ -11,7 +11,7 @@ pytest>=8.0       # for tests/test_chunker.py, tests/test_section_splitter.py
 
 # --- Added Phase A, Day 3 (eval harness + embeddings/retrieval) ---
 sentence-transformers
-qdrant-client
+qdrant-client>=1.14   # .search() removed in favour of .query_points(); see dense_retriever.py
 rank_bm25
 
 # --- Added Phase B (agent/generation/eval) ---

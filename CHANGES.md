@@ -170,3 +170,42 @@ specs rather than hardcoded numbers on purpose — those get consumed directly o
 tool exists in Phase B (Oct 8); no separate labeling step is needed for them. The eval
 harness (Recall@k/MRR/bootstrap CI + keyword baseline) is built, tested (45/45 passing), and
 ready to score any retriever built from Day 5 onward.
+
+## Day 5 follow-up: two eval-set gold-label corrections found via the near-miss diagnostic
+
+Running `scripts/diagnose_day5_ceiling.py` flagged 3 questions where a chunk adjacent to
+gold sat in the hybrid retriever's top-10 without gold itself being counted (a possible
+Recall@k understatement from single-chunk labeling on overlapping-window chunks). Reading
+all three adjacent chunks' actual text against their gold chunks directly (not guessed)
+produced three different outcomes, which is itself worth recording: the diagnostic flags
+candidates, it doesn't validate them.
+
+**sh_001 (AAPL, China manufacturing risk): false positive, no change.** The adjacent chunk
+is about an unrelated risk (new-product-transition risk), not China/manufacturing. The
+structural adjacency was coincidental, not a content near-miss.
+
+**sh_003 (AAPL, foreign currency risk): genuine near-miss, gold widened from 2 to 3 chunk
+ids.** `AAPL_000032019325000079_item_1a_0041` and `_0042` are two overlapping-window
+chunks of one continuous foreign-currency-risk paragraph — `_0041` states the general USD
+exposure, `_0042` continues with hedging/derivative detail. Both genuinely answer the
+question; scoring only `_0042` penalized a retriever for finding an equally-correct chunk
+from the same passage. `_0041` added to the existing 2-chunk-id list (the pre-existing
+second id, the near-identical passage in the 2024 filing, is untouched).
+
+**sh_011 (AMZN, AWS segment operating income driver): genuine Day 3 labeling BUG, not a
+near-miss — corrected, not widened.** The originally-labeled gold chunk
+(`AMZN_000101872426000004_item_7_0025`) discusses the FTC lawsuit settlement and the
+North America/International segments' operating income. It never mentions AWS. The actual
+answer — "the increase in AWS operating income in 2025...is primarily due to increased
+sales, partially offset by spending on technology infrastructure" — is in `_0026`, one
+chunk further than the diagnostic's own +/-1 adjacency check looked. Found by reading
+forward past what the automated check flagged, not by the check itself. Gold corrected to
+`_0026` alone; the old id did not partially answer the question, so it isn't kept as a
+second id the way sh_003's was.
+
+**What this is worth recording, beyond the two fixes:** an automated near-miss diagnostic
+that flags "something adjacent scored well" is a lead, not a verdict — it can point at a
+real chunking artifact (sh_003), a real labeling bug it wasn't even designed to catch
+(sh_011, found by reading past the flagged chunk), or nothing at all (sh_001). All three
+required reading the actual filing text before touching a label, same discipline as every
+other gold-label decision in this project.
