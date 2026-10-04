@@ -209,3 +209,63 @@ real chunking artifact (sh_003), a real labeling bug it wasn't even designed to 
 (sh_011, found by reading past the flagged chunk), or nothing at all (sh_001). All three
 required reading the actual filing text before touching a label, same discipline as every
 other gold-label decision in this project.
+
+## Day 6: hard-negative mining and categorization (`scripts/mine_hard_negatives.py`)
+
+Built `scripts/mine_hard_negatives.py`, mining Phase C's LoRA fine-tune training
+negatives from `data/eval_set/day5_ceiling_diagnostic.json`'s `hard_negatives` field
+(chunks the RRF-fused retriever ranked ABOVE gold — its real mistakes, not synthetic
+negatives). Pure JSON transform over already-computed Day 5 output, no Qdrant/network
+needed, so it ran directly against the real repo. Output:
+`data/eval_set/day6_hard_negatives.json`.
+
+**The standing instruction going in was to check whether other questions show sh_011's
+"finds the neighborhood, not the sentence" pattern before assuming it was a one-off, and
+to distinguish that failure mode from a genuine retrieval miss rather than treating every
+hard negative as one bucket.** Categorized all 171 mined hard negatives across the 20
+single-hop questions into four types, checked in priority order per negative:
+
+1. **`neighborhood_miss`** — same ticker+filing(accession)+item section as a gold chunk,
+   chunk_index within ±1. This IS the sh_011 pattern.
+2. **`cross_filing_confusion`** — same ticker+item section as gold, different filing
+   (right topic, wrong fiscal year/quarter).
+3. **`topic_drift`** — same ticker as gold, different item section (right company, wrong
+   topic).
+4. **`same_doc_distant` / `off_topic`** — same document but >1 chunk from gold, or a
+   different ticker entirely.
+
+A question's own pattern is `genuine_retrieval_failure` if the fused retriever never
+found gold at all within Day 5's DEEP_K=200 search (`hybrid_rank` is null) — there is no
+valid "above gold" hard negative to mine in that case, so these questions are excluded
+from the training triples entirely rather than mined against the wrong signal.
+
+**Answer to the standing question: sh_011 is close to a one-off, not the dominant
+pattern.** At strict ±1 adjacency, only 2 of 20 questions (sh_001, sh_011) show
+`neighborhood_miss` at all, and sh_001 was already ruled a coincidence in Day 5's manual
+read (adjacent chunk discusses an unrelated risk). **What actually dominates: 163 of 171
+hard negatives (95%) are `cross_filing_confusion` (69, "right section, wrong year" — 9/20
+questions) or `topic_drift` (94, "right company, wrong section" — 8/20 questions).** The
+retriever's real, common failure mode in this corpus is confusing which filing or which
+item section a passage belongs to, not fine-grained sentence-vs-neighborhood confusion.
+This is a more useful, more citable Day 6 finding than confirming the named hypothesis,
+and it changes what Phase C's hard-negative set should actually emphasize.
+
+**Mining output for Phase C:** 160 training triples (query, positive=gold chunk,
+hard_negative, category, sample_weight), with the 2 genuine `neighborhood_miss`
+negatives given `sample_weight=3.0` (deliberately oversampled per the standing
+instruction, since it's the hardest and most valuable failure mode even though it's
+rare) and the 1 `genuine_retrieval_failure` question (sh_016, NVDA Data Center segment
+revenue driver — gold not found by either retriever even at 200-deep search) excluded
+entirely, consistent with the ~40% retrieval/chunking ceiling flagged in Day 5.
+
+**17 new regression tests** in `tests/test_mine_hard_negatives.py`, covering the chunk-id
+parser, all four negative categories (including a fixture with a gold list spanning two
+filings, since sh_003-style widened labels must still be checked against every gold id,
+not just the first), the `genuine_retrieval_failure` priority (a null rank must win even
+with an empty hard-negatives list, not fall through to a separate "no hard negatives"
+case), the neighborhood_miss-wins-if-present rule, majority-category classification, and
+the oversampling weight itself. All 17 pass in isolation
+(`python -m pytest tests/test_mine_hard_negatives.py -v`); the full 83-test suite needs
+your local venv (`rank_bm25`/`qdrant-client`/etc. aren't installed in the device-linked
+shell — same network-reachability limit as every prior session), so run
+`python -m pytest tests/ -v` yourself to confirm 100/100.
