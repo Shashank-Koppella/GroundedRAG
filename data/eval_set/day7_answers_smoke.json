@@ -1,0 +1,155 @@
+{
+  "config": {
+    "retriever": "reranked",
+    "k": 5,
+    "context_mode": "retrieved",
+    "model": "openai/gpt-oss-120b",
+    "n_questions_attempted": 4,
+    "limit": 2
+  },
+  "errors": [],
+  "results": [
+    {
+      "id": "sh_001",
+      "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019323000106_item_1a_0043",
+        "AAPL_000032019324000123_item_1a_0009",
+        "AAPL_000032019322000108_item_1a_0043",
+        "AAPL_000032019322000108_item_1a_0012",
+        "AAPL_000032019324000123_item_1a_0002"
+      ],
+      "answer": "Apple Inc. 2022 Form 10‑K states that reliance on single‑source outsourcing partners in China mainland and other Asian locations can reduce the Company’s direct control over production and may adversely affect the quality or quantity of manufactured products【4】.",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.348555272,
+        "prompt_tokens": 2016,
+        "prompt_time": 0.085518022,
+        "completion_tokens": 130,
+        "completion_time": 0.278621506,
+        "total_tokens": 2146,
+        "total_time": 0.364139528,
+        "completion_tokens_details": {
+          "reasoning_tokens": 70
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010"
+      ],
+      "gold_in_context": false
+    },
+    {
+      "id": "sh_002",
+      "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019324000081_item_2_0003",
+        "AAPL_000032019323000077_item_1_0008",
+        "AAPL_000032019323000106_item_7_0002",
+        "AAPL_000032019323000106_item_1a_0019",
+        "AAPL_000032019324000081_item_1_0008"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.396957703,
+        "prompt_tokens": 2461,
+        "prompt_time": 0.113477069,
+        "completion_tokens": 34,
+        "completion_time": 0.07088625,
+        "total_tokens": 2495,
+        "total_time": 0.184363319,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "gold_in_context": false
+    },
+    {
+      "id": "oos_001",
+      "question": "What is Apple's current stock price?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "AAPL_000032019325000073_item_1_0002",
+        "AAPL_000032019325000057_item_1_0002",
+        "AAPL_000032019326000020_item_1_0002",
+        "AAPL_000032019323000064_item_1_0002",
+        "AAPL_000032019326000013_item_1_0002"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.347970432,
+        "prompt_tokens": 3206,
+        "prompt_time": 0.143478604,
+        "completion_tokens": 25,
+        "completion_time": 0.052145319,
+        "total_tokens": 3231,
+        "total_time": 0.195623923,
+        "completion_tokens_details": {
+          "reasoning_tokens": 11
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_002",
+      "question": "What did Tesla report as a risk factor in its most recent 10-K?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "ORCL_000156459022039278_item_1a_0000",
+        "ORCL_000156459023003413_item_1a_0000",
+        "ORCL_000119312526389274_item_1a_0000",
+        "ORCL_000095017023069682_item_1a_0000",
+        "ORCL_000095017023047713_item_1a_0000"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.322748975,
+        "prompt_tokens": 1185,
+        "prompt_time": 0.050293856,
+        "completion_tokens": 30,
+        "completion_time": 0.062033359,
+        "total_tokens": 1215,
+        "total_time": 0.112327215,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    }
+  ]
+}

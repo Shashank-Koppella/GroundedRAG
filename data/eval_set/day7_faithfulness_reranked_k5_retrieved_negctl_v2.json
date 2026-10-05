@@ -1,0 +1,1075 @@
+{
+  "config": {
+    "retriever": "reranked",
+    "k": 5,
+    "context_mode": "retrieved",
+    "model": "openai/gpt-oss-120b",
+    "n_questions_attempted": 30,
+    "limit": null
+  },
+  "scoring": {
+    "nli_model": "cross-encoder/nli-deberta-v3-base",
+    "label_order": [
+      "contradiction",
+      "entailment",
+      "neutral"
+    ],
+    "entail_threshold": 0.5,
+    "contradiction_threshold": 0.5,
+    "window_words": 140,
+    "premise_header": true,
+    "scope_to_named_filing": true,
+    "strip_framing": false,
+    "negative_control": "other_company",
+    "header_only": false,
+    "n_resamples": 10000,
+    "seed": 42
+  },
+  "faithfulness_single_hop": {
+    "n_answers_scored": 15,
+    "n_sentences_total": 52,
+    "mean_answer_faithfulness": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "sentence_support_rate": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "sentence_contradiction_rate": {
+      "estimate": 0.7307692307692307,
+      "ci_95": [
+        0.48148148148148145,
+        0.9574468085106383
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "answer_any_unsupported_rate": {
+      "estimate": 1.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    }
+  },
+  "by_gold_in_context": {
+    "gold_in_context": {
+      "n_answers_scored": 3,
+      "n_sentences_total": 11,
+      "mean_answer_faithfulness": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 3,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_support_rate": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 3,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_contradiction_rate": {
+        "estimate": 0.6363636363636364,
+        "ci_95": [
+          0.0,
+          1.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 3,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "answer_any_unsupported_rate": {
+        "estimate": 1.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 3,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      }
+    },
+    "gold_missing_from_context": {
+      "n_answers_scored": 12,
+      "n_sentences_total": 41,
+      "mean_answer_faithfulness": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 12,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_support_rate": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 12,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_contradiction_rate": {
+        "estimate": 0.7560975609756098,
+        "ci_95": [
+          0.48717948717948717,
+          1.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 12,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "answer_any_unsupported_rate": {
+        "estimate": 1.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 12,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      }
+    }
+  },
+  "threshold_sensitivity_mean_answer_faithfulness": {
+    "0.3": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.5": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.7": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.9": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 15,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    }
+  },
+  "refusal": {
+    "out_of_scope_refusal_rate": {
+      "estimate": 0.9,
+      "ci_95": [
+        0.7,
+        1.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 10,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "single_hop_refused": {
+      "gold_in_context": 1,
+      "of_gold_in_context": 4,
+      "gold_missing": 4,
+      "of_gold_missing": 16
+    }
+  },
+  "per_answer_single_hop": [
+    {
+      "id": "sh_001",
+      "type": "single_hop",
+      "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "answer": "Apple Inc. 2022 Form 10‑K states that reliance on single‑source outsourcing partners in China mainland and other Asian locations can reduce the Company’s direct control over production and may adversely affect the quality or quantity of manufactured products【4】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "MSFT_000119312525256321_item_2_0003",
+        "MSFT_000119312526191507_item_2_0003",
+        "MSFT_000119312526027207_item_2_0003",
+        "MSFT_000095017023054855_item_2_0003",
+        "MSFT_000119312525256321_item_1a_0005"
+      ],
+      "n_sentences": 1,
+      "n_supported": 0,
+      "n_contradicted": 1,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Apple Inc. 2022 Form 10-K states that reliance on single-source outsourcing partners in China mainland and other Asian locations can reduce the Company's direct control over production and may adversely affect the quality or quantity of manufactured products.",
+          "scored_as": "Apple Inc. 2022 Form 10-K states that reliance on single-source outsourcing partners in China mainland and other Asian locations can reduce the Company's direct control over production and may adversely affect the quality or quantity of manufactured products.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0028376545530924484,
+          "max_contradiction": 0.9998235616041784,
+          "best_matching_chunk_id": "MSFT_000095017023054855_item_2_0003",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_003",
+      "type": "single_hop",
+      "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "answer": "Apple Inc. 2022 Form 10‑K risk factors state that the Company’s primary exposure to foreign currency exchange rate fluctuations relates to non‑U.S. dollar‑denominated sales, cost of sales and operating expenses worldwide, and that gross margins on products sold abroad or containing foreign‑sourced components could be materially adversely affected by such fluctuations【2】.  \nApple Inc. 2025 Form 10‑K risk factors repeat that the Company’s primary exposure to foreign currency exchange rate fluctuations relates to non‑U.S. dollar‑denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign‑country products and those with foreign components have been and could be materially adversely affected by foreign exchange rate fluctuations【3】.  \nApple Inc. 2023 Form 10‑K risk factors note that the Company’s primary exposure to foreign currency exchange rate fluctuations relates to non‑U.S. dollar‑denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign‑country products and those with foreign components could be materially adversely affected by such fluctuations【4】.",
+      "gold_in_context": true,
+      "context_chunk_ids": [
+        "MSFT_000119312525256321_item_2_0003",
+        "MSFT_000119312526191507_item_2_0003",
+        "MSFT_000119312526027207_item_2_0003",
+        "MSFT_000095017023054855_item_2_0003",
+        "MSFT_000119312525256321_item_1a_0005"
+      ],
+      "n_sentences": 3,
+      "n_supported": 0,
+      "n_contradicted": 3,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Apple Inc. 2022 Form 10-K risk factors state that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on products sold abroad or containing foreign-sourced components could be materially adversely affected by such fluctuations.",
+          "scored_as": "Apple Inc. 2022 Form 10-K risk factors state that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on products sold abroad or containing foreign-sourced components could be materially adversely affected by such fluctuations.",
+          "verdict": "contradicted",
+          "max_entailment": 0.004037129458113938,
+          "max_contradiction": 0.9997385655531201,
+          "best_matching_chunk_id": "MSFT_000119312525256321_item_2_0003",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Apple Inc. 2025 Form 10-K risk factors repeat that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign-country products and those with foreign components have been and could be materially adversely affected by foreign exchange rate fluctuations.",
+          "scored_as": "Apple Inc. 2025 Form 10-K risk factors repeat that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign-country products and those with foreign components have been and could be materially adversely affected by foreign exchange rate fluctuations.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0030768676130566905,
+          "max_contradiction": 0.999438293524085,
+          "best_matching_chunk_id": "MSFT_000095017023054855_item_2_0003",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Apple Inc. 2023 Form 10-K risk factors note that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign-country products and those with foreign components could be materially adversely affected by such fluctuations.",
+          "scored_as": "Apple Inc. 2023 Form 10-K risk factors note that the Company's primary exposure to foreign currency exchange rate fluctuations relates to non-U.S. dollar-denominated sales, cost of sales and operating expenses worldwide, and that gross margins on foreign-country products and those with foreign components could be materially adversely affected by such fluctuations.",
+          "verdict": "contradicted",
+          "max_entailment": 0.002622978469083782,
+          "max_contradiction": 0.9997303099311895,
+          "best_matching_chunk_id": "MSFT_000095017023054855_item_2_0003",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_in_context"
+    },
+    {
+      "id": "sh_004",
+      "type": "single_hop",
+      "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "answer": "Microsoft 10‑Q filed 2025‑10‑29 describes that investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins [1].  \nMicrosoft 10‑Q filed 2026‑04‑29 states that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins [2].  \nMicrosoft 10‑Q filed 2026‑01‑28 notes that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins [3].  \nMicrosoft 10‑Q filed 2023‑10‑24 indicates that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins [4].  \nMicrosoft 10‑Q filed 2025‑10‑29 item 1A identifies execution and competitive risks from incurring significant costs to build and maintain cloud‑based and AI infrastructure, which reduces operating margins [5].",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "GOOGL_000165204424000118_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0029",
+        "GOOGL_000165204424000053_item_1a_0000",
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "n_sentences": 5,
+      "n_supported": 0,
+      "n_contradicted": 5,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Microsoft 10-Q filed 2025-10-29 describes that investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "scored_as": "Microsoft 10-Q filed 2025-10-29 describes that investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0009306034596972588,
+          "max_contradiction": 0.9953780220521968,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft 10-Q filed 2026-04-29 states that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "scored_as": "Microsoft 10-Q filed 2026-04-29 states that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "verdict": "contradicted",
+          "max_entailment": 0.001026179795415029,
+          "max_contradiction": 0.9564814159876103,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft 10-Q filed 2026-01-28 notes that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "scored_as": "Microsoft 10-Q filed 2026-01-28 notes that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0010236075396758723,
+          "max_contradiction": 0.986842460511502,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft 10-Q filed 2023-10-24 indicates that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "scored_as": "Microsoft 10-Q filed 2023-10-24 indicates that the investments in cloud and AI infrastructure and devices will continue to increase operating costs and may decrease operating margins.",
+          "verdict": "contradicted",
+          "max_entailment": 0.001690101508907954,
+          "max_contradiction": 0.8914310975744774,
+          "best_matching_chunk_id": "GOOGL_000165204426000018_item_1a_0040",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft 10-Q filed 2025-10-29 item 1A identifies execution and competitive risks from incurring significant costs to build and maintain cloud-based and AI infrastructure, which reduces operating margins.",
+          "scored_as": "Microsoft 10-Q filed 2025-10-29 item 1A identifies execution and competitive risks from incurring significant costs to build and maintain cloud-based and AI infrastructure, which reduces operating margins.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0010605750991324464,
+          "max_contradiction": 0.9992983334053469,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_005",
+      "type": "single_hop",
+      "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "answer": "Microsoft Microsoft 10‑Q filed 2025‑04‑30 attributes Intelligent Cloud revenue growth to Azure [1].  \nMicrosoft Microsoft 10‑Q filed 2026‑04‑29 attributes Intelligent Cloud revenue growth to Azure [5].",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "GOOGL_000165204424000118_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0029",
+        "GOOGL_000165204424000053_item_1a_0000",
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "n_sentences": 2,
+      "n_supported": 0,
+      "n_contradicted": 2,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Microsoft Microsoft 10-Q filed 2025-04-30 attributes Intelligent Cloud revenue growth to Azure.",
+          "scored_as": "Microsoft Microsoft 10-Q filed 2025-04-30 attributes Intelligent Cloud revenue growth to Azure.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0036279180783873534,
+          "max_contradiction": 0.9611309828286105,
+          "best_matching_chunk_id": "GOOGL_000165204426000018_item_1a_0040",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft Microsoft 10-Q filed 2026-04-29 attributes Intelligent Cloud revenue growth to Azure.",
+          "scored_as": "Microsoft Microsoft 10-Q filed 2026-04-29 attributes Intelligent Cloud revenue growth to Azure.",
+          "verdict": "contradicted",
+          "max_entailment": 0.004512463497890878,
+          "max_contradiction": 0.6936115733742341,
+          "best_matching_chunk_id": "GOOGL_000165204426000018_item_1a_0040",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_006",
+      "type": "single_hop",
+      "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "answer": "Microsoft’s 2024‑01‑30 Form 10‑Q risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position【1】.  \nMicrosoft’s 2024‑04‑25 Form 10‑Q risk factors repeat that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position【2】.  \nMicrosoft’s 2026‑07‑29 Form 10‑K risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position【4】.  \nMicrosoft’s 2026‑07‑29 Form 10‑K risk factors note that threat actors, including nation‑states and cybercriminal groups, have gained unauthorized access to its systems and data, as well as customer, partner, and supplier systems and data【4】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "GOOGL_000165204424000118_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0029",
+        "GOOGL_000165204424000053_item_1a_0000",
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "n_sentences": 4,
+      "n_supported": 0,
+      "n_contradicted": 4,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Microsoft's 2024-01-30 Form 10-Q risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "scored_as": "Microsoft's 2024-01-30 Form 10-Q risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "verdict": "contradicted",
+          "max_entailment": 0.000720370305530574,
+          "max_contradiction": 0.9980588762416847,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft's 2024-04-25 Form 10-Q risk factors repeat that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "scored_as": "Microsoft's 2024-04-25 Form 10-Q risk factors repeat that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0004979043300982495,
+          "max_contradiction": 0.9902176456478218,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft's 2026-07-29 Form 10-K risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "scored_as": "Microsoft's 2026-07-29 Form 10-K risk factors state that cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0010916491435119912,
+          "max_contradiction": 0.99924872559529,
+          "best_matching_chunk_id": "GOOGL_000165204424000053_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Microsoft's 2026-07-29 Form 10-K risk factors note that threat actors, including nation-states and cybercriminal groups, have gained unauthorized access to its systems and data, as well as customer, partner, and supplier systems and data.",
+          "scored_as": "Microsoft's 2026-07-29 Form 10-K risk factors note that threat actors, including nation-states and cybercriminal groups, have gained unauthorized access to its systems and data, as well as customer, partner, and supplier systems and data.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0009626826266141035,
+          "max_contradiction": 0.9845043121347954,
+          "best_matching_chunk_id": "GOOGL_000165204425000014_item_1a_0000",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_007",
+      "type": "single_hop",
+      "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+      "answer": "Alphabet Google 10‑Q filed 2024‑10‑30 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits concerning its advertising technologies and practices, as well as other aspects of its business【1】.  \nAlphabet Google 10‑K filed 2025‑02‑05 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits about its advertising technologies and practices, and such lawsuits could harm its business and reputation【2】.  \nAlphabet Google 10‑Q filed 2024‑04‑26 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including competition matters that could harm its business and reputation【4】.  \nAlphabet Google 10‑K filed 2026‑02‑05 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including antitrust lawsuits about its advertising technologies and practices, which could harm its business and reputation【5】.",
+      "gold_in_context": true,
+      "context_chunk_ids": [
+        "AMZN_000101872425000123_item_1a_0005",
+        "AMZN_000101872425000086_item_1a_0005",
+        "AMZN_000101872425000036_item_1a_0005",
+        "AMZN_000101872424000008_item_1a_0005",
+        "AMZN_000101872424000161_item_1a_0005"
+      ],
+      "n_sentences": 4,
+      "n_supported": 0,
+      "n_contradicted": 4,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Alphabet Google 10-Q filed 2024-10-30 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits concerning its advertising technologies and practices, as well as other aspects of its business.",
+          "scored_as": "Alphabet Google 10-Q filed 2024-10-30 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits concerning its advertising technologies and practices, as well as other aspects of its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0015201774608140112,
+          "max_contradiction": 0.8729411723495374,
+          "best_matching_chunk_id": "AMZN_000101872425000086_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet Google 10-K filed 2025-02-05 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits about its advertising technologies and practices, and such lawsuits could harm its business and reputation.",
+          "scored_as": "Alphabet Google 10-K filed 2025-02-05 states the DOJ, various U.S. states, and other plaintiffs have filed, and may continue to file, antitrust lawsuits about its advertising technologies and practices, and such lawsuits could harm its business and reputation.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0016935736568297998,
+          "max_contradiction": 0.9226645157152991,
+          "best_matching_chunk_id": "AMZN_000101872424000161_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet Google 10-Q filed 2024-04-26 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including competition matters that could harm its business and reputation.",
+          "scored_as": "Alphabet Google 10-Q filed 2024-04-26 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including competition matters that could harm its business and reputation.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0004949291958456926,
+          "max_contradiction": 0.9953509024743471,
+          "best_matching_chunk_id": "AMZN_000101872425000086_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet Google 10-K filed 2026-02-05 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including antitrust lawsuits about its advertising technologies and practices, which could harm its business and reputation.",
+          "scored_as": "Alphabet Google 10-K filed 2026-02-05 states the company is subject to claims, lawsuits, regulatory and government inquiries and investigations, including antitrust lawsuits about its advertising technologies and practices, which could harm its business and reputation.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0010125040872910763,
+          "max_contradiction": 0.9853136229356623,
+          "best_matching_chunk_id": "AMZN_000101872424000161_item_1a_0005",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_in_context"
+    },
+    {
+      "id": "sh_008",
+      "type": "single_hop",
+      "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "answer": "Alphabet’s MD&A identifies changes in foreign currency exchange rates as a factor that can affect Google Cloud segment performance【2】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "AMZN_000101872425000123_item_1a_0005",
+        "AMZN_000101872425000086_item_1a_0005",
+        "AMZN_000101872425000036_item_1a_0005",
+        "AMZN_000101872424000008_item_1a_0005",
+        "AMZN_000101872424000161_item_1a_0005"
+      ],
+      "n_sentences": 1,
+      "n_supported": 0,
+      "n_contradicted": 0,
+      "n_unsupported": 1,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Alphabet's MD&A identifies changes in foreign currency exchange rates as a factor that can affect Google Cloud segment performance.",
+          "scored_as": "Alphabet's MD&A identifies changes in foreign currency exchange rates as a factor that can affect Google Cloud segment performance.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0012510425911631965,
+          "max_contradiction": 0.048420597284322464,
+          "best_matching_chunk_id": "AMZN_000101872425000036_item_1a_0005",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_009",
+      "type": "single_hop",
+      "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "answer": "Alphabet’s 2023 Form 10‑Q (filed July 26 2023) states operating expenses increased 4% year over year, primarily driven by an increase in compensation expenses largely due to headcount growth【2】.  \nAlphabet’s 2023 Form 10‑Q (filed July 26 2023) notes that in January 2023 the company announced a workforce reduction, recording $2.0 billion of employee severance and related charges for the six months ended June 30 2023【2】.  \nAlphabet’s 2024 Form 10‑Q (filed April 26 2024) reports that a reduction in compensation expenses contributed to higher operating income, indicating a decrease in headcount‑related costs for the quarter ended March 31 2024【3】.  \nAlphabet’s 2024 Form 10‑Q (filed April 26 2024) also mentions that Google Cloud’s operating income increase was partially offset by increases in compensation expenses, largely driven by headcount growth【3】.",
+      "gold_in_context": true,
+      "context_chunk_ids": [
+        "AMZN_000101872425000123_item_1a_0005",
+        "AMZN_000101872425000086_item_1a_0005",
+        "AMZN_000101872425000036_item_1a_0005",
+        "AMZN_000101872424000008_item_1a_0005",
+        "AMZN_000101872424000161_item_1a_0005"
+      ],
+      "n_sentences": 4,
+      "n_supported": 0,
+      "n_contradicted": 0,
+      "n_unsupported": 4,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Alphabet's 2023 Form 10-Q (filed July 26 2023) states operating expenses increased 4% year over year, primarily driven by an increase in compensation expenses largely due to headcount growth.",
+          "scored_as": "Alphabet's 2023 Form 10-Q (filed July 26 2023) states operating expenses increased 4% year over year, primarily driven by an increase in compensation expenses largely due to headcount growth.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0011297875238656535,
+          "max_contradiction": 0.017058266061331488,
+          "best_matching_chunk_id": "AMZN_000101872425000086_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet's 2023 Form 10-Q (filed July 26 2023) notes that in January 2023 the company announced a workforce reduction, recording $2.0 billion of employee severance and related charges for the six months ended June 30 2023.",
+          "scored_as": "Alphabet's 2023 Form 10-Q (filed July 26 2023) notes that in January 2023 the company announced a workforce reduction, recording $2.0 billion of employee severance and related charges for the six months ended June 30 2023.",
+          "verdict": "unsupported",
+          "max_entailment": 0.003179077491849297,
+          "max_contradiction": 0.2963293550665923,
+          "best_matching_chunk_id": "AMZN_000101872425000086_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet's 2024 Form 10-Q (filed April 26 2024) reports that a reduction in compensation expenses contributed to higher operating income, indicating a decrease in headcount-related costs for the quarter ended March 31 2024.",
+          "scored_as": "Alphabet's 2024 Form 10-Q (filed April 26 2024) reports that a reduction in compensation expenses contributed to higher operating income, indicating a decrease in headcount-related costs for the quarter ended March 31 2024.",
+          "verdict": "unsupported",
+          "max_entailment": 0.003567416312583617,
+          "max_contradiction": 0.20772213927046587,
+          "best_matching_chunk_id": "AMZN_000101872425000123_item_1a_0005",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Alphabet's 2024 Form 10-Q (filed April 26 2024) also mentions that Google Cloud's operating income increase was partially offset by increases in compensation expenses, largely driven by headcount growth.",
+          "scored_as": "Alphabet's 2024 Form 10-Q (filed April 26 2024) also mentions that Google Cloud's operating income increase was partially offset by increases in compensation expenses, largely driven by headcount growth.",
+          "verdict": "unsupported",
+          "max_entailment": 0.001081332478163904,
+          "max_contradiction": 0.009674592151115687,
+          "best_matching_chunk_id": "AMZN_000101872425000086_item_1a_0005",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_in_context"
+    },
+    {
+      "id": "sh_010",
+      "type": "single_hop",
+      "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "answer": "Amazon’s 2025‑10‑31 10‑Q item 1a states that competition will intensify as international physical, e‑commerce, and omnichannel retail grow【1】.  \nAmazon’s 2025‑08‑01 10‑Q item 1a states that competition will intensify as international physical, e‑commerce, and omnichannel retail grow【2】.  \nAmazon’s 2025‑05‑02 10‑Q item 1a states that competition will intensify as international physical, e‑commerce, and omnichannel retail grow【3】.  \nAmazon’s 2024‑02‑02 10‑K item 1a states that competition will intensify as retail, cloud services, and other services grow【4】.  \nAmazon’s 2024‑11‑01 10‑Q item 1a states that competition will intensify as retail, cloud services, and other services grow【5】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "META_000132680124000069_item_1a_0049",
+        "META_000132680125000017_item_1a_0050",
+        "META_000132680125000054_item_2_0025",
+        "META_000162828025036791_item_1a_0051",
+        "META_000162828026003942_item_1a_0052"
+      ],
+      "n_sentences": 5,
+      "n_supported": 0,
+      "n_contradicted": 5,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Amazon's 2025-10-31 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "scored_as": "Amazon's 2025-10-31 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "verdict": "contradicted",
+          "max_entailment": 0.11676549874738247,
+          "max_contradiction": 0.9952348813674134,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2025-08-01 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "scored_as": "Amazon's 2025-08-01 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "verdict": "contradicted",
+          "max_entailment": 0.07314055442106522,
+          "max_contradiction": 0.9953493912813596,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2025-05-02 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "scored_as": "Amazon's 2025-05-02 10-Q item 1a states that competition will intensify as international physical, e-commerce, and omnichannel retail grow.",
+          "verdict": "contradicted",
+          "max_entailment": 0.07341017606478971,
+          "max_contradiction": 0.9951830405667892,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2024-02-02 10-K item 1a states that competition will intensify as retail, cloud services, and other services grow.",
+          "scored_as": "Amazon's 2024-02-02 10-K item 1a states that competition will intensify as retail, cloud services, and other services grow.",
+          "verdict": "contradicted",
+          "max_entailment": 0.020911919011072092,
+          "max_contradiction": 0.9961512505203948,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2024-11-01 10-Q item 1a states that competition will intensify as retail, cloud services, and other services grow.",
+          "scored_as": "Amazon's 2024-11-01 10-Q item 1a states that competition will intensify as retail, cloud services, and other services grow.",
+          "verdict": "contradicted",
+          "max_entailment": 0.008684555711035285,
+          "max_contradiction": 0.9936909157917357,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_011",
+      "type": "single_hop",
+      "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "answer": "Amazon’s 2026 Q1 10‑Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth【1】.  \nAmazon’s 2024 10‑K cites increased AWS sales, decreased payroll and related expenses, and reduced depreciation and amortization from longer server useful lives as primary drivers of higher AWS operating income【2】.  \nAmazon’s 2024 Q1 10‑Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure【3】.  \nAmazon’s 2025 10‑K cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth【4】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "META_000132680124000069_item_1a_0049",
+        "META_000132680125000017_item_1a_0050",
+        "META_000132680125000054_item_2_0025",
+        "META_000162828025036791_item_1a_0051",
+        "META_000162828026003942_item_1a_0052"
+      ],
+      "n_sentences": 4,
+      "n_supported": 0,
+      "n_contradicted": 4,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Amazon's 2026 Q1 10-Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth.",
+          "scored_as": "Amazon's 2026 Q1 10-Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth.",
+          "verdict": "contradicted",
+          "max_entailment": 0.005480486592075108,
+          "max_contradiction": 0.9900801609017267,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2024 10-K cites increased AWS sales, decreased payroll and related expenses, and reduced depreciation and amortization from longer server useful lives as primary drivers of higher AWS operating income.",
+          "scored_as": "Amazon's 2024 10-K cites increased AWS sales, decreased payroll and related expenses, and reduced depreciation and amortization from longer server useful lives as primary drivers of higher AWS operating income.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0070059186127848175,
+          "max_contradiction": 0.9972091857641203,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2024 Q1 10-Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure.",
+          "scored_as": "Amazon's 2024 Q1 10-Q cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure.",
+          "verdict": "contradicted",
+          "max_entailment": 0.005600409689274311,
+          "max_contradiction": 0.9964785882533767,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon's 2025 10-K cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth.",
+          "scored_as": "Amazon's 2025 10-K cites increased AWS sales as the primary driver of higher AWS operating income, partially offset by spending on technology infrastructure to support growth.",
+          "verdict": "contradicted",
+          "max_entailment": 0.005227267793109407,
+          "max_contradiction": 0.9642468381545561,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_012",
+      "type": "single_hop",
+      "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "answer": "Amazon 10‑Q filed 2025‑05‑02 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business [1].  \nAmazon 10‑Q filed 2025‑08‑01 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business [2].  \nAmazon 10‑Q filed 2025‑10‑31 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business [3].  \nAmazon 10‑Q filed 2022‑10‑28 states that failures to adequately predict customer demand or otherwise optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business [5].",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "META_000132680124000069_item_1a_0049",
+        "META_000132680125000017_item_1a_0050",
+        "META_000132680125000054_item_2_0025",
+        "META_000162828025036791_item_1a_0051",
+        "META_000162828026003942_item_1a_0052"
+      ],
+      "n_sentences": 4,
+      "n_supported": 0,
+      "n_contradicted": 4,
+      "n_unsupported": 0,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Amazon 10-Q filed 2025-05-02 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "scored_as": "Amazon 10-Q filed 2025-05-02 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.007692108399429719,
+          "max_contradiction": 0.9978027802251385,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon 10-Q filed 2025-08-01 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "scored_as": "Amazon 10-Q filed 2025-08-01 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0071265993288756446,
+          "max_contradiction": 0.9977783643238706,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon 10-Q filed 2025-10-31 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "scored_as": "Amazon 10-Q filed 2025-10-31 states that failures to adequately predict customer demand or optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.010425220243431281,
+          "max_contradiction": 0.9975806017668759,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Amazon 10-Q filed 2022-10-28 states that failures to adequately predict customer demand or otherwise optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "scored_as": "Amazon 10-Q filed 2022-10-28 states that failures to adequately predict customer demand or otherwise optimize its fulfillment network can result in excess or insufficient fulfillment capacity, service interruptions, increased costs, and impairment charges, which could materially harm its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.013113286635469554,
+          "max_contradiction": 0.9976406744086865,
+          "best_matching_chunk_id": "META_000132680124000069_item_1a_0049",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_014",
+      "type": "single_hop",
+      "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "answer": "Meta 2024 Form 10‑Q states that investments in Reality Labs reduced Meta’s 2023 overall operating profit by approximately $16.12 billion [1].  \nMeta 2025 Form 10‑K states that investments in Reality Labs reduced Meta’s 2024 overall operating profit by approximately $17.73 billion [2].  \nMeta 2025 Form 10‑Q (July 31 filing) states that investments in Reality Labs reduced Meta’s 2024 overall operating profit by approximately $17.73 billion [4].  \nMeta 2026 Form 10‑K states that investments in Reality Labs reduced Meta’s 2025 overall operating profit by approximately $19.19 billion [5].  \nMeta 2025 Form 10‑Q (May 1 filing) reports that Reality Labs loss from operations increased $364 million, or 9 %, compared to the same period in 2024 [3].",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "NVDA_000104581023000017_item_1a_0000",
+        "NVDA_000104581025000023_item_1_0027",
+        "NVDA_000104581025000116_item_1a_0000",
+        "NVDA_000104581026000075_item_1a_0020",
+        "NVDA_000104581025000230_item_1a_0030"
+      ],
+      "n_sentences": 5,
+      "n_supported": 0,
+      "n_contradicted": 1,
+      "n_unsupported": 4,
+      "n_windows": 14,
+      "sentences": [
+        {
+          "sentence": "Meta 2024 Form 10-Q states that investments in Reality Labs reduced Meta's 2023 overall operating profit by approximately $16.12 billion.",
+          "scored_as": "Meta 2024 Form 10-Q states that investments in Reality Labs reduced Meta's 2023 overall operating profit by approximately $16.12 billion.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0017125164046084191,
+          "max_contradiction": 0.003203264494002999,
+          "best_matching_chunk_id": "NVDA_000104581025000023_item_1_0027",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Meta 2025 Form 10-K states that investments in Reality Labs reduced Meta's 2024 overall operating profit by approximately $17.73 billion.",
+          "scored_as": "Meta 2025 Form 10-K states that investments in Reality Labs reduced Meta's 2024 overall operating profit by approximately $17.73 billion.",
+          "verdict": "unsupported",
+          "max_entailment": 0.001515580259343133,
+          "max_contradiction": 0.00513226627899226,
+          "best_matching_chunk_id": "NVDA_000104581023000017_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Meta 2025 Form 10-Q (July 31 filing) states that investments in Reality Labs reduced Meta's 2024 overall operating profit by approximately $17.73 billion.",
+          "scored_as": "Meta 2025 Form 10-Q (July 31 filing) states that investments in Reality Labs reduced Meta's 2024 overall operating profit by approximately $17.73 billion.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0017740429418090895,
+          "max_contradiction": 0.010665056021610218,
+          "best_matching_chunk_id": "NVDA_000104581023000017_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Meta 2026 Form 10-K states that investments in Reality Labs reduced Meta's 2025 overall operating profit by approximately $19.19 billion.",
+          "scored_as": "Meta 2026 Form 10-K states that investments in Reality Labs reduced Meta's 2025 overall operating profit by approximately $19.19 billion.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0018768286093147073,
+          "max_contradiction": 0.00463992652445809,
+          "best_matching_chunk_id": "NVDA_000104581023000017_item_1a_0000",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Meta 2025 Form 10-Q (May 1 filing) reports that Reality Labs loss from operations increased $364 million, or 9 %, compared to the same period in 2024.",
+          "scored_as": "Meta 2025 Form 10-Q (May 1 filing) reports that Reality Labs loss from operations increased $364 million, or 9 %, compared to the same period in 2024.",
+          "verdict": "contradicted",
+          "max_entailment": 0.002087630079852077,
+          "max_contradiction": 0.5927966609446353,
+          "best_matching_chunk_id": "NVDA_000104581025000023_item_1_0027",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_015",
+      "type": "single_hop",
+      "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "answer": "NVIDIA’s 2025 Form 10‑K risk factors state that new or existing export controls or changes to existing export controls could limit alternative manufacturing locations and negatively impact its business【2】.  \nNVIDIA’s 2026 Form 10‑Q risk factors state that U.S. export controls restricting the sale of data‑center GPUs or networking products could negatively impact demand for its products and disadvantage it against competitors【4】.  \nNVIDIA’s 2025 Form 10‑Q risk factors state that U.S. export controls on data‑center GPUs and high‑speed network interconnects may reduce demand, encourage customers to “design‑out” U.S. semiconductors, and cause excess inventory【5】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "ORCL_000095017024075605_item_1_0039",
+        "ORCL_000095017025087926_item_1_0035",
+        "ORCL_000119312526277521_item_1_0012",
+        "ORCL_000095017023028914_item_1_0015",
+        "ORCL_000095017025087926_item_1_0013"
+      ],
+      "n_sentences": 3,
+      "n_supported": 0,
+      "n_contradicted": 3,
+      "n_unsupported": 0,
+      "n_windows": 14,
+      "sentences": [
+        {
+          "sentence": "NVIDIA's 2025 Form 10-K risk factors state that new or existing export controls or changes to existing export controls could limit alternative manufacturing locations and negatively impact its business.",
+          "scored_as": "NVIDIA's 2025 Form 10-K risk factors state that new or existing export controls or changes to existing export controls could limit alternative manufacturing locations and negatively impact its business.",
+          "verdict": "contradicted",
+          "max_entailment": 0.00553451633577132,
+          "max_contradiction": 0.999925923908543,
+          "best_matching_chunk_id": "ORCL_000095017025087926_item_1_0035",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "NVIDIA's 2026 Form 10-Q risk factors state that U.S. export controls restricting the sale of data-center GPUs or networking products could negatively impact demand for its products and disadvantage it against competitors.",
+          "scored_as": "NVIDIA's 2026 Form 10-Q risk factors state that U.S. export controls restricting the sale of data-center GPUs or networking products could negatively impact demand for its products and disadvantage it against competitors.",
+          "verdict": "contradicted",
+          "max_entailment": 0.015415944940747044,
+          "max_contradiction": 0.9999103347769623,
+          "best_matching_chunk_id": "ORCL_000095017024075605_item_1_0039",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "NVIDIA's 2025 Form 10-Q risk factors state that U.S. export controls on data-center GPUs and high-speed network interconnects may reduce demand, encourage customers to \"design-out\" U.S. semiconductors, and cause excess inventory.",
+          "scored_as": "NVIDIA's 2025 Form 10-Q risk factors state that U.S. export controls on data-center GPUs and high-speed network interconnects may reduce demand, encourage customers to \"design-out\" U.S. semiconductors, and cause excess inventory.",
+          "verdict": "contradicted",
+          "max_entailment": 0.0200963392647625,
+          "max_contradiction": 0.9998681531365204,
+          "best_matching_chunk_id": "ORCL_000095017024075605_item_1_0039",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_016",
+      "type": "single_hop",
+      "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+      "answer": "Nvidia’s 2024‑05‑29 Form 10‑Q MD&A states that the year‑on‑year increase in Data Center revenue was driven by higher shipments of the NVIDIA Hopper GPU computing platform used for training and inference with large language models, recommendation engines, and generative AI applications【2】.  \nNvidia’s 2024‑05‑29 Form 10‑Q MD&A also notes that strong sequential Data Center growth was driven by all customer types, led by Enterprise and Consumer Internet companies【4】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "ORCL_000095017024075605_item_1_0039",
+        "ORCL_000095017025087926_item_1_0035",
+        "ORCL_000119312526277521_item_1_0012",
+        "ORCL_000095017023028914_item_1_0015",
+        "ORCL_000095017025087926_item_1_0013"
+      ],
+      "n_sentences": 2,
+      "n_supported": 0,
+      "n_contradicted": 2,
+      "n_unsupported": 0,
+      "n_windows": 14,
+      "sentences": [
+        {
+          "sentence": "Nvidia's 2024-05-29 Form 10-Q MD&A states that the year-on-year increase in Data Center revenue was driven by higher shipments of the NVIDIA Hopper GPU computing platform used for training and inference with large language models, recommendation engines, and generative AI applications.",
+          "scored_as": "Nvidia's 2024-05-29 Form 10-Q MD&A states that the year-on-year increase in Data Center revenue was driven by higher shipments of the NVIDIA Hopper GPU computing platform used for training and inference with large language models, recommendation engines, and generative AI applications.",
+          "verdict": "contradicted",
+          "max_entailment": 0.024962190290348338,
+          "max_contradiction": 0.999906042946657,
+          "best_matching_chunk_id": "ORCL_000095017025087926_item_1_0035",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Nvidia's 2024-05-29 Form 10-Q MD&A also notes that strong sequential Data Center growth was driven by all customer types, led by Enterprise and Consumer Internet companies.",
+          "scored_as": "Nvidia's 2024-05-29 Form 10-Q MD&A also notes that strong sequential Data Center growth was driven by all customer types, led by Enterprise and Consumer Internet companies.",
+          "verdict": "contradicted",
+          "max_entailment": 0.012648270152684299,
+          "max_contradiction": 0.9794627818877847,
+          "best_matching_chunk_id": "ORCL_000095017024075605_item_1_0039",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    },
+    {
+      "id": "sh_019",
+      "type": "single_hop",
+      "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "answer": "Oracle 10‑K filed 2024‑06‑20 states that competition in cloud‑based IT offerings, including SaaS and cloud infrastructure offerings, is a risk factor affecting Oracle’s products and services [1].  \nOracle 10‑K filed 2025‑06‑18 notes that competition from other cloud infrastructure providers is listed among the competitive risks in the Item 1A Risk Factors section [2].  \nOracle 10‑K filed 2026‑06‑22 describes that Oracle’s cloud infrastructure (OCI) must compete with other vendors’ products, and the risk factors section discusses this competitive environment [3].  \nOracle 10‑K filed 2023‑06‑20 explains that Oracle’s infrastructure cloud services face competition from other cloud vendors, as described in the risk factors section [4].  \nOracle 10‑K filed 2025‑06‑18 similarly indicates that competition from other cloud infrastructure providers is addressed in the risk factors discussion [5].",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "AAPL_000032019323000106_item_1a_0043",
+        "AAPL_000032019324000123_item_1a_0009",
+        "AAPL_000032019322000108_item_1a_0043",
+        "AAPL_000032019322000108_item_1a_0012",
+        "AAPL_000032019324000123_item_1a_0002"
+      ],
+      "n_sentences": 5,
+      "n_supported": 0,
+      "n_contradicted": 0,
+      "n_unsupported": 5,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Oracle 10-K filed 2024-06-20 states that competition in cloud-based IT offerings, including SaaS and cloud infrastructure offerings, is a risk factor affecting Oracle's products and services.",
+          "scored_as": "Oracle 10-K filed 2024-06-20 states that competition in cloud-based IT offerings, including SaaS and cloud infrastructure offerings, is a risk factor affecting Oracle's products and services.",
+          "verdict": "unsupported",
+          "max_entailment": 0.004041576332647412,
+          "max_contradiction": 0.00308680421191213,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0009",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Oracle 10-K filed 2025-06-18 notes that competition from other cloud infrastructure providers is listed among the competitive risks in the Item 1A Risk Factors section.",
+          "scored_as": "Oracle 10-K filed 2025-06-18 notes that competition from other cloud infrastructure providers is listed among the competitive risks in the Item 1A Risk Factors section.",
+          "verdict": "unsupported",
+          "max_entailment": 0.004712476539512535,
+          "max_contradiction": 0.024697475389045043,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0002",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Oracle 10-K filed 2026-06-22 describes that Oracle's cloud infrastructure (OCI) must compete with other vendors' products, and the risk factors section discusses this competitive environment.",
+          "scored_as": "Oracle 10-K filed 2026-06-22 describes that Oracle's cloud infrastructure (OCI) must compete with other vendors' products, and the risk factors section discusses this competitive environment.",
+          "verdict": "unsupported",
+          "max_entailment": 0.012832385273997072,
+          "max_contradiction": 0.0017933057490739659,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0002",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Oracle 10-K filed 2023-06-20 explains that Oracle's infrastructure cloud services face competition from other cloud vendors, as described in the risk factors section.",
+          "scored_as": "Oracle 10-K filed 2023-06-20 explains that Oracle's infrastructure cloud services face competition from other cloud vendors, as described in the risk factors section.",
+          "verdict": "unsupported",
+          "max_entailment": 0.01153596884312451,
+          "max_contradiction": 0.0028493433591756144,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0002",
+          "scope": "all_context"
+        },
+        {
+          "sentence": "Oracle 10-K filed 2025-06-18 similarly indicates that competition from other cloud infrastructure providers is addressed in the risk factors discussion.",
+          "scored_as": "Oracle 10-K filed 2025-06-18 similarly indicates that competition from other cloud infrastructure providers is addressed in the risk factors discussion.",
+          "verdict": "unsupported",
+          "max_entailment": 0.0036658808366899238,
+          "max_contradiction": 0.0019711481006022976,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0009",
+          "scope": "all_context"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    }
+  ],
+  "out_of_scope_answered": [],
+  "generation_errors": []
+}

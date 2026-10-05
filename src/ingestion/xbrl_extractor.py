@@ -11,7 +11,7 @@ from datetime import date, timedelta
 
 import pandas as pd
 
-from src.ingestion.config import REVENUE_TAG_CANDIDATES, NET_INCOME_TAG_CANDIDATES
+from src.ingestion.config import REVENUE_TAG_CANDIDATES, NET_INCOME_TAG_CANDIDATES, FALLBACK_ONLY_TAGS
 
 log = logging.getLogger(__name__)
 
@@ -51,7 +51,8 @@ def _all_available_tag_facts(company_facts: dict, candidates: list[str]) -> list
     return results
 
 
-def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -> pd.DataFrame:
+def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4,
+                        window_start: "date | None" = None, window_end: "date | None" = None) -> pd.DataFrame:
     """
     Returns a long-format DataFrame:
     ticker | metric | tag_used | fy | fp | form | start | end | val
@@ -117,7 +118,9 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
     "the" row for a period. Left as an explicit TODO for that phase rather
     than silently guessed at now.
     """
-    cutoff = date.today() - timedelta(days=365 * years_back)
+    # window_start (a fixed date, config.WINDOW_START) makes re-runs reproducible; years_back relative to
+    # today is kept only for backward compatibility with callers/tests that pass it.
+    cutoff = window_start or (date.today() - timedelta(days=365 * years_back))
     rows = []
 
     metric_sources = {
@@ -136,11 +139,15 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
                 continue
             if end_date < cutoff:
                 continue
+            if window_end is not None and fact.get("filed") and fact["filed"] > window_end.isoformat():
+                continue  # filed after the corpus freeze date (config.WINDOW_END)
             rows.append(
                 {
                     "ticker": ticker,
                     "metric": metric_name,
                     "tag_used": tag_used,
+                    "tag_rank": candidates.index(tag_used),
+                    "is_fallback": tag_used in FALLBACK_ONLY_TAGS,
                     "fy": fact.get("fy"),
                     "fp": fact.get("fp"),
                     "form": fact.get("form"),
@@ -151,7 +158,7 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
                 }
             )
 
-    all_columns = ["ticker", "metric", "tag_used", "fy", "fp", "form", "start", "end", "val", "filed"]
+    all_columns = ["ticker", "metric", "tag_used", "tag_rank", "is_fallback", "fy", "fp", "form", "start", "end", "val", "filed"]
     df = pd.DataFrame(rows, columns=all_columns)
 
     if not df.empty:
@@ -163,20 +170,30 @@ def extract_key_metrics(company_facts: dict, ticker: str, years_back: int = 4) -
         # default, and `start` is None for plenty of real facts (10-K annuals
         # in particular) — without dropna=False those periods silently never
         # get checked for conflicts at all.
+        # Grouped per tag_used as well (Oct 5, after the corpus rebuild): two different concepts for the
+        # same period legitimately differ (ProfitLoss includes noncontrolling interests), and logging that
+        # as a "restatement" buried the real ones -- ORCL printed 4 such warnings that were really
+        # NetIncomeLoss vs the ProfitLoss fallback. A same-tag difference is still flagged.
+        conflict_key = dup_key + ["tag_used"]
         conflicting = (
-            df.groupby(dup_key, dropna=False)["val"].nunique().reset_index(name="n_distinct_vals")
+            df.groupby(conflict_key, dropna=False)["val"].nunique().reset_index(name="n_distinct_vals")
         )
         conflicting = conflicting[conflicting["n_distinct_vals"] > 1]
         for _, row in conflicting.iterrows():
             log.warning(
-                "%s: %s %s period %s to %s has %d DIFFERENT reported values across "
+                "%s: %s (%s) %s period %s to %s has %d DIFFERENT reported values across "
                 "filings (possible restatement, not just a duplicate) — verify manually",
-                row["ticker"], row["metric"], row["form"], row["start"], row["end"], row["n_distinct_vals"],
+                row["ticker"], row["metric"], row["tag_used"], row["form"], row["start"], row["end"],
+                row["n_distinct_vals"],
             )
 
         # Prefer the earliest-filed occurrence per real period (the original
         # filing, not a later comparative restatement) before dropping.
-        df = df.sort_values("filed", na_position="last")
+        # Deterministic: earliest filing first, then the earlier-listed candidate tag within the same
+        # filing. A stable sort on both keys (the old single-key default sort was unstable, so which tag
+        # won a same-filing tie was arbitrary: 37 of 40 synthetic ties went to the later-listed tag).
+        # Fallback-only tags sort last regardless of filing date (config.FALLBACK_ONLY_TAGS).
+        df = df.sort_values(["is_fallback", "filed", "tag_rank"], na_position="last", kind="stable")
         df = df.drop_duplicates(subset=dup_key, keep="first")
         df = df.sort_values("end").reset_index(drop=True)
 

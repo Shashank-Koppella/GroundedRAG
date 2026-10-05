@@ -24,6 +24,32 @@ from typing import List, Dict, Optional
 COLLECTION_NAME = "groundedrag_chunks"
 
 
+class IndexMismatchError(RuntimeError):
+    """The Qdrant collection does not hold the same number of points as the local chunk files."""
+
+
+def assert_index_matches(expected_points: int, client=None, host: str = "localhost", port: int = 6333,
+                         collection_name: str = COLLECTION_NAME) -> int:
+    """Raise IndexMismatchError unless the collection holds exactly `expected_points` points.
+
+    Why (Oct 5): after the corpus was rebuilt (11,245 -> 15,650 chunks) the Day 5 ablation was re-run
+    without re-embedding. BM25 read the new chunk files while the dense side still searched the old
+    11,245-point index, and nothing complained -- the output was a silent mix of two corpora. A point
+    count cannot prove the text matches, but it catches this case and the older partial-upload bug.
+    """
+    if client is None:
+        from qdrant_client import QdrantClient
+        client = QdrantClient(host=host, port=port)
+    count = client.count(collection_name=collection_name, exact=True).count
+    if count != expected_points:
+        raise IndexMismatchError(
+            f"Qdrant collection '{collection_name}' holds {count} points but the chunk files have "
+            f"{expected_points}. Dense retrieval would run on a different corpus than BM25. Re-embed "
+            f"(python -m scripts.generate_all_embeddings) and re-upload all 8 companies "
+            f"(src.eval.qdrant_setup, --recreate on the first) before measuring anything.")
+    return count
+
+
 class DenseRetriever:
     """Qdrant-backed dense retriever. `.rank(query, ticker=None, k=10)` returns
     chunk_ids ordered best-first (highest cosine similarity first)."""

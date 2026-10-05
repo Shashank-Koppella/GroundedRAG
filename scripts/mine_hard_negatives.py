@@ -51,8 +51,22 @@ triples entirely (there is no valid "above gold" hard negative to mine when gold
 was never found -- including one would mean training against the wrong signal).
 
 Usage (run from repo root; no Qdrant/network needed -- pure JSON transform over
-already-computed Day 5 output):
+already-computed Day 5 output plus the chunk files):
     python -m scripts.mine_hard_negatives
+Writes data/eval_set/day6_hard_negatives_v2.json (the original day6_hard_negatives.json is kept as the
+record of what Day 6 reported).
+
+OCT 5 AUDIT CHANGES (v2)
+  * False negatives are removed. A "hard negative" that is itself relevant -- a gold id, a stored
+    equivalent (same passage in another filing, src/eval/equivalence.py), or token-set Jaccard >=
+    FALSE_NEGATIVE_JACCARD with a gold chunk -- is recorded as `excluded_false_negative` and never
+    becomes a training triple. v1 trained against answer-bearing text, including sh_011's _0025 (which
+    contains the answer sentence) at 3x weight.
+  * Every relevant id is listed as a positive, not just gold_ids[0].
+  * THE OUTPUT IS DIAGNOSTIC ONLY, NOT TRAINING DATA FOR AN EVAL ON THIS SET. Every triple's query is
+    an eval question, so a reranker fine-tuned on these and then scored on eval_questions.json would be
+    scored on its own training data. Phase C must mine from questions disjoint from the eval set; see
+    `assert_disjoint_from_eval`.
 """
 import json
 import re
@@ -62,6 +76,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 NEIGHBOR_WINDOW = 1  # strict +/-1 chunk adjacency = the sh_011 pattern
+FALSE_NEGATIVE_JACCARD = 0.8  # a "negative" this similar to a gold chunk is very likely answer-bearing
 NEIGHBORHOOD_MISS_WEIGHT = 3.0  # deliberate oversampling for Phase C training
 DEFAULT_WEIGHT = 1.0
 
@@ -140,16 +155,40 @@ def classify_question(hybrid_rank, per_negative_categories: list) -> str:
     return "mixed"
 
 
-def mine(diagnostic_rows: list, questions_by_id: dict) -> dict:
+def assert_disjoint_from_eval(train_question_ids, eval_question_ids) -> None:
+    """Phase C guard: training questions must not be evaluation questions."""
+    overlap = sorted(set(train_question_ids) & set(eval_question_ids))
+    if overlap:
+        raise ValueError(f"{len(overlap)} training questions are eval questions (train/test contamination): "
+                         f"{overlap[:5]}...")
+
+
+def is_false_negative(neg_id: str, relevant: list, chunks_by_id: dict, tokens: dict) -> bool:
+    if neg_id in relevant:
+        return True
+    if not chunks_by_id or neg_id not in chunks_by_id:
+        return False
+    from src.eval.equivalence import jaccard, token_set
+    for cid in (neg_id, *relevant):
+        if cid in chunks_by_id and cid not in tokens:
+            tokens[cid] = token_set(chunks_by_id[cid]["text"])
+    return any(jaccard(tokens[neg_id], tokens[g]) >= FALSE_NEGATIVE_JACCARD for g in relevant if g in tokens)
+
+
+def mine(diagnostic_rows: list, questions_by_id: dict, chunks_by_id: dict = None) -> dict:
     per_question = []
     triples = []
+    tokens = {}
 
     for row in diagnostic_rows:
         qid = row["id"]
         q = questions_by_id[qid]
         gold_ids = q["gold_chunk_ids"]
+        relevant = list(dict.fromkeys(gold_ids + list(q.get("equivalent_chunk_ids") or [])))
         gold_parsed = [parse_chunk_id(g) for g in gold_ids]
-        hard_negs = row["hard_negatives"]
+        all_negs = row["hard_negatives"]
+        excluded = [n for n in all_negs if is_false_negative(n, relevant, chunks_by_id, tokens)]
+        hard_negs = [n for n in all_negs if n not in excluded]
 
         neg_categories = [categorize_negative(n, gold_parsed) for n in hard_negs]
         pattern = classify_question(row["hybrid_rank"], neg_categories)
@@ -160,6 +199,7 @@ def mine(diagnostic_rows: list, questions_by_id: dict) -> dict:
             "hybrid_rank": row["hybrid_rank"],
             "in_reranker_pool_top50": row["in_reranker_pool_top50"],
             "n_hard_negatives": len(hard_negs),
+            "excluded_false_negatives": excluded,
             "category_counts": dict(Counter(neg_categories)),
             "pattern": pattern,
         })
@@ -176,6 +216,7 @@ def mine(diagnostic_rows: list, questions_by_id: dict) -> dict:
                 "query": q["question"],
                 "ticker": row["ticker"],
                 "positive_chunk_id": gold_ids[0],
+                "all_positive_chunk_ids": relevant,
                 "hard_negative_chunk_id": neg_id,
                 "category": category,
                 "sample_weight": weight,
@@ -191,11 +232,16 @@ def mine(diagnostic_rows: list, questions_by_id: dict) -> dict:
         "question_level_pattern_counts": dict(question_pattern_counts),
         "hard_negative_level_category_counts": dict(all_neg_categories),
         "n_training_triples": len(triples),
+        "n_excluded_false_negatives": sum(len(r["excluded_false_negatives"]) for r in per_question),
         "n_neighborhood_miss_triples": sum(1 for t in triples if t["category"] == "neighborhood_miss"),
         "n_genuine_retrieval_failure_questions_excluded": question_pattern_counts.get("genuine_retrieval_failure", 0),
     }
 
     return {
+        "usage": ("DIAGNOSTIC ONLY. Every query is an eval question: do not train a model on these triples and "
+                  "then evaluate it on eval_questions.json (train/test contamination). Phase C must mine from a "
+                  "question set disjoint from the eval set (assert_disjoint_from_eval)."),
+        "eval_question_ids": sorted({t["question_id"] for t in triples}),
         "category_definitions": CATEGORY_DEFINITIONS,
         "summary": summary,
         "per_question": per_question,
@@ -210,8 +256,15 @@ def main():
     diagnostic_rows = json.loads(diagnostic_path.read_text())
     questions = json.loads(questions_path.read_text())
     questions_by_id = {q["id"]: q for q in questions}
+    import sys
+    sys.path.insert(0, str(REPO_ROOT))
+    from src.eval.keyword_baseline import load_chunks
+    chunks_by_id = {}
+    for f in sorted((REPO_ROOT / "data" / "processed" / "chunks").glob("*.jsonl")):
+        for c in load_chunks(str(f)):
+            chunks_by_id[c["chunk_id"]] = c
 
-    result = mine(diagnostic_rows, questions_by_id)
+    result = mine(diagnostic_rows, questions_by_id, chunks_by_id)
 
     print("=" * 78)
     print("DAY 6 HARD-NEGATIVE MINING")
@@ -233,7 +286,8 @@ def main():
     print(f"Questions excluded (genuine_retrieval_failure, no valid hard negative): "
           f"{s['n_genuine_retrieval_failure_questions_excluded']}")
 
-    out_path = REPO_ROOT / "data" / "eval_set" / "day6_hard_negatives.json"
+    print(f"Excluded as false negatives (answer-bearing): {s['n_excluded_false_negatives']}")
+    out_path = REPO_ROOT / "data" / "eval_set" / "day6_hard_negatives_v2.json"
     out_path.write_text(json.dumps(result, indent=2))
     print(f"\nWrote {out_path}")
 

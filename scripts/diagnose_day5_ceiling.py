@@ -28,11 +28,12 @@ top-10, so three things stay invisible:
 Also dumps the hard negatives (chunks ranked above gold) for Phase C hard-negative
 mining -- the plan's Day 6 task.
 
-Usage (run from repo root, venv active, Qdrant running with all 11,245 points):
+Usage (run from repo root, venv active, Qdrant running with one point per chunk (the script checks)):
     python -m scripts.diagnose_day5_ceiling
 
 Writes data/eval_set/day5_ceiling_diagnostic.json and prints a summary.
 """
+import argparse
 import json
 import sys
 from collections import Counter
@@ -43,10 +44,12 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from src.eval.keyword_baseline import load_chunks
 from src.retrieval.bm25_retriever import BM25Retriever
-from src.retrieval.dense_retriever import DenseRetriever
+from src.retrieval.dense_retriever import DenseRetriever, IndexMismatchError, assert_index_matches
 from src.retrieval.hybrid_retriever import HybridRetriever, reciprocal_rank_fusion
 
-DEEP_K = 200  # how far down each retriever's list to look for gold
+DEEP_K = 200  # how far down each retriever's list to look for gold (per-retriever rank columns only)
+HYBRID_POOL = 100  # production HybridRetriever(candidate_pool_size=100): fuse exactly what it fuses (Oct 5 audit fix;
+                   # fusing 200-deep lists measured a different ranking than the reranker actually sees)
 
 
 def parse_chunk_id(chunk_id):
@@ -65,11 +68,23 @@ def rank_in(ranked_ids, gold_ids):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(REPO_ROOT / "data" / "eval_set" / "day5_ceiling_diagnostic.json"))
+    ap.add_argument("--force", action="store_true", help="overwrite an existing results file (it is a record)")
+    args = ap.parse_args()
+    out = Path(args.out)
+    if out.exists() and not args.force:
+        sys.exit(f"{out} already exists and is a record of an earlier run. Pass --out <new name> to keep both, "
+                 f"or --force to overwrite it.")
     all_chunks = []
     for f in sorted((REPO_ROOT / "data" / "processed" / "chunks").glob("*.jsonl")):
         all_chunks.extend(load_chunks(str(f)))
     chunks_by_id = {c["chunk_id"]: c for c in all_chunks}
     print(f"Loaded {len(all_chunks)} chunks")
+    try:
+        print(f"Qdrant OK: {assert_index_matches(len(all_chunks))} points match the chunk files")
+    except IndexMismatchError as exc:
+        sys.exit(f"\n{exc}\n")
 
     questions = json.loads((REPO_ROOT / "data" / "eval_set" / "eval_questions.json").read_text())
     single_hop = [q for q in questions if q["gold_answer_type"] == "chunk" and q["gold_chunk_ids"]]
@@ -84,11 +99,14 @@ def main():
 
         bm25_list = bm25.rank(q["question"], ticker=ticker, k=DEEP_K)
         dense_list = dense.rank(q["question"], ticker=ticker, k=DEEP_K)
-        fused_list = reciprocal_rank_fusion([bm25_list, dense_list], k=60)
+        fused_list = reciprocal_rank_fusion([bm25_list[:HYBRID_POOL], dense_list[:HYBRID_POOL]], k=60)
 
-        gold_prefix, gold_idx = parse_chunk_id(gold_ids[0])
-        # Adjacent-chunk near miss: same filing+item, chunk_index within +/-1 of gold.
-        adjacent_ids = {f"{gold_prefix}_{gold_idx + d:04d}" for d in (-1, 1)}
+        # Adjacent-chunk near miss: same filing+item, chunk_index within +/-1 of ANY gold chunk.
+        adjacent_ids = set()
+        for g in gold_ids:
+            gold_prefix, gold_idx = parse_chunk_id(g)
+            adjacent_ids |= {f"{gold_prefix}_{gold_idx + d:04d}" for d in (-1, 1)}
+        adjacent_ids -= set(gold_ids)
         adjacent_ids &= set(chunks_by_id)
 
         fused_top10 = fused_list[:10]
@@ -139,7 +157,6 @@ def main():
     print(f"Found by dense only (within top {DEEP_K}):  {dense_only}")
     print(f"Found by NEITHER (within top {DEEP_K}):     {neither}  <- retrieval/chunking failures")
 
-    out = REPO_ROOT / "data" / "eval_set" / "day5_ceiling_diagnostic.json"
     out.write_text(json.dumps(rows, indent=2))
     print(f"\nWrote {out}")
 

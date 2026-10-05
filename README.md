@@ -1,30 +1,38 @@
 # GroundedRAG
 
-> **Status:** scaffolding only — build begins Oct 2. This README gets filled in for real on Oct 14 (see project plan Section 7).
+> **Status (Oct 5, 2026): in progress — Phase B.** Built and tested: ingestion, hybrid retrieval with a
+> cross-encoder reranker, the eval harness (Recall@k / MRR@10 with question-level bootstrap CIs, NLI
+> faithfulness with validity controls), generation, the XBRL facts table, the calculator and the routing
+> rules. Not built yet: the agent loop (design done: `docs/day8_routing_design.md`), guardrails, the API,
+> the LoRA reranker, any UI. The full README with results lands Oct 14; the running log is `CHANGES.md`.
 
-Agentic RAG system over SEC 10-K/10-Q filings for 8 companies: hybrid retrieval
-(BM25 + dense + hand-written RRF fusion + a LoRA-fine-tuned reranker), a
-hand-rolled ReAct-style agent that routes between retrieval / SQL / calculator,
-prompt-injection guardrails on retrieved context, a custom eval harness
-(Recall@k, MRR, NLI-based faithfulness with bootstrapped CIs), and deployment
-via FastAPI + Docker.
+Agentic RAG system over SEC 10-K/10-Q filings for 8 companies (AAPL, MSFT, GOOGL, AMZN, META, NVDA, ORCL,
+AVGO): hybrid retrieval (BM25 + bge-base dense + hand-written RRF fusion + a cross-encoder reranker, LoRA
+fine-tune planned), a hand-rolled bounded agent (plan -> guard -> execute -> compose) that routes each
+question to filing-text retrieval, the XBRL facts table plus calculator, both, or a refusal, a custom eval
+harness, and planned prompt-injection guardrails and FastAPI + Docker deployment.
 
-## Planned layout
+**LLM:** Groq, `openai/gpt-oss-120b` (Llama 3.3 70B was planned but is not available to the project's API
+key). On the structured path the LLM never writes a number: values come from the facts table, arithmetic
+from the calculator, and the sentence from a template.
+
+## Layout
 
 ```
 src/
-  ingestion/    # SEC EDGAR pull, text/XBRL split, chunking
-  retrieval/    # BM25, dense embeddings, RRF fusion, reranker (+ LoRA)
-  agent/        # ReAct-style routing loop, tools (retrieve/SQL/calculator)
-  eval/         # Recall@k/MRR, NLI faithfulness, bootstrap CIs
-  guardrails/   # injection filtering on retrieved chunks
-  api/          # FastAPI app, /metrics, logging
+  ingestion/    # SEC EDGAR pull, section splitting, chunking, XBRL fact extraction
+  retrieval/    # BM25, dense (Qdrant), RRF fusion, reranker
+  generation/   # Groq client with an on-disk response cache, RAG generator (prompt v1/v2)
+  agent/        # facts table (SQLite), calculator, routing rules (agent loop: in progress)
+  eval/         # Recall@k/MRR, equivalence-aware relevance, NLI faithfulness + controls, bootstrap CIs
+  guardrails/   # (empty — planned)
+  api/          # (empty — planned)
+scripts/        # every run, diagnostic and build step (python -m scripts.<name>)
 data/
-  raw/          # gitignored — regenerate via ingestion scripts
-  processed/    # gitignored — regenerate via ingestion scripts
-  eval_set/     # tracked — hand-labeled 40-60 question eval set
-notebooks/      # scratch/exploration only, nothing load-bearing lives here
-docs/           # architecture notes, ablation results, threat model
+  raw/          # gitignored
+  processed/    # gitignored — regenerate with python -m src.ingestion.pipeline
+  eval_set/     # tracked — 50-question eval set, 48-question blind routing probe, all result files
+docs/           # project plan, routing design
 tests/
 ```
 

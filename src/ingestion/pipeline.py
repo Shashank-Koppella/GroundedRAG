@@ -10,7 +10,13 @@ structured facts. Writes:
 Run locally (this needs network access to sec.gov, which the environment
 that generated this code doesn't have):
 
-    python -m src.ingestion.pipeline
+    python -m src.ingestion.pipeline                                   # everything -> data/processed
+    python -m src.ingestion.pipeline --out-dir data/processed_v2       # rebuild beside the current corpus
+    python -m src.ingestion.pipeline --xbrl-only --out-dir data/processed_v2   # facts only (fast)
+    python -m src.ingestion.pipeline --tickers AVGO META               # a subset
+
+Rebuild into a separate --out-dir and compare with scripts/compare_corpus.py before replacing
+data/processed: chunk ids are positional, so any change to the text pipeline can move gold labels.
 
 Before running: fill in a real SEC_USER_AGENT in config.py.
 """
@@ -24,6 +30,9 @@ from src.ingestion.config import (
     COMPANIES,
     FORM_TYPES,
     YEARS_BACK,
+    WINDOW_START,
+    WINDOW_END,
+    MIN_WORDS_10Q_ITEM_1,
     TARGET_ITEMS_10K,
     TARGET_ITEMS_10Q,
 )
@@ -58,11 +67,19 @@ def make_chunk_id(ticker: str, accession_number: str, item_key: str, chunk_index
     return f"{ticker}_{accession_nodash}_{item_key}_{chunk_index:04d}"
 
 
-def process_company(ticker: str, cik: str) -> dict:
+def process_company(ticker: str, cik: str, out_dir: Path = OUT_DIR, xbrl_only: bool = False) -> dict:
     log.info("=== %s (CIK %s) ===", ticker, cik)
     summary = {"ticker": ticker, "cik": cik, "filings_processed": 0, "chunks_written": 0}
+    chunks_dir, xbrl_dir = Path(out_dir) / "chunks", Path(out_dir) / "xbrl"
+    if not xbrl_only:
+        _process_text(ticker, cik, chunks_dir, summary)
+    _process_xbrl(ticker, cik, xbrl_dir, summary)
+    return summary
 
-    filings = get_company_filings(cik, FORM_TYPES, YEARS_BACK)
+
+def _process_text(ticker: str, cik: str, CHUNKS_DIR: Path, summary: dict) -> None:
+
+    filings = get_company_filings(cik, FORM_TYPES, YEARS_BACK, window_start=WINDOW_START, window_end=WINDOW_END)
     log.info("%s: %d filings in window", ticker, len(filings))
 
     chunk_path = CHUNKS_DIR / f"{ticker}.jsonl"
@@ -80,7 +97,8 @@ def process_company(ticker: str, cik: str) -> dict:
 
             text = html_to_text(html)
             target_items = TARGET_ITEMS_10K if filing["form"] == "10-K" else TARGET_ITEMS_10Q
-            sections = split_into_items(text, target_items)
+            min_words = {"item_1": MIN_WORDS_10Q_ITEM_1} if filing["form"] == "10-Q" else None
+            sections = split_into_items(text, target_items, min_words)
 
             if not sections:
                 log.warning(
@@ -125,11 +143,14 @@ def process_company(ticker: str, cik: str) -> dict:
         chunk_path,
     )
 
+
+
+def _process_xbrl(ticker: str, cik: str, XBRL_DIR: Path, summary: dict) -> None:
     # --- XBRL structured facts (separate from the text pipeline above) ---
     XBRL_DIR.mkdir(parents=True, exist_ok=True)
     facts = fetch_company_facts(cik)
     if facts:
-        df = extract_key_metrics(facts, ticker, YEARS_BACK)
+        df = extract_key_metrics(facts, ticker, YEARS_BACK, window_start=WINDOW_START, window_end=WINDOW_END)
         facts_path = XBRL_DIR / f"{ticker}_facts.csv"
         df.to_csv(facts_path, index=False)
         summary["xbrl_rows"] = len(df)
@@ -137,26 +158,41 @@ def process_company(ticker: str, cik: str) -> dict:
     else:
         summary["xbrl_rows"] = 0
 
-    return summary
 
+def main(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out-dir", default=str(OUT_DIR))
+    ap.add_argument("--xbrl-only", action="store_true", help="re-extract XBRL facts only (no filing downloads)")
+    ap.add_argument("--tickers", nargs="*", default=None, help=f"subset of {list(COMPANIES)}")
+    args = ap.parse_args(argv)
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    tickers = args.tickers or list(COMPANIES)
+    unknown = [t for t in tickers if t not in COMPANIES]
+    if unknown:
+        raise SystemExit(f"unknown tickers {unknown}; choose from {list(COMPANIES)}")
+    manifest = {"run_started": time.strftime("%Y-%m-%dT%H:%M:%S"), "window_start": WINDOW_START.isoformat(),
+                "window_end": WINDOW_END.isoformat(), "tickers": tickers,
+                "xbrl_only": args.xbrl_only, "companies": []}
 
-def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    manifest = {"run_started": time.strftime("%Y-%m-%dT%H:%M:%S"), "companies": []}
-
-    for ticker, (cik, name) in COMPANIES.items():
+    for ticker in tickers:
+        cik, name = COMPANIES[ticker]
         try:
-            summary = process_company(ticker, cik)
+            summary = process_company(ticker, cik, out_dir, args.xbrl_only)
         except Exception:
             log.exception("Unrecoverable error processing %s — skipping", ticker)
             summary = {"ticker": ticker, "cik": cik, "error": "failed"}
         manifest["companies"].append(summary)
 
     manifest["run_finished"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-    with open(OUT_DIR / "manifest.json", "w") as f:
+    name = "manifest_xbrl.json" if args.xbrl_only else "manifest.json"
+    if set(tickers) != set(COMPANIES):   # a partial run must not overwrite the full-corpus manifest
+        name = name.replace(".json", "_" + "_".join(tickers) + ".json")
+    with open(out_dir / name, "w") as f:
         json.dump(manifest, f, indent=2)
 
-    log.info("Done. Manifest written to %s", OUT_DIR / "manifest.json")
+    log.info("Done. Manifest written to %s", out_dir / name)
 
 
 if __name__ == "__main__":

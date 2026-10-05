@@ -1,0 +1,2381 @@
+{
+  "usage": "DIAGNOSTIC ONLY. Every query is an eval question: do not train a model on these triples and then evaluate it on eval_questions.json (train/test contamination). Phase C must mine from a question set disjoint from the eval set (assert_disjoint_from_eval).",
+  "eval_question_ids": [
+    "sh_001",
+    "sh_002",
+    "sh_003",
+    "sh_004",
+    "sh_005",
+    "sh_006",
+    "sh_007",
+    "sh_008",
+    "sh_009",
+    "sh_010",
+    "sh_011",
+    "sh_012",
+    "sh_013",
+    "sh_014",
+    "sh_015",
+    "sh_017",
+    "sh_018",
+    "sh_019"
+  ],
+  "category_definitions": {
+    "neighborhood_miss": "Same ticker+filing+item section as a gold chunk, chunk_index within +/-1. The retriever found the right neighborhood but not the sentence-bearing chunk -- the sh_011 pattern, a chunking-granularity failure.",
+    "cross_filing_confusion": "Same ticker+item section as a gold chunk, different filing (accession) -- right topic, wrong fiscal year/quarter.",
+    "topic_drift": "Same ticker as a gold chunk, different item section -- right company, wrong topic.",
+    "same_doc_distant": "Same ticker+filing+item section as a gold chunk, but more than 1 chunk away -- same document, not a real near-miss.",
+    "off_topic": "Different ticker entirely from every gold chunk for this question."
+  },
+  "summary": {
+    "n_questions": 20,
+    "question_level_pattern_counts": {
+      "neighborhood_miss": 2,
+      "topic_drift": 8,
+      "cross_filing_confusion": 8,
+      "genuine_retrieval_failure": 1,
+      "no_hard_negatives": 1
+    },
+    "hard_negative_level_category_counts": {
+      "cross_filing_confusion": 66,
+      "same_doc_distant": 4,
+      "neighborhood_miss": 2,
+      "topic_drift": 94
+    },
+    "n_training_triples": 156,
+    "n_excluded_false_negatives": 4,
+    "n_neighborhood_miss_triples": 2,
+    "n_genuine_retrieval_failure_questions_excluded": 1
+  },
+  "per_question": [
+    {
+      "id": "sh_001",
+      "ticker": "AAPL",
+      "hybrid_rank": 9,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 8,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 5,
+        "same_doc_distant": 2,
+        "neighborhood_miss": 1
+      },
+      "pattern": "neighborhood_miss"
+    },
+    {
+      "id": "sh_002",
+      "ticker": "AAPL",
+      "hybrid_rank": 181,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 10
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_003",
+      "ticker": "AAPL",
+      "hybrid_rank": 8,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 6,
+      "excluded_false_negatives": [
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "category_counts": {
+        "topic_drift": 5,
+        "cross_filing_confusion": 1
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_004",
+      "ticker": "MSFT",
+      "hybrid_rank": 236,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 5,
+        "topic_drift": 5
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_005",
+      "ticker": "MSFT",
+      "hybrid_rank": 147,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "same_doc_distant": 1,
+        "topic_drift": 8,
+        "cross_filing_confusion": 1
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_006",
+      "ticker": "MSFT",
+      "hybrid_rank": 9,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 8,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 7,
+        "topic_drift": 1
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_007",
+      "ticker": "GOOGL",
+      "hybrid_rank": 2,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 1,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 1
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_008",
+      "ticker": "GOOGL",
+      "hybrid_rank": 68,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 8,
+        "cross_filing_confusion": 2
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_009",
+      "ticker": "GOOGL",
+      "hybrid_rank": 7,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 6,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 5,
+        "cross_filing_confusion": 1
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_010",
+      "ticker": "AMZN",
+      "hybrid_rank": 37,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 10
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_011",
+      "ticker": "AMZN",
+      "hybrid_rank": 18,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 9,
+      "excluded_false_negatives": [
+        "AMZN_000101872426000004_item_7_0025"
+      ],
+      "category_counts": {
+        "topic_drift": 5,
+        "cross_filing_confusion": 3,
+        "neighborhood_miss": 1
+      },
+      "pattern": "neighborhood_miss"
+    },
+    {
+      "id": "sh_012",
+      "ticker": "AMZN",
+      "hybrid_rank": 15,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 5,
+        "topic_drift": 5
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_013",
+      "ticker": "META",
+      "hybrid_rank": 60,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 10
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_014",
+      "ticker": "META",
+      "hybrid_rank": 170,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 10
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_015",
+      "ticker": "NVDA",
+      "hybrid_rank": 68,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 8,
+        "topic_drift": 1,
+        "same_doc_distant": 1
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_016",
+      "ticker": "NVDA",
+      "hybrid_rank": null,
+      "in_reranker_pool_top50": false,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "cross_filing_confusion": 2,
+        "topic_drift": 8
+      },
+      "pattern": "genuine_retrieval_failure"
+    },
+    {
+      "id": "sh_017",
+      "ticker": "AVGO",
+      "hybrid_rank": 14,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 5,
+        "cross_filing_confusion": 5
+      },
+      "pattern": "cross_filing_confusion"
+    },
+    {
+      "id": "sh_018",
+      "ticker": "AVGO",
+      "hybrid_rank": 35,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 10,
+      "excluded_false_negatives": [],
+      "category_counts": {
+        "topic_drift": 10
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_019",
+      "ticker": "ORCL",
+      "hybrid_rank": 10,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 8,
+      "excluded_false_negatives": [
+        "ORCL_000095017024075605_item_1a_0008"
+      ],
+      "category_counts": {
+        "topic_drift": 8
+      },
+      "pattern": "topic_drift"
+    },
+    {
+      "id": "sh_020",
+      "ticker": "ORCL",
+      "hybrid_rank": 2,
+      "in_reranker_pool_top50": true,
+      "n_hard_negatives": 0,
+      "excluded_false_negatives": [
+        "ORCL_000095017023028914_item_7_0002"
+      ],
+      "category_counts": {},
+      "pattern": "no_hard_negatives"
+    }
+  ],
+  "training_triples": [
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000106_item_1a_0043",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019325000079_item_1a_0002",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000123_item_1a_0002",
+      "category": "same_doc_distant",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019322000108_item_1a_0046",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000106_item_1a_0002",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000123_item_1a_0009",
+      "category": "neighborhood_miss",
+      "sample_weight": 3.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019325000079_item_1a_0043",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_001",
+      "query": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019324000123_item_1a_0010",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000123_item_1a_0044",
+      "category": "same_doc_distant",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000069_item_2_0002",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019326000006_item_1_0006",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019325000057_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000106_item_1a_0019",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019325000008_item_2_0002",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000081_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000006_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000006_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000006_item_2_0002",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_002",
+      "query": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_7_0004",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000069_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019324000006_item_1_0011",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000077_item_1_0013",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019326000013_item_1_0012",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019326000020_item_1_0012",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019323000064_item_1_0013",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_003",
+      "query": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "positive_chunk_id": "AAPL_000032019325000079_item_1a_0042",
+      "all_positive_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019323000106_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "AAPL_000032019322000108_item_1a_0043",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025100235_item_1a_0024",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024048288_item_1a_0027",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526323660_item_7_0002",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017023035122_item_1a_0025",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526027207_item_2_0003",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017023054855_item_2_0003",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000156459022035087_item_1a_0023",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024118967_item_2_0003",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017023014423_item_1a_0022",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_004",
+      "query": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312525256321_item_2_0003",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526323660_item_7_0005",
+      "category": "same_doc_distant",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024048288_item_2_0006",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025061046_item_2_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312525256321_item_2_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024118967_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526191507_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526027207_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025100235_item_7_0006",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312525256321_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_005",
+      "query": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_7_0008",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025061046_item_2_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526191507_item_1a_0014",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526191507_item_1a_0034",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024008814_item_1a_0011",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017024048288_item_1a_0011",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025100235_item_1_0029",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312526191507_item_1a_0013",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000095017025100235_item_1a_0033",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_006",
+      "query": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "positive_chunk_id": "MSFT_000119312526323660_item_1a_0041",
+      "all_positive_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "hard_negative_chunk_id": "MSFT_000119312525256321_item_1a_0033",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_007",
+      "query": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_1a_0040",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204424000118_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204423000070_item_2_0016",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000014_item_7_0018",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204426000071_item_2_0020",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000014_item_1_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000043_item_2_0019",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204423000094_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204423000070_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204424000022_item_1_0013",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_008",
+      "query": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204426000018_item_7_0009",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204426000018_item_1_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000091_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000043_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204425000062_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204423000094_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204423000070_item_2_0000",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_009",
+      "query": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "positive_chunk_id": "GOOGL_000165204425000014_item_7_0024",
+      "all_positive_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "hard_negative_chunk_id": "GOOGL_000165204426000018_item_7_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872422000023_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000018_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872424000161_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872424000083_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000008_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872424000130_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000123_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000086_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000012_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_010",
+      "query": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_1a_0001",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872426000014_item_1a_0001",
+        "AMZN_000101872426000026_item_1a_0001"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872424000008_item_1a_0005",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872426000014_item_2_0019",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000004_item_7_0025",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000036_item_2_0019",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000004_item_7_0024",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872426000014_item_2_0020",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000036_item_2_0020",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872424000083_item_2_0013",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000004_item_7_0016",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_011",
+      "query": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872426000004_item_7_0025",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025",
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872426000004_item_7_0024",
+      "category": "neighborhood_miss",
+      "sample_weight": 3.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000123_item_1a_0017",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000086_item_1a_0017",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000036_item_1a_0017",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000086_item_2_0017",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872422000023_item_1a_0015",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872422000023_item_2_0020",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000012_item_2_0019",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000004_item_1a_0028",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872423000008_item_2_0017",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_012",
+      "query": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "positive_chunk_id": "AMZN_000101872424000161_item_1a_0017",
+      "all_positive_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872424000083_item_1a_0017",
+        "AMZN_000101872424000130_item_1a_0017",
+        "AMZN_000101872424000008_item_1a_0017"
+      ],
+      "hard_negative_chunk_id": "AMZN_000101872425000123_item_2_0017",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000132680124000069_item_1a_0120",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000132680125000054_item_1a_0122",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000132680125000017_item_1a_0124",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000132680124000081_item_1a_0119",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000162828026050705_item_1a_0007",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000162828026028526_item_1a_0007",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000162828026050705_item_1a_0013",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000162828026028526_item_1a_0013",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000162828026028526_item_1a_0128",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_013",
+      "query": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_1a_0011",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000162828026028526_item_1a_0011",
+        "META_000162828026050705_item_1a_0011"
+      ],
+      "hard_negative_chunk_id": "META_000132680124000081_item_1a_0111",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000132680124000081_item_1a_0049",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000132680124000069_item_1a_0049",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000132680125000017_item_1a_0050",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828025047240_item_1a_0051",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828026003942_item_1_0003",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828026003942_item_1a_0052",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828026003942_item_1_0004",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828025036791_item_1a_0051",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000162828025036791_item_2_0017",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_014",
+      "query": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "positive_chunk_id": "META_000162828026003942_item_7_0010",
+      "all_positive_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "hard_negative_chunk_id": "META_000132680125000017_item_1_0005",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581025000209_item_1a_0019",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581026000075_item_1a_0020",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581025000230_item_1a_0030",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581024000124_item_1a_0026",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581025000023_item_1_0027",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581026000021_item_1a_0062",
+      "category": "same_doc_distant",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581023000017_item_1a_0000",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581025000023_item_1a_0060",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581025000116_item_1a_0022",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_015",
+      "query": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "positive_chunk_id": "NVDA_000104581026000021_item_1a_0050",
+      "all_positive_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581025000230_item_1a_0018",
+        "NVDA_000104581025000230_item_1a_0020",
+        "NVDA_000104581024000029_item_1a_0049",
+        "NVDA_000104581023000017_item_1a_0042"
+      ],
+      "hard_negative_chunk_id": "NVDA_000104581023000093_item_1a_0036",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016825000121_item_1_0027",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000080_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016825000098_item_1a_0044",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016824000139_item_1a_0041",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000054_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000016_item_2_0001",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000016_item_1a_0044",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000054_item_1a_0045",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016822000118_item_1_0031",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_017",
+      "query": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_1a_0012",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016822000118_item_1a_0031",
+      "category": "cross_filing_confusion",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016824000080_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016825000064_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016825000098_item_1_0009",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000016_item_1_0006",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016825000021_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016824000023_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000080_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016826000054_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016823000008_item_1_0007",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_018",
+      "query": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "positive_chunk_id": "AVGO_000173016825000121_item_7_0001",
+      "all_positive_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "hard_negative_chunk_id": "AVGO_000173016823000064_item_1_0008",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000119312526277521_item_1_0012",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017023028914_item_1_0015",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017023028914_item_1_0017",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017024075605_item_1_0039",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017025087926_item_1_0013",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017025087926_item_1_0035",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000095017024075605_item_1_0014",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    },
+    {
+      "question_id": "sh_019",
+      "query": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "positive_chunk_id": "ORCL_000119312526277521_item_1a_0022",
+      "all_positive_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "hard_negative_chunk_id": "ORCL_000119312526277521_item_1_0011",
+      "category": "topic_drift",
+      "sample_weight": 1.0
+    }
+  ]
+}

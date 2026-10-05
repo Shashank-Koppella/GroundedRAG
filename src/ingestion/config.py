@@ -23,6 +23,17 @@ COMPANIES = {
 
 FORM_TYPES = ["10-K", "10-Q"]
 YEARS_BACK = 4  # "last 3-4 years" per plan; err toward more data
+# Fixed window start (Oct 5 audit fix). The window used to be `date.today() - 4 years`, so every re-run
+# silently dropped older periods and filings and the corpus was not reproducible. 2022-09-17 is the
+# effective cutoff of the original Sep 2026 run: re-running reproduces that corpus (plus fixes).
+import datetime as _dt
+WINDOW_START = _dt.date(2022, 9, 17)
+# Fixed window END as well: filings (and XBRL facts) filed after the original run are excluded, so a re-run
+# reproduces the corpus the eval set was labelled against ("most recent fiscal year in the dataset" must not
+# drift as new 10-Qs appear). Move it forward deliberately, then regenerate the reference answers.
+WINDOW_END = _dt.date(2026, 9, 17)
+# 10-Q Item 1 spans shorter than this are TOC fragments, not financial statements (section_splitter).
+MIN_WORDS_10Q_ITEM_1 = 300
 
 # --- SEC etiquette (required, not optional) ---
 # SEC blocks/rate-limits generic user agents. Replace with your real name +
@@ -50,12 +61,21 @@ TARGET_ITEMS_10Q = {
 }
 
 # XBRL tags for revenue vary across companies/years (older filings, and some
-# companies, use different GAAP tags for the same concept). Try in order,
-# take the first that has data. This is a real EDGAR gotcha, not overkill.
+# companies, use different GAAP tags for the same concept). Facts from ALL candidate tags are collected;
+# per period the earliest-filed fact wins and, within the same filing, the earlier-listed tag wins
+# (deterministic since the Oct 5 audit; it used to depend on an unstable sort).
 REVENUE_TAG_CANDIDATES = [
     "RevenueFromContractWithCustomerExcludingAssessedTax",
     "RevenueFromContractWithCustomerIncludingAssessedTax",
     "Revenues",
     "SalesRevenueNet",
 ]
-NET_INCOME_TAG_CANDIDATES = ["NetIncomeLoss"]
+# ProfitLoss (net income including noncontrolling interests) is the fallback for filers that do not use
+# NetIncomeLoss in every filing: AVGO's NetIncomeLoss facts come only from its FY2024 10-K, so its quarters
+# and FY2025 were missing (Oct 5 audit). Deliberately NOT included: NetIncomeLossAvailableToCommonStockholders*
+# (subtracts preferred dividends: a different number). Verify per company with scripts/inspect_xbrl_tags.py.
+NET_INCOME_TAG_CANDIDATES = ["NetIncomeLoss", "ProfitLoss"]
+# Fallback-only tags fill periods that no primary tag reports; they never beat a primary tag for the same
+# period, even when filed earlier (ProfitLoss includes noncontrolling interests, so it must not displace
+# NetIncomeLoss just because it appeared in an earlier filing).
+FALLBACK_ONLY_TAGS = {"ProfitLoss"}

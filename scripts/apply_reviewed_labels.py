@@ -27,7 +27,7 @@ EVAL_SET_PATH = REPO_ROOT / "data" / "eval_set" / "eval_questions.json"
 REVIEWED_LABELS = [
     ("sh_001", ["AAPL_000032019324000123_item_1a_0010"], "HIGH",
      "Explicitly names China/India/Japan/S.Korea/Taiwan/Vietnam manufacturing concentration."),
-    ("sh_003", ["AAPL_000032019325000079_item_1a_0042", "AAPL_000032019324000123_item_1a_0042"], "HIGH",
+    ("sh_003", ["AAPL_000032019325000079_item_1a_0042", "AAPL_000032019324000123_item_1a_0042", "AAPL_000032019325000079_item_1a_0041"], "HIGH",  # widened Day 5 (3rd id)
      "Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer."),
     ("sh_004", ["MSFT_000119312526323660_item_1a_0008"], "MODERATE",
      "About customers' purchasing/deployment decisions not materializing as expected — plausible capacity-investment "
@@ -69,7 +69,7 @@ REVIEWED_LABELS = [
     ("sh_010", ["AMZN_000101872426000004_item_1a_0001"], "HIGH",
      "Most recent 10-K (filed 2026-02-06): the full 'We Face Intense Competition' risk factor, explicitly naming "
      "'physical, e-commerce, and omnichannel retail' competitors, pricing pressure, and resource disparities."),
-    ("sh_011", ["AMZN_000101872426000004_item_7_0025"], "HIGH",
+    ("sh_011", ["AMZN_000101872426000004_item_7_0025", "AMZN_000101872426000004_item_7_0026"], "HIGH",  # Oct 5: both
      "Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased "
      "sales, partially offset by spending on technology infrastructure... to support AWS business growth.'"),
     ("sh_013", ["META_000162828026003942_item_1a_0011"], "HIGH",

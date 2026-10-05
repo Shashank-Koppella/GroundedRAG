@@ -53,39 +53,56 @@ def _rate_limited_get(url: str) -> requests.Response:
     return resp
 
 
-def get_company_filings(cik: str, form_types: list[str], years_back: int) -> list[dict]:
+SUBMISSIONS_PAGE_URL = "https://data.sec.gov/submissions/{name}"
+
+
+def _columns_to_rows(block: dict):
+    return zip(block.get("form", []), block.get("accessionNumber", []), block.get("filingDate", []),
+               block.get("primaryDocument", []))
+
+
+def get_company_filings(cik: str, form_types: list[str], years_back: int = 4,
+                        window_start: "date | None" = None, fetch=None,
+                        window_end: "date | None" = None) -> list[dict]:
     """
-    Return recent filings of the given form types for a company, newest first.
+    Return filings of the given form types for a company within the window, newest first.
 
     Each item: {accession_number, filing_date, form, primary_document}
 
-    The submissions endpoint returns "recent" filings inline (fine for our
-    4-year window at these companies' filing cadence — a handful of 10-Ks +
-    ~12-16 10-Qs each); it does NOT paginate into older filings the way the
-    full submissions history does, which is a known limitation acceptable
-    for this project's scope.
+    Oct 5 audit fix: the submissions JSON inlines only the ~1,000 most RECENT filings of ANY form type
+    in `filings.recent`; older ones live in extra pages listed in `filings.files`. Heavy Form 4 filers
+    (META, GOOGL) pushed their 2022-2024 10-Ks/10-Qs out of `recent`, so META's corpus started in
+    2024-08 and GOOGL's in 2023-07 while the other six started in late 2022. Every page whose date
+    range overlaps the window is now read and merged (deduplicated by accession number).
+    `fetch` is injectable for tests (url -> parsed JSON).
     """
-    url = SUBMISSIONS_URL.format(cik=cik)
-    data = _rate_limited_get(url).json()
+    fetch = fetch or (lambda u: _rate_limited_get(u).json())
+    data = fetch(SUBMISSIONS_URL.format(cik=cik))
+    cutoff = window_start or (date.today() - timedelta(days=365 * years_back))
 
-    recent = data.get("filings", {}).get("recent", {})
-    forms = recent.get("form", [])
-    accessions = recent.get("accessionNumber", [])
-    dates = recent.get("filingDate", [])
-    primary_docs = recent.get("primaryDocument", [])
+    filings = data.get("filings", {})
+    blocks = [filings.get("recent", {})]
+    for page in filings.get("files", []) or []:
+        try:
+            page_to = date.fromisoformat(page.get("filingTo", "9999-12-31"))
+        except ValueError:
+            page_to = date.max
+        if page_to >= cutoff and page.get("name"):
+            blocks.append(fetch(SUBMISSIONS_PAGE_URL.format(name=page["name"])))
 
-    cutoff = date.today() - timedelta(days=365 * years_back)
-
-    results = []
-    for form, accession, filing_date, primary_doc in zip(forms, accessions, dates, primary_docs):
+    results, seen = [], set()
+    for form, accession, filing_date, primary_doc in (row for b in blocks for row in _columns_to_rows(b)):
+        if accession in seen:
+            continue
         if form not in form_types:
             continue
         try:
             f_date = date.fromisoformat(filing_date)
         except ValueError:
             continue
-        if f_date < cutoff:
+        if f_date < cutoff or (window_end is not None and f_date > window_end):
             continue
+        seen.add(accession)
         results.append(
             {
                 "accession_number": accession,

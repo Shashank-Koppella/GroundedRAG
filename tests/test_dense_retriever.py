@@ -137,3 +137,29 @@ def test_unwraps_query_response_points_attribute():
     client = FakeQdrantClient(hits)
     retriever = DenseRetriever(client=client, model=FakeModel())
     assert retriever.rank("query", k=2) == ["AAPL_0001", "AAPL_0002"]
+
+
+# ---------------------------------------------------------------- index guard (Oct 5)
+
+class _FakeClient:
+    def __init__(self, n):
+        self.n = n
+
+    def count(self, collection_name, exact=True):
+        class _R:
+            pass
+        r = _R()
+        r.count = self.n
+        return r
+
+
+def test_index_guard_passes_when_point_count_equals_chunk_count():
+    from src.retrieval.dense_retriever import assert_index_matches
+    assert assert_index_matches(15650, client=_FakeClient(15650)) == 15650
+
+
+def test_index_guard_fails_on_the_old_index_after_a_corpus_rebuild():
+    import pytest
+    from src.retrieval.dense_retriever import IndexMismatchError, assert_index_matches
+    with pytest.raises(IndexMismatchError, match="11245 points"):
+        assert_index_matches(15650, client=_FakeClient(11245))

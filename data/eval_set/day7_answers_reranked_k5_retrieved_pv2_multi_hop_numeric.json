@@ -1,0 +1,743 @@
+{
+  "config": {
+    "retriever": "reranked",
+    "k": 5,
+    "context_mode": "retrieved",
+    "prompt_version": "v2",
+    "types": "multi_hop_numeric",
+    "model": "openai/gpt-oss-120b",
+    "n_questions_attempted": 20,
+    "limit": null
+  },
+  "errors": [],
+  "results": [
+    {
+      "id": "mhn_001",
+      "question": "What was Apple's year-over-year total revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019326000006_item_1_0006",
+        "AAPL_000032019323000106_item_7_0007",
+        "AAPL_000032019326000020_item_1_0008",
+        "AAPL_000032019324000006_item_1_0007",
+        "AAPL_000032019326000013_item_1_0008"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.317206188,
+        "prompt_tokens": 2580,
+        "prompt_time": 0.126103496,
+        "completion_tokens": 49,
+        "completion_time": 0.101634906,
+        "total_tokens": 2629,
+        "total_time": 0.227738402,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 35
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_002",
+      "question": "By what percentage did Apple's net income change between its two most recent fiscal years in the dataset?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019324000123_item_7_0001",
+        "AAPL_000032019326000013_item_1_0008",
+        "AAPL_000032019326000020_item_1_0008",
+        "AAPL_000032019325000057_item_1_0008",
+        "AAPL_000032019325000008_item_1_0007"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.334517814,
+        "prompt_tokens": 2700,
+        "prompt_time": 0.522596135,
+        "completion_tokens": 56,
+        "completion_time": 0.164682716,
+        "total_tokens": 2756,
+        "total_time": 0.687278851,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_003",
+      "question": "What was Microsoft's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "MSFT",
+      "context_chunk_ids": [
+        "MSFT_000095017024118967_item_2_0002",
+        "MSFT_000095017025010491_item_2_0002",
+        "MSFT_000095017025061046_item_2_0002",
+        "MSFT_000119312526027207_item_2_0002",
+        "MSFT_000119312526191507_item_2_0002"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.349048472,
+        "prompt_tokens": 2110,
+        "prompt_time": 0.240397738,
+        "completion_tokens": 102,
+        "completion_time": 0.210576356,
+        "total_tokens": 2212,
+        "total_time": 0.450974094,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 88
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_004",
+      "question": "What was the percentage change in Microsoft's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "MSFT",
+      "context_chunk_ids": [
+        "MSFT_000119312526027207_item_2_0009",
+        "MSFT_000119312526323660_item_7_0010",
+        "MSFT_000119312526027207_item_2_0002",
+        "MSFT_000119312525256321_item_2_0002",
+        "MSFT_000095017023035122_item_7_0012"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.348289852,
+        "prompt_tokens": 2398,
+        "prompt_time": 1.503833043,
+        "completion_tokens": 69,
+        "completion_time": 0.14342019,
+        "total_tokens": 2467,
+        "total_time": 1.647253233,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 55
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_005",
+      "question": "What was Alphabet's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204423000094_item_2_0012",
+        "GOOGL_000165204424000022_item_7_0023",
+        "GOOGL_000165204425000014_item_7_0016",
+        "GOOGL_000165204423000070_item_2_0016",
+        "GOOGL_000165204424000053_item_2_0009"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.317847515,
+        "prompt_tokens": 2413,
+        "prompt_time": 0.276614607,
+        "completion_tokens": 116,
+        "completion_time": 0.277978418,
+        "total_tokens": 2529,
+        "total_time": 0.554593025,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 102
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_006",
+      "question": "What was the percentage change in Alphabet's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204424000022_item_7_0014",
+        "GOOGL_000165204426000018_item_7_0020",
+        "GOOGL_000165204424000022_item_7_0028",
+        "GOOGL_000165204424000053_item_2_0009",
+        "GOOGL_000165204424000118_item_2_0024"
+      ],
+      "answer": "Alphabet 10-K filed 2024-01-31 reported net income increased 23% year over year between 2022 and 2023 [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "GOOGL_000165204424000022_item_7_0014"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.211681613,
+        "prompt_tokens": 2400,
+        "prompt_time": 0.121825603,
+        "completion_tokens": 127,
+        "completion_time": 0.286870651,
+        "total_tokens": 2527,
+        "total_time": 0.408696254,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 85
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_007",
+      "question": "What was Amazon's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "AMZN",
+      "context_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0032",
+        "AMZN_000101872425000004_item_7_0017",
+        "AMZN_000101872423000012_item_2_0012",
+        "AMZN_000101872424000083_item_2_0027",
+        "AMZN_000101872426000026_item_2_0029"
+      ],
+      "answer": "Amazon 10-K filed 2025-02-07 reported consolidated year‑over‑year revenue growth of 12 % for 2024 versus 2023 [2]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AMZN_000101872425000004_item_7_0017"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.311555732,
+        "prompt_tokens": 2158,
+        "prompt_time": 0.454173773,
+        "completion_tokens": 159,
+        "completion_time": 0.368984325,
+        "total_tokens": 2317,
+        "total_time": 0.823158098,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 113
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_008",
+      "question": "What was Amazon's net income margin (net income divided by revenue) for its most recent fiscal year in the dataset?",
+      "ticker": "AMZN",
+      "context_chunk_ids": [
+        "AMZN_000101872426000014_item_1_0003",
+        "AMZN_000101872425000086_item_1_0004",
+        "AMZN_000101872422000023_item_1_0005",
+        "AMZN_000101872424000161_item_1_0004",
+        "AMZN_000101872423000008_item_1_0003"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.31678423,
+        "prompt_tokens": 2864,
+        "prompt_time": 0.662411331,
+        "completion_tokens": 37,
+        "completion_time": 0.077422886,
+        "total_tokens": 2901,
+        "total_time": 0.739834217,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 23
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_009",
+      "question": "What was Meta's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "META",
+      "context_chunk_ids": [
+        "META_000132680124000069_item_2_0021",
+        "META_000162828026003942_item_7_0029",
+        "META_000162828025036791_item_2_0021",
+        "META_000162828025036791_item_2_0022",
+        "META_000132680124000081_item_2_0021"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.318343588,
+        "prompt_tokens": 2217,
+        "prompt_time": 0.261405474,
+        "completion_tokens": 155,
+        "completion_time": 0.319808738,
+        "total_tokens": 2372,
+        "total_time": 0.581214212,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 141
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_010",
+      "question": "What was the percentage change in Meta's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "META",
+      "context_chunk_ids": [
+        "META_000162828026003942_item_7_0029",
+        "META_000162828025036791_item_2_0022",
+        "META_000132680125000054_item_2_0024",
+        "META_000162828026050705_item_2_0020",
+        "META_000162828026028526_item_2_0019"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.311867887,
+        "prompt_tokens": 2407,
+        "prompt_time": 0.810909385,
+        "completion_tokens": 202,
+        "completion_time": 0.452888271,
+        "total_tokens": 2609,
+        "total_time": 1.263797656,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 188
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_011",
+      "question": "What was Nvidia's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "NVDA",
+      "context_chunk_ids": [
+        "NVDA_000104581024000264_item_2_0012",
+        "NVDA_000104581026000075_item_2_0015",
+        "NVDA_000104581024000124_item_2_0009",
+        "NVDA_000104581025000116_item_2_0012",
+        "NVDA_000104581023000175_item_2_0008"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.317618857,
+        "prompt_tokens": 2244,
+        "prompt_time": 0.113499499,
+        "completion_tokens": 191,
+        "completion_time": 0.456233098,
+        "total_tokens": 2435,
+        "total_time": 0.569732597,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 177
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_012",
+      "question": "What was the percentage change in Nvidia's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "NVDA",
+      "context_chunk_ids": [
+        "NVDA_000104581023000227_item_2_0015",
+        "NVDA_000104581026000052_item_2_0010",
+        "NVDA_000104581026000021_item_7_0012",
+        "NVDA_000104581025000023_item_7_0016",
+        "NVDA_000104581024000124_item_2_0012"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.316247207,
+        "prompt_tokens": 2523,
+        "prompt_time": 0.315405465,
+        "completion_tokens": 92,
+        "completion_time": 0.191955374,
+        "total_tokens": 2615,
+        "total_time": 0.507360839,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 78
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_013",
+      "question": "What was Broadcom's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "AVGO",
+      "context_chunk_ids": [
+        "AVGO_000173016823000064_item_2_0011",
+        "AVGO_000173016823000096_item_7_0021",
+        "AVGO_000173016823000096_item_7_0022",
+        "AVGO_000173016826000016_item_1_0007",
+        "AVGO_000173016825000098_item_1_0010"
+      ],
+      "answer": "Broadcom 10-K filed 2023-12-14 reported total net revenue increased 8% year‑over‑year from fiscal year 2022 to fiscal year 2023 [2]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AVGO_000173016823000096_item_7_0021"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.323742182,
+        "prompt_tokens": 2220,
+        "prompt_time": 0.102240193,
+        "completion_tokens": 139,
+        "completion_time": 0.295377163,
+        "total_tokens": 2359,
+        "total_time": 0.397617356,
+        "completion_tokens_details": {
+          "reasoning_tokens": 89
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_014",
+      "question": "What was the percentage change in Broadcom's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "AVGO",
+      "context_chunk_ids": [
+        "AVGO_000173016823000064_item_2_0011",
+        "AVGO_000173016825000064_item_1_0003",
+        "AVGO_000173016824000080_item_1_0003",
+        "AVGO_000173016823000096_item_7_0021",
+        "AVGO_000173016823000096_item_7_0022"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.348236562,
+        "prompt_tokens": 2386,
+        "prompt_time": 0.125320592,
+        "completion_tokens": 216,
+        "completion_time": 0.45322707,
+        "total_tokens": 2602,
+        "total_time": 0.578547662,
+        "completion_tokens_details": {
+          "reasoning_tokens": 202
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_015",
+      "question": "What was Oracle's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "ticker": "ORCL",
+      "context_chunk_ids": [
+        "ORCL_000119312525315925_item_2_0018",
+        "ORCL_000119312526277521_item_1_0005",
+        "ORCL_000095017023069682_item_2_0024",
+        "ORCL_000119312526277521_item_7_0025",
+        "ORCL_000119312526277521_item_7_0026"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.343598127,
+        "prompt_tokens": 2236,
+        "prompt_time": 0.104187418,
+        "completion_tokens": 78,
+        "completion_time": 0.166693276,
+        "total_tokens": 2314,
+        "total_time": 0.270880694,
+        "completion_tokens_details": {
+          "reasoning_tokens": 64
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_016",
+      "question": "What was the percentage change in Oracle's net income between its two most recent fiscal years in the dataset?",
+      "ticker": "ORCL",
+      "context_chunk_ids": [
+        "ORCL_000095017024075605_item_7_0039",
+        "ORCL_000095017023047713_item_2_0033",
+        "ORCL_000156459022039278_item_2_0041",
+        "ORCL_000095017023069682_item_2_0035",
+        "ORCL_000095017025037143_item_2_0041"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.348783863,
+        "prompt_tokens": 2326,
+        "prompt_time": 0.106528311,
+        "completion_tokens": 33,
+        "completion_time": 0.068262462,
+        "total_tokens": 2359,
+        "total_time": 0.174790773,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 19
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_017",
+      "question": "Between Apple and Microsoft, which had the higher year-over-year revenue growth rate in their most recent fiscal years in the dataset?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "MSFT_000119312526191507_item_2_0002",
+        "MSFT_000119312526027207_item_2_0002",
+        "MSFT_000119312525256321_item_2_0002",
+        "MSFT_000095017023054855_item_2_0002",
+        "NVDA_000104581024000316_item_2_0014"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.347893904,
+        "prompt_tokens": 2113,
+        "prompt_time": 0.09348797,
+        "completion_tokens": 27,
+        "completion_time": 0.056887173,
+        "total_tokens": 2140,
+        "total_time": 0.150375143,
+        "completion_tokens_details": {
+          "reasoning_tokens": 13
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_018",
+      "question": "Between Nvidia and Broadcom, which had the larger percentage increase in net income in their most recent fiscal years in the dataset?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "AVGO_000173016823000096_item_7_0022",
+        "NVDA_000104581024000124_item_2_0014",
+        "NVDA_000104581024000029_item_7_0009",
+        "NVDA_000104581023000227_item_2_0010",
+        "NVDA_000104581024000264_item_2_0012"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.309016637,
+        "prompt_tokens": 2181,
+        "prompt_time": 0.108656947,
+        "completion_tokens": 76,
+        "completion_time": 0.163234098,
+        "total_tokens": 2257,
+        "total_time": 0.271891045,
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_019",
+      "question": "What was Alphabet's average quarterly revenue across the four most recent quarters in the dataset?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204425000091_item_2_0034",
+        "GOOGL_000165204423000070_item_2_0016",
+        "GOOGL_000165204423000094_item_2_0012",
+        "GOOGL_000165204424000118_item_2_0024",
+        "GOOGL_000165204426000048_item_2_0012"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.349080197,
+        "prompt_tokens": 2379,
+        "prompt_time": 0.100366368,
+        "completion_tokens": 166,
+        "completion_time": 0.357598457,
+        "total_tokens": 2545,
+        "total_time": 0.457964825,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 152
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "mhn_020",
+      "question": "What was Oracle's revenue-to-net-income ratio for its most recent fiscal year in the dataset?",
+      "ticker": "ORCL",
+      "context_chunk_ids": [
+        "ORCL_000119312526277521_item_1_0005",
+        "ORCL_000156459022039278_item_2_0041",
+        "ORCL_000095017024104905_item_2_0034",
+        "ORCL_000095017023069682_item_2_0036",
+        "ORCL_000119312526101045_item_2_0041"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 1.39264851,
+        "prompt_tokens": 2313,
+        "prompt_time": 0.134145948,
+        "completion_tokens": 36,
+        "completion_time": 0.07659388,
+        "total_tokens": 2349,
+        "total_time": 0.210739828,
+        "completion_tokens_details": {
+          "reasoning_tokens": 22
+        }
+      },
+      "type": "multi_hop_numeric",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    }
+  ]
+}

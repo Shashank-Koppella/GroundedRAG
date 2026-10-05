@@ -1,0 +1,775 @@
+{
+  "note": "Blind-written routing probe set (no corpus or code consulted); every gold label is assigned strictly by the route definitions dated 2026-10-05.",
+  "route_definitions_version": "2026-10-05",
+  "questions": [
+    {
+      "id": "rp_001",
+      "question": "What was Microsoft's total revenue for its most recent fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Company-total revenue value held in the facts table."
+    },
+    {
+      "id": "rp_002",
+      "question": "What does Apple's risk factors section say about its dependence on manufacturing partners in Asia?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Qualitative risk-factor content stated in filing text."
+    },
+    {
+      "id": "rp_003",
+      "question": "What is Nvidia's stock price right now?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": "real_time",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Current stock price is real-time data not in the corpus."
+    },
+    {
+      "id": "rp_004",
+      "question": "What was Amazon's total revenue in its latest fiscal year, and what did management say drove the increase?",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "AMZN"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Asks for a company-total revenue value and a text explanation of its drivers in one question."
+    },
+    {
+      "id": "rp_005",
+      "question": "How much net income did Nvidia report for its most recent fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Company-total net income value held in the facts table."
+    },
+    {
+      "id": "rp_006",
+      "question": "How much revenue did AWS bring in during Amazon's most recent fiscal year?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AMZN"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "AWS is a segment; segment revenue is not in the facts table, so the figure comes from filing text."
+    },
+    {
+      "id": "rp_007",
+      "question": "What was Apple's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Percent change over company-total revenue values from the facts table."
+    },
+    {
+      "id": "rp_008",
+      "question": "What will Apple's revenue be in fiscal 2027?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": "forecast",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Asks the system to predict a future value."
+    },
+    {
+      "id": "rp_009",
+      "question": "By how much did Nvidia's Data Center revenue grow year over year in its latest 10-K?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Data Center is segment revenue, not in the facts table; growth for unsupported metrics is retrieve."
+    },
+    {
+      "id": "rp_010",
+      "question": "What was Alphabet's net profit margin in its most recent fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "GOOGL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income",
+          "revenue"
+        ],
+        "operation": "margin",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Net income divided by revenue is arithmetic over facts-table values."
+    },
+    {
+      "id": "rp_011",
+      "question": "How much did Amazon make on the bottom line last fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AMZN"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "'Bottom line' means company-total net income, which is in the facts table."
+    },
+    {
+      "id": "rp_012",
+      "question": "Should I buy Meta stock?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "META"
+      ],
+      "refuse_reason": "advice",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Buy/sell recommendation is investment advice."
+    },
+    {
+      "id": "rp_013",
+      "question": "What was Microsoft's operating income in its most recent fiscal year?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Operating income is not in the facts table; the figure is stated in MD&A text."
+    },
+    {
+      "id": "rp_014",
+      "question": "Nvidia's revenue went up a lot between its two latest fiscal years. By what percentage, and why?",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Asks for arithmetic on company-total revenue plus a text explanation."
+    },
+    {
+      "id": "rp_015",
+      "question": "what was broadcom's top line in its latest quarter",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AVGO"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "value",
+        "periods": "most recent quarter"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "'Top line' means company-total revenue; quarterly values are in the facts table."
+    },
+    {
+      "id": "rp_016",
+      "question": "How is YouTube advertising doing, based on what Alphabet's most recent filing says?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "GOOGL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "YouTube ads performance is a segment/qualitative topic answered from filing text."
+    },
+    {
+      "id": "rp_017",
+      "question": "How much is Microsoft worth on the stock market today?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": "real_time",
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Current market capitalization is real-time data."
+    },
+    {
+      "id": "rp_018",
+      "question": "Between Oracle and Microsoft, whose sales were bigger in their latest fiscal years?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "ORCL",
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "compare",
+        "periods": "most recent fiscal year for each company"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Comparison of company-total revenue ('sales') between two covered companies using facts-table values."
+    },
+    {
+      "id": "rp_019",
+      "question": "What has Broadcom said about how the VMware integration is going?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AVGO"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Qualitative management discussion found in filing text."
+    },
+    {
+      "id": "rp_020",
+      "question": "Meta's bottom line jumped in its latest fiscal year. By how much, and what does management say caused it?",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "META"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Asks for a change in company-total net income plus management's explanation."
+    },
+    {
+      "id": "rp_021",
+      "question": "On average, what was Meta's quarterly profit across its four most recent quarters?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "META"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "mean_quarters",
+        "periods": "four most recent quarters"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Average of quarterly company-total net income ('profit') from the facts table."
+    },
+    {
+      "id": "rp_022",
+      "question": "According to its most recent 10-K, what does Oracle expect its capital expenditures to look like going forward?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "ORCL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Asks what the filing says about outlook for capex (not in facts table), which is retrieve, not forecast."
+    },
+    {
+      "id": "rp_023",
+      "question": "Using the trends in its filings, project Amazon's net income for next fiscal year.",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "AMZN"
+      ],
+      "refuse_reason": "forecast",
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Asks the system itself to predict a future net income value, despite referencing filings."
+    },
+    {
+      "id": "rp_024",
+      "question": "If you compare how much Nvidia brought in during its latest fiscal year with the year before, what's the percent difference?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "'Brought in' refers to company-total revenue; percent change is facts-table arithmetic."
+    },
+    {
+      "id": "rp_025",
+      "question": "I keep hearing Nvidia is a risky bet because of China export rules. What does Nvidia's own 10-K actually say about that exposure?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Sounds like advice but asks for a disclosed risk stated in filing text."
+    },
+    {
+      "id": "rp_026",
+      "question": "Did Apple's sales go up or down in its latest fiscal year? Give me the number and the reasons Apple gives for it.",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Asks for company-total revenue change plus the company's stated reasons."
+    },
+    {
+      "id": "rp_027",
+      "question": "Which of the eight companies had the highest net income in its most recent fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN",
+        "META",
+        "NVDA",
+        "ORCL",
+        "AVGO"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "compare",
+        "periods": "most recent fiscal year for each company"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Comparison of company-total net income across all eight covered companies from the facts table."
+    },
+    {
+      "id": "rp_028",
+      "question": "How does Apple describe competition from Samsung and other Android phone makers in its filings?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Question is about Apple's own competition disclosures; the uncovered company is only context, so it is retrieve, not a refusal."
+    },
+    {
+      "id": "rp_029",
+      "question": "What did Jensen Huang say on Nvidia's last earnings call about Blackwell demand?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": "not_in_filings",
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Earnings-call remarks are explicitly outside the filing corpus."
+    },
+    {
+      "id": "rp_030",
+      "question": "By what percentage did Azure grow in Microsoft's latest reported quarter?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Azure growth is a product/segment figure stated in MD&A, not a facts-table metric."
+    },
+    {
+      "id": "rp_031",
+      "question": "Give me Oracle's net profit margin for its latest fiscal year, and explain what management said affected its profitability.",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "ORCL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income",
+          "revenue"
+        ],
+        "operation": "margin",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Asks for net income / revenue arithmetic plus management's text explanation."
+    },
+    {
+      "id": "rp_032",
+      "question": "In its latest fiscal year, how many dollars of sales did Apple need to generate for each dollar it kept as profit?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue",
+          "net_income"
+        ],
+        "operation": "ratio",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Revenue-to-net-income ratio is arithmetic over facts-table values, despite no standard finance term."
+    },
+    {
+      "id": "rp_033",
+      "question": "What color is Google's logo?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "GOOGL"
+      ],
+      "refuse_reason": "not_in_filings",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Trivia not contained in SEC filings."
+    },
+    {
+      "id": "rp_034",
+      "question": "What was Apple's gross margin percentage for its most recent fiscal year?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AAPL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Gross margin is not in the facts table; it is stated in MD&A text."
+    },
+    {
+      "id": "rp_035",
+      "question": "What was Tesla's net income last year?",
+      "gold_route": "refuse",
+      "gold_tickers": [],
+      "refuse_reason": "uncovered_company",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Tesla is outside the eight covered companies."
+    },
+    {
+      "id": "rp_036",
+      "question": "Did Microsoft's net income grow faster or slower than its revenue between its two most recent fiscal years?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue",
+          "net_income"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Compares percent changes of two facts-table metrics; no explanation requested."
+    },
+    {
+      "id": "rp_037",
+      "question": "Approximately how many full-time employees does Amazon have, per its latest annual report?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "AMZN"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Headcount is stated in 10-K Item 1 text, not in the facts table."
+    },
+    {
+      "id": "rp_038",
+      "question": "Comparing Apple and Microsoft, which had larger total revenue in its latest fiscal year, and how does each company explain its revenue trend?",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "compare",
+        "periods": "most recent fiscal year for each company"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Asks for a company-total revenue comparison plus text explanations from each company."
+    },
+    {
+      "id": "rp_039",
+      "question": "Given how fast Oracle's revenue is growing, is it a better investment than Microsoft right now?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "ORCL",
+        "MSFT"
+      ],
+      "refuse_reason": "advice",
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Core ask is an investment recommendation, despite mentioning revenue growth."
+    },
+    {
+      "id": "rp_040",
+      "question": "Calculate the change in Meta's diluted EPS between its two most recent fiscal years.",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "META"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "EPS is not in the facts table; figures come from filing text even when phrased as a computation."
+    },
+    {
+      "id": "rp_041",
+      "question": "Is Amazon more profitable than Alphabet? Use net income as a share of revenue for each company's most recent fiscal year.",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AMZN",
+        "GOOGL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income",
+          "revenue"
+        ],
+        "operation": "margin",
+        "periods": "most recent fiscal year for each company"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Profitability is explicitly defined as net income / revenue, which is facts-table arithmetic compared across two covered companies."
+    },
+    {
+      "id": "rp_042",
+      "question": "Compare Microsoft's revenue growth with Salesforce's over the past two fiscal years.",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "MSFT"
+      ],
+      "refuse_reason": "uncovered_company",
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Compares a covered company against an uncovered one (Salesforce)."
+    },
+    {
+      "id": "rp_043",
+      "question": "Why did Alphabet's net income change in its latest fiscal year? Include the actual net income figures for both years.",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "GOOGL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "pct_change",
+        "periods": "two most recent fiscal years"
+      },
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Leads with 'why' but explicitly requests company-total net income values too, so both parts are needed."
+    },
+    {
+      "id": "rp_044",
+      "question": "How much did Alphabet spend repurchasing its own shares last fiscal year?",
+      "gold_route": "retrieve",
+      "gold_tickers": [
+        "GOOGL"
+      ],
+      "refuse_reason": null,
+      "structured_spec": null,
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Buyback amounts are stated in filing text, not in the facts table."
+    },
+    {
+      "id": "rp_045",
+      "question": "How does Intel's data center revenue stack up against Nvidia's?",
+      "gold_route": "refuse",
+      "gold_tickers": [
+        "NVDA"
+      ],
+      "refuse_reason": "uncovered_company",
+      "structured_spec": null,
+      "difficulty": "trap",
+      "ambiguous": false,
+      "rationale": "Compares a covered company against an uncovered one (Intel)."
+    },
+    {
+      "id": "rp_046",
+      "question": "What was Broadcom's net income for its most recent fiscal year?",
+      "gold_route": "structured",
+      "gold_tickers": [
+        "AVGO"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "net_income"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "Company-total net income value held in the facts table."
+    },
+    {
+      "id": "rp_047",
+      "question": "VMware's parent company: what was its total revenue in its latest fiscal year, and how did the VMware acquisition affect it according to the filing?",
+      "gold_route": "hybrid",
+      "gold_tickers": [
+        "AVGO"
+      ],
+      "refuse_reason": null,
+      "structured_spec": {
+        "metrics": [
+          "revenue"
+        ],
+        "operation": "value",
+        "periods": "most recent fiscal year"
+      },
+      "difficulty": "paraphrase",
+      "ambiguous": false,
+      "rationale": "Asks for Broadcom's company-total revenue plus the filing's explanation of the acquisition's effect."
+    },
+    {
+      "id": "rp_048",
+      "question": "Who won the 2022 World Cup?",
+      "gold_route": "refuse",
+      "gold_tickers": [],
+      "refuse_reason": "no_covered_company",
+      "structured_spec": null,
+      "difficulty": "plain",
+      "ambiguous": false,
+      "rationale": "No covered company and nothing about the dataset."
+    }
+  ],
+  "frozen": "2026-10-05, before the frozen route_rules.py (sha256 09d78c22...) was run on it; labels reviewed against the definitions, none changed"
+}

@@ -14,9 +14,14 @@ sentence-transformers
 qdrant-client>=1.14   # .search() removed in favour of .query_points(); see dense_retriever.py
 rank_bm25
 
-# --- Added Phase B (agent/generation/eval) ---
-# groq
-# scikit-learn   # bootstrap CI helpers
+# --- Added Phase B, Day 7 (generation + faithfulness eval) ---
+numpy             # cluster-bootstrap CIs (src/eval/bootstrap.py); already a transitive dep of pandas
+# NLI model (cross-encoder/nli-deberta-v3-base) loads through sentence-transformers above.
+# Groq is called with plain `requests` (OpenAI-compatible endpoint) -- no `groq` SDK needed.
+# GROQ_API_KEY goes in a .env file at the repo root (already gitignored) or the environment.
+
+# --- Added Phase B, Day 8 (agent) ---
+# (nothing yet)
 
 # --- Added Phase C (LoRA fine-tune) ---
 # peft

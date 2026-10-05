@@ -224,8 +224,14 @@ def build():
 if __name__ == "__main__":
     out_dir = Path(__file__).resolve().parent.parent / "data" / "eval_set"
     out_dir.mkdir(parents=True, exist_ok=True)
-    questions = build()
+    import sys
     out_path = out_dir / "eval_questions.json"
+    # Oct 5 audit: regenerating overwrote the hand-checked gold labels, label corrections and stored
+    # equivalents with empty lists. The labeled file is the artifact; never clobber it by accident.
+    if out_path.exists() and "--force" not in sys.argv:
+        sys.exit(f"{out_path} already exists and holds hand-checked labels; refusing to overwrite. "
+                 f"Pass --force only if you really mean to start labeling from scratch.")
+    questions = build()
     with open(out_path, "w") as f:
         json.dump(questions, f, indent=2)
     counts = {}

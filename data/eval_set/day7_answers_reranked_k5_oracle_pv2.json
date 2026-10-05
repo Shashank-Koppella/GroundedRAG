@@ -1,0 +1,1177 @@
+{
+  "config": {
+    "retriever": "reranked",
+    "k": 5,
+    "context_mode": "oracle",
+    "prompt_version": "v2",
+    "model": "openai/gpt-oss-120b",
+    "n_questions_attempted": 30,
+    "limit": null
+  },
+  "errors": [],
+  "results": [
+    {
+      "id": "sh_001",
+      "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010",
+        "AAPL_000032019323000106_item_1a_0043",
+        "AAPL_000032019324000123_item_1a_0009",
+        "AAPL_000032019322000108_item_1a_0043",
+        "AAPL_000032019322000108_item_1a_0012"
+      ],
+      "answer": "Apple 10-K filed 2024-11-01 states that reliance on a small number of outsourcing partners concentrated in China mainland may adversely affect the quality or quantity of products manufactured or the Company’s flexibility to respond to changing conditions [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.334405794,
+        "prompt_tokens": 2047,
+        "prompt_time": 0.454597146,
+        "completion_tokens": 161,
+        "completion_time": 0.330579638,
+        "total_tokens": 2208,
+        "total_time": 0.785176784,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 103
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AAPL_000032019324000123_item_1a_0010"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_002",
+      "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004",
+        "AAPL_000032019324000081_item_2_0003",
+        "AAPL_000032019323000077_item_1_0008",
+        "AAPL_000032019323000106_item_7_0002",
+        "AAPL_000032019323000106_item_1a_0019"
+      ],
+      "answer": "Apple 10-K filed 2025-10-31 cites higher net sales from advertising, the App Store and cloud services as drivers of increased Services segment revenue [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.395716923,
+        "prompt_tokens": 2486,
+        "prompt_time": 0.105291961,
+        "completion_tokens": 86,
+        "completion_time": 0.180280865,
+        "total_tokens": 2572,
+        "total_time": 0.285572826,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 42
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AAPL_000032019325000079_item_7_0004"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_003",
+      "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "ticker": "AAPL",
+      "context_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041",
+        "AAPL_000032019324000006_item_1_0011",
+        "AAPL_000032019322000108_item_1a_0043"
+      ],
+      "answer": "Apple 10-K filed 2025-10-31 states that its exposure to foreign currency exchange rate fluctuations relates to non‑U.S. dollar‑denominated sales, cost of sales and operating expenses, which can affect gross margins. [3]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0041"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.34861301,
+        "prompt_tokens": 2084,
+        "prompt_time": 0.087748854,
+        "completion_tokens": 600,
+        "completion_time": 1.250128442,
+        "total_tokens": 2684,
+        "total_time": 1.337877296,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 540
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AAPL_000032019325000079_item_1a_0042",
+        "AAPL_000032019324000123_item_1a_0042",
+        "AAPL_000032019325000079_item_1a_0041"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_004",
+      "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "ticker": "MSFT",
+      "context_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008",
+        "MSFT_000119312525256321_item_2_0003",
+        "MSFT_000119312526191507_item_2_0003",
+        "MSFT_000119312526027207_item_2_0003",
+        "MSFT_000095017023054855_item_2_0003"
+      ],
+      "answer": "Microsoft 10‑Q filed 2026‑04‑29 states that the investments the company is making in cloud and AI infrastructure will continue to increase its operating costs and may decrease its operating margins. [3]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "MSFT_000119312526191507_item_2_0003"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.346496378,
+        "prompt_tokens": 2041,
+        "prompt_time": 0.109061266,
+        "completion_tokens": 204,
+        "completion_time": 0.432226673,
+        "total_tokens": 2245,
+        "total_time": 0.541287939,
+        "completion_tokens_details": {
+          "reasoning_tokens": 152
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0008"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_005",
+      "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "ticker": "MSFT",
+      "context_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012",
+        "MSFT_000095017025061046_item_2_0010",
+        "MSFT_000095017024118967_item_2_0010",
+        "MSFT_000095017025061046_item_2_0008"
+      ],
+      "answer": "Microsoft 10-K filed 2026-07-29 attributes Intelligent Cloud revenue growth to Azure [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.34722082,
+        "prompt_tokens": 2280,
+        "prompt_time": 0.112863251,
+        "completion_tokens": 111,
+        "completion_time": 0.518242084,
+        "total_tokens": 2391,
+        "total_time": 0.631105335,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 80
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "MSFT_000119312526323660_item_7_0008",
+        "MSFT_000119312526323660_item_7_0012"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_006",
+      "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "ticker": "MSFT",
+      "context_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041",
+        "MSFT_000095017024008814_item_1a_0011",
+        "MSFT_000095017024048288_item_1a_0011",
+        "MSFT_000119312526191507_item_1a_0014",
+        "MSFT_000119312526323660_item_1a_0013"
+      ],
+      "answer": "Microsoft 10-K filed 2026-07-29 says cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to its reputation or competitive position. [5]  \nMicrosoft 10-K filed 2026-07-29 says threat actors such as hackers, nation‑states, state‑sponsored organizations, or cybercriminal groups continuously undertake attacks that may gain unauthorized access to its systems and data. [5]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0013"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.316738128,
+        "prompt_tokens": 2070,
+        "prompt_time": 0.118270404,
+        "completion_tokens": 343,
+        "completion_time": 0.763983125,
+        "total_tokens": 2413,
+        "total_time": 0.882253529,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 240
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "MSFT_000119312526323660_item_1a_0041"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_007",
+      "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204426000018_item_1a_0040",
+        "GOOGL_000165204424000118_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0000",
+        "GOOGL_000165204425000014_item_1a_0029",
+        "GOOGL_000165204424000053_item_1a_0000"
+      ],
+      "answer": "Alphabet 10-K filed 2026-02-05 states it is subject to claims, lawsuits, regulatory and government inquiries and investigations, including antitrust lawsuits concerning its advertising technologies and practices【1】.",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.354217301,
+        "prompt_tokens": 2086,
+        "prompt_time": 0.332580501,
+        "completion_tokens": 179,
+        "completion_time": 0.375317182,
+        "total_tokens": 2265,
+        "total_time": 0.707897683,
+        "completion_tokens_details": {
+          "reasoning_tokens": 128
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "GOOGL_000165204426000018_item_1a_0040"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_008",
+      "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021",
+        "GOOGL_000165204425000014_item_7_0024",
+        "GOOGL_000165204424000022_item_7_0007",
+        "GOOGL_000165204426000018_item_1a_0003"
+      ],
+      "answer": "Alphabet 10-K filed 2026-02-05 identifies changes in customer usage, demand, and supply availability as factors affecting Google Cloud revenues【1】",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.317674194,
+        "prompt_tokens": 2180,
+        "prompt_time": 0.171861967,
+        "completion_tokens": 109,
+        "completion_time": 0.227482885,
+        "total_tokens": 2289,
+        "total_time": 0.399344852,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 68
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "GOOGL_000165204426000018_item_7_0009",
+        "GOOGL_000165204426000018_item_7_0021"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_009",
+      "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "ticker": "GOOGL",
+      "context_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024",
+        "GOOGL_000165204423000070_item_2_0009",
+        "GOOGL_000165204424000053_item_2_0020",
+        "GOOGL_000165204426000018_item_7_0020",
+        "GOOGL_000165204424000053_item_2_0010"
+      ],
+      "answer": "Alphabet 10-Q filed 2023-07-26 reports operating expenses increased 4% year over year, primarily driven by an increase in compensation expenses largely due to headcount growth [2]  \nAlphabet 10-K filed 2025-02-05 states employee compensation expenses decreased $285 million, primarily due to a decrease in average headcount [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "GOOGL_000165204423000070_item_2_0009",
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.255087774,
+        "prompt_tokens": 2303,
+        "prompt_time": 0.581740835,
+        "completion_tokens": 364,
+        "completion_time": 0.769594969,
+        "total_tokens": 2667,
+        "total_time": 1.351335804,
+        "completion_tokens_details": {
+          "reasoning_tokens": 281
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "GOOGL_000165204425000014_item_7_0024"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_010",
+      "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "ticker": "AMZN",
+      "context_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001",
+        "AMZN_000101872425000123_item_1a_0005",
+        "AMZN_000101872425000086_item_1a_0005",
+        "AMZN_000101872425000036_item_1a_0005",
+        "AMZN_000101872424000008_item_1a_0005"
+      ],
+      "answer": "Amazon 10-K filed 2026-02-06 states that its retail business faces intense competition from many competitors across geographies, industries, and business models, including physical, e‑commerce, omnichannel, and technology‑driven rivals [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.395228338,
+        "prompt_tokens": 2108,
+        "prompt_time": 0.099566196,
+        "completion_tokens": 141,
+        "completion_time": 0.291729645,
+        "total_tokens": 2249,
+        "total_time": 0.391295841,
+        "completion_tokens_details": {
+          "reasoning_tokens": 80
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AMZN_000101872426000004_item_1a_0001"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_011",
+      "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "ticker": "AMZN",
+      "context_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0026",
+        "AMZN_000101872426000014_item_2_0020",
+        "AMZN_000101872425000004_item_7_0025",
+        "AMZN_000101872424000083_item_2_0013",
+        "AMZN_000101872426000004_item_7_0025"
+      ],
+      "answer": "Amazon 10-K filed 2026-02-06 cites increased sales as a primary driver of the change in AWS segment operating income [5]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0025"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.348580194,
+        "prompt_tokens": 2165,
+        "prompt_time": 0.273396094,
+        "completion_tokens": 156,
+        "completion_time": 0.322914175,
+        "total_tokens": 2321,
+        "total_time": 0.596310269,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 117
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AMZN_000101872426000004_item_7_0026"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_012",
+      "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "ticker": "AMZN",
+      "context_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017",
+        "AMZN_000101872425000036_item_1a_0017",
+        "AMZN_000101872425000086_item_1a_0017",
+        "AMZN_000101872425000123_item_1a_0017",
+        "AMZN_000101872425000004_item_1a_0028"
+      ],
+      "answer": "Amazon 10-Q filed 2025-10-31 states that failures to predict customer demand or optimize operations can result in excess or insufficient fulfillment network capacity, service interruptions, increased costs, and impairment charges that could materially harm its business [4]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AMZN_000101872425000123_item_1a_0017"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.395233785,
+        "prompt_tokens": 1956,
+        "prompt_time": 0.085945576,
+        "completion_tokens": 106,
+        "completion_time": 0.249872454,
+        "total_tokens": 2062,
+        "total_time": 0.33581803,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 47
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AMZN_000101872424000161_item_1a_0017"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_013",
+      "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "ticker": "META",
+      "context_chunk_ids": [
+        "META_000162828026003942_item_1a_0011",
+        "META_000132680124000081_item_1a_0111",
+        "META_000162828026028526_item_1a_0128",
+        "META_000162828026028526_item_1a_0122",
+        "META_000162828025036791_item_1a_0120"
+      ],
+      "answer": "Meta 10-K filed 2026-01-29 states that changes to the content or application of third‑party policies, including those by mobile operating system and browser providers such as Apple and Google, could limit its ability to deliver, target, or measure the effectiveness of advertising [1].",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "META_000162828026003942_item_1a_0011"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.31150152,
+        "prompt_tokens": 2004,
+        "prompt_time": 0.104199284,
+        "completion_tokens": 129,
+        "completion_time": 0.282358319,
+        "total_tokens": 2133,
+        "total_time": 0.386557603,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "META_000162828026003942_item_1a_0011"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_014",
+      "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "ticker": "META",
+      "context_chunk_ids": [
+        "META_000162828026003942_item_7_0010",
+        "META_000132680124000069_item_1a_0049",
+        "META_000132680125000017_item_1a_0050",
+        "META_000132680125000054_item_2_0025",
+        "META_000162828025036791_item_1a_0051"
+      ],
+      "answer": "Meta 10-K filed 2026-01-29 expects its Reality Labs operating losses to remain similar to 2025 [1]. Meta 10-K filed 2026-01-29 reports its Reality Labs segment reduced overall operating profit by approximately $19.19 billion in 2025 [1].",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.323625858,
+        "prompt_tokens": 2039,
+        "prompt_time": 1.063094569,
+        "completion_tokens": 305,
+        "completion_time": 0.655040564,
+        "total_tokens": 2344,
+        "total_time": 1.718135133,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 231
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "META_000162828026003942_item_7_0010"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_015",
+      "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "ticker": "NVDA",
+      "context_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052",
+        "NVDA_000104581023000017_item_1a_0000",
+        "NVDA_000104581025000023_item_1_0027",
+        "NVDA_000104581025000116_item_1a_0000"
+      ],
+      "answer": "Nvidia 10-K filed 2026-02-25 states that government trade actions, tariffs, export or import regulations, sanctions and other restrictions could affect its ability to ship products, provide services, fulfill contractual obligations and could have a material adverse impact on its business, operating results and financial condition. [1]  \nNvidia 10-K filed 2026-02-25 states that export control restrictions targeting AI‑related GPUs and associated products could prohibit exporting to customers, limit manufacturing, testing and warehousing options, and could negatively impact its business, revenue and financial results. [2]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.396870302,
+        "prompt_tokens": 2031,
+        "prompt_time": 0.089505959,
+        "completion_tokens": 328,
+        "completion_time": 0.702404075,
+        "total_tokens": 2359,
+        "total_time": 0.791910034,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 198
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "NVDA_000104581026000021_item_1a_0050",
+        "NVDA_000104581026000021_item_1a_0052"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_016",
+      "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+      "ticker": "NVDA",
+      "context_chunk_ids": [
+        "NVDA_000104581026000021_item_7_0015",
+        "NVDA_000104581024000029_item_7_0009",
+        "NVDA_000104581024000124_item_2_0014",
+        "NVDA_000104581024000264_item_2_0012",
+        "NVDA_000104581024000124_item_2_0010"
+      ],
+      "answer": "Nvidia 10-Q filed 2024-05-29 attributes the year‑on‑year increase in Data Center revenue to higher shipments of the NVIDIA Hopper GPU computing platform used for training and inferencing with large language models, recommendation engines, and generative AI applications [3]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "NVDA_000104581024000124_item_2_0014"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.349400663,
+        "prompt_tokens": 2141,
+        "prompt_time": 0.142945898,
+        "completion_tokens": 231,
+        "completion_time": 0.515505826,
+        "total_tokens": 2372,
+        "total_time": 0.658451724,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 165
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "NVDA_000104581026000021_item_7_0015"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_017",
+      "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "ticker": "AVGO",
+      "context_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012",
+        "AVGO_000173016822000118_item_1a_0031",
+        "AVGO_000173016825000098_item_1a_0044",
+        "AVGO_000173016826000016_item_1a_0044",
+        "AVGO_000173016826000054_item_1a_0045"
+      ],
+      "answer": "Broadcom 10-K filed 2025-12-18 states that for fiscal year 2025 sales to distributors accounted for 48% of net revenue and sales to its top five end customers accounted for approximately 40% of net revenue, highlighting customer concentration risk [1]",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.395594916,
+        "prompt_tokens": 1973,
+        "prompt_time": 0.29873407,
+        "completion_tokens": 128,
+        "completion_time": 0.268927103,
+        "total_tokens": 2101,
+        "total_time": 0.567661173,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 62
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AVGO_000173016825000121_item_1a_0012"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_018",
+      "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "ticker": "AVGO",
+      "context_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002",
+        "AVGO_000173016824000080_item_1_0008",
+        "AVGO_000173016826000016_item_1_0006",
+        "AVGO_000173016823000008_item_2_0003"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.397133413,
+        "prompt_tokens": 2149,
+        "prompt_time": 1.677731509,
+        "completion_tokens": 26,
+        "completion_time": 0.054269927,
+        "total_tokens": 2175,
+        "total_time": 1.732001436,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 12
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "AVGO_000173016825000121_item_7_0001",
+        "AVGO_000173016825000121_item_7_0002"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_019",
+      "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "ticker": "ORCL",
+      "context_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023",
+        "ORCL_000095017024075605_item_1_0039",
+        "ORCL_000095017025087926_item_1_0035",
+        "ORCL_000119312526277521_item_1_0012"
+      ],
+      "answer": "Oracle 10-K filed 2026-06-22 states that competitors’ multicloud offerings could cause customers to migrate away from Oracle Cloud Infrastructure to competitors’ products or limit additional Oracle purchases, which may adversely affect Oracle’s revenues and profitability [1][2].",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.395475984,
+        "prompt_tokens": 2021,
+        "prompt_time": 0.446580045,
+        "completion_tokens": 149,
+        "completion_time": 0.314496409,
+        "total_tokens": 2170,
+        "total_time": 0.761076454,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 87
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "ORCL_000119312526277521_item_1a_0022",
+        "ORCL_000119312526277521_item_1a_0023"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "sh_020",
+      "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+      "ticker": "ORCL",
+      "context_chunk_ids": [
+        "ORCL_000095017025087926_item_7_0002",
+        "ORCL_000095017025087926_item_7_0005",
+        "ORCL_000095017024075605_item_7_0002",
+        "ORCL_000095017023028914_item_7_0002",
+        "ORCL_000095017023028914_item_1_0007"
+      ],
+      "answer": "Oracle 10-K filed 2025-06-18 cites expected growth in its cloud services offerings as a driver of cloud services and license support revenue [2].",
+      "is_refusal": false,
+      "no_context": false,
+      "cited_chunk_ids": [
+        "ORCL_000095017025087926_item_7_0005"
+      ],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": false,
+      "usage": {
+        "queue_time": 0.397349325,
+        "prompt_tokens": 1993,
+        "prompt_time": 0.134719403,
+        "completion_tokens": 113,
+        "completion_time": 0.234437199,
+        "total_tokens": 2106,
+        "total_time": 0.369156602,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 71
+        }
+      },
+      "type": "single_hop",
+      "gold_chunk_ids": [
+        "ORCL_000095017025087926_item_7_0002",
+        "ORCL_000095017025087926_item_7_0005"
+      ],
+      "gold_in_context": true
+    },
+    {
+      "id": "oos_001",
+      "question": "What is Apple's current stock price?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "AAPL_000032019325000073_item_1_0002",
+        "AAPL_000032019325000057_item_1_0002",
+        "AAPL_000032019326000020_item_1_0002",
+        "AAPL_000032019323000064_item_1_0002",
+        "AAPL_000032019326000013_item_1_0002"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.349190219,
+        "prompt_tokens": 3263,
+        "prompt_time": 0.566727723,
+        "completion_tokens": 29,
+        "completion_time": 0.076979496,
+        "total_tokens": 3292,
+        "total_time": 0.643707219,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_002",
+      "question": "What did Tesla report as a risk factor in its most recent 10-K?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "ORCL_000156459022039278_item_1a_0000",
+        "ORCL_000156459023003413_item_1a_0000",
+        "ORCL_000119312526389274_item_1a_0000",
+        "ORCL_000095017023047713_item_1a_0000",
+        "ORCL_000095017023069682_item_1a_0000"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.396902217,
+        "prompt_tokens": 1242,
+        "prompt_time": 0.064252577,
+        "completion_tokens": 28,
+        "completion_time": 0.057465212,
+        "total_tokens": 1270,
+        "total_time": 0.121717789,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_003",
+      "question": "Should I buy Nvidia stock right now?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "NVDA_000104581025000023_item_1a_0079",
+        "NVDA_000104581023000227_item_2_0002",
+        "NVDA_000104581023000017_item_1a_0000",
+        "NVDA_000104581026000052_item_1a_0000",
+        "NVDA_000104581024000124_item_1a_0000"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.396468635,
+        "prompt_tokens": 1815,
+        "prompt_time": 0.088747174,
+        "completion_tokens": 32,
+        "completion_time": 0.066450145,
+        "total_tokens": 1847,
+        "total_time": 0.155197319,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_004",
+      "question": "What is Microsoft's internal source code architecture for Azure?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "MSFT_000095017024087843_item_1_0022",
+        "MSFT_000119312526323660_item_1_0012",
+        "MSFT_000095017024087843_item_1_0006",
+        "MSFT_000095017024087843_item_1_0005",
+        "MSFT_000095017023035122_item_1_0026"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.318871818,
+        "prompt_tokens": 2078,
+        "prompt_time": 0.083514734,
+        "completion_tokens": 28,
+        "completion_time": 0.057994681,
+        "total_tokens": 2106,
+        "total_time": 0.141509415,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_005",
+      "question": "What did Amazon's CEO say on last week's earnings call?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "AMZN_000101872425000004_item_1_0007",
+        "AMZN_000101872426000004_item_1_0007",
+        "AMZN_000101872424000008_item_1_0007",
+        "AMZN_000101872423000004_item_1_0007",
+        "AMZN_000101872424000008_item_1_0008"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.213832089,
+        "prompt_tokens": 2401,
+        "prompt_time": 0.135423897,
+        "completion_tokens": 30,
+        "completion_time": 0.066326914,
+        "total_tokens": 2431,
+        "total_time": 0.201750811,
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_006",
+      "question": "What color is Oracle's corporate logo?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "ORCL_000095017024075605_item_1_0004",
+        "ORCL_000095017025087926_item_1_0000",
+        "ORCL_000095017025087926_item_1_0004",
+        "ORCL_000119312526277521_item_1_0002",
+        "ORCL_000119312526277521_item_1_0000"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.317835839,
+        "prompt_tokens": 2032,
+        "prompt_time": 0.23211798,
+        "completion_tokens": 31,
+        "completion_time": 0.065419365,
+        "total_tokens": 2063,
+        "total_time": 0.297537345,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 17
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_007",
+      "question": "What will Meta's revenue be next fiscal year?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "META_000132680125000054_item_2_0021",
+        "META_000162828025047240_item_2_0022",
+        "META_000162828025036791_item_2_0022",
+        "NVDA_000104581023000175_item_2_0012",
+        "NVDA_000104581023000227_item_2_0013"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.348253258,
+        "prompt_tokens": 2191,
+        "prompt_time": 0.092309338,
+        "completion_tokens": 28,
+        "completion_time": 0.057975753,
+        "total_tokens": 2219,
+        "total_time": 0.150285091,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_008",
+      "question": "What did Google's founder say about AI in a 2015 interview?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "GOOGL_000165204424000022_item_1_0000",
+        "GOOGL_000165204426000018_item_1_0000",
+        "GOOGL_000165204425000014_item_1_0000",
+        "GOOGL_000165204424000022_item_1_0007",
+        "GOOGL_000165204424000022_item_1_0002"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.317592584,
+        "prompt_tokens": 2062,
+        "prompt_time": 0.381394962,
+        "completion_tokens": 30,
+        "completion_time": 0.062316633,
+        "total_tokens": 2092,
+        "total_time": 0.443711595,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 16
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_009",
+      "question": "Compare Apple's product design philosophy to Samsung's.",
+      "ticker": null,
+      "context_chunk_ids": [
+        "NVDA_000104581026000021_item_1_0018",
+        "AAPL_000032019322000108_item_1_0003",
+        "NVDA_000104581025000023_item_1_0019",
+        "NVDA_000104581025000023_item_1_0020",
+        "META_000162828026003942_item_1_0008"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.348927249,
+        "prompt_tokens": 2028,
+        "prompt_time": 0.10247509,
+        "completion_tokens": 44,
+        "completion_time": 0.091746559,
+        "total_tokens": 2072,
+        "total_time": 0.194221649,
+        "completion_tokens_details": {
+          "reasoning_tokens": 30
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    },
+    {
+      "id": "oos_010",
+      "question": "What is the weather forecast for Cupertino this week?",
+      "ticker": null,
+      "context_chunk_ids": [
+        "NVDA_000104581024000029_item_1a_0035",
+        "AVGO_000173016823000008_item_1_0022",
+        "ORCL_000095017023069682_item_2_0022",
+        "AAPL_000032019324000123_item_7_0001",
+        "AAPL_000032019325000079_item_7_0001"
+      ],
+      "answer": "INSUFFICIENT_CONTEXT",
+      "is_refusal": true,
+      "no_context": false,
+      "cited_chunk_ids": [],
+      "invalid_citations": [],
+      "model": "openai/gpt-oss-120b",
+      "cached": true,
+      "usage": {
+        "queue_time": 0.39670716,
+        "prompt_tokens": 2640,
+        "prompt_time": 0.118329903,
+        "completion_tokens": 29,
+        "completion_time": 0.060639919,
+        "total_tokens": 2669,
+        "total_time": 0.178969822,
+        "completion_tokens_details": {
+          "reasoning_tokens": 15
+        }
+      },
+      "type": "out_of_scope",
+      "gold_chunk_ids": [],
+      "gold_in_context": null
+    }
+  ]
+}

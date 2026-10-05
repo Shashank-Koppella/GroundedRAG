@@ -12,7 +12,11 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Concentration/supply-chain risk theme; directly tests the kind of question the corpus was chosen for. | Labeled by Claude, confidence=HIGH: Explicitly names China/India/Japan/S.Korea/Taiwan/Vietnam manufacturing concentration."
+    "notes": "Concentration/supply-chain risk theme; directly tests the kind of question the corpus was chosen for. | Labeled by Claude, confidence=HIGH: Explicitly names China/India/Japan/S.Korea/Taiwan/Vietnam manufacturing concentration.",
+    "equivalent_chunk_ids": [
+      "AAPL_000032019322000108_item_1a_0012"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_002",
@@ -27,7 +31,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services.' Exact driver statement."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'Services net sales increased during 2025 compared to 2024 primarily due to higher net sales from advertising, the App Store and cloud services.' Exact driver statement.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_003",
@@ -44,7 +50,11 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer. | CORRECTED Day 5: added a third gold chunk_id after the adjacent-chunk near-miss diagnostic. _0041 and _0042 (of the 2025 filing, 000032019325000079) are two overlapping-window chunks of ONE continuous foreign-currency-risk paragraph -- _0041 states the general USD exposure, _0042 continues with hedging/derivative details. Verified by reading both chunks' full text directly; both genuinely answer the question, so scoring against only _0042 was penalizing the retriever for finding an equally-correct chunk from the same passage. The pre-existing second gold id (the 2024 filing's near-identical boilerplate) is untouched."
+    "notes": "Labeled by Claude, confidence=HIGH: Both are the FX-fluctuation risk paragraph from two different fiscal years; either is a valid answer. | CORRECTED Day 5: added a third gold chunk_id after the adjacent-chunk near-miss diagnostic. _0041 and _0042 (of the 2025 filing, 000032019325000079) are two overlapping-window chunks of ONE continuous foreign-currency-risk paragraph -- _0041 states the general USD exposure, _0042 continues with hedging/derivative details. Verified by reading both chunks' full text directly; both genuinely answer the question, so scoring against only _0042 was penalizing the retriever for finding an equally-correct chunk from the same passage. The pre-existing second gold id (the 2024 filing's near-identical boilerplate) is untouched.",
+    "equivalent_chunk_ids": [
+      "AAPL_000032019323000106_item_1a_0042"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_004",
@@ -59,7 +69,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=MODERATE: About customers' purchasing/deployment decisions not materializing as expected \u2014 plausible capacity-investment risk framing, but preview didn't show an explicit 'AI infrastructure capacity' phrase. Verify full text."
+    "notes": "Labeled by Claude, confidence=MODERATE: About customers' purchasing/deployment decisions not materializing as expected — plausible capacity-investment risk framing, but preview didn't show an explicit 'AI infrastructure capacity' phrase. Verify full text.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_005",
@@ -75,7 +87,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2026): 'Intelligent Cloud revenue increased driven by Azure' plus the detailed breakout ('Azure and other cloud services revenue grew 41% driven by demand for services across the platform')."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2026): 'Intelligent Cloud revenue increased driven by Azure' plus the detailed breakout ('Azure and other cloud services revenue grew 41% driven by demand for services across the platform').",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_006",
@@ -90,7 +104,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=MODERATE: Covers cybersecurity REGULATORY cost risk specifically, not necessarily a 'we could suffer a data breach' risk factor, which may be a separate chunk not in the top 8. Verify full text."
+    "notes": "Labeled by Claude, confidence=MODERATE: Covers cybersecurity REGULATORY cost risk specifically, not necessarily a 'we could suffer a data breach' risk factor, which may be a separate chunk not in the top 8. Verify full text.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_007",
@@ -105,7 +121,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Explicitly mentions 'competition matters' alongside claims/lawsuits/regulatory investigations."
+    "notes": "Labeled by Claude, confidence=HIGH: Explicitly mentions 'competition matters' alongside claims/lawsuits/regulatory investigations.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_008",
@@ -121,7 +139,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): Cloud-specific fluctuation factors (customer usage/demand/supply availability) plus the explicit operating-income driver (revenue increase, partially offset by infrastructure usage costs and compensation expenses)."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): Cloud-specific fluctuation factors (customer usage/demand/supply availability) plus the explicit operating-income driver (revenue increase, partially offset by infrastructure usage costs and compensation expenses).",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_009",
@@ -136,7 +156,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'a decrease in employee compensation expenses of $285 million, primarily due to a decrease in average headcount' \u2014 a real headcount-driven opex statement, but from the prior (FY2024) 10-K, and the second wider search still didn't surface a cleaner multi-year headcount TREND narrative. Best available."
+    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'a decrease in employee compensation expenses of $285 million, primarily due to a decrease in average headcount' — a real headcount-driven opex statement, but from the prior (FY2024) 10-K, and the second wider search still didn't surface a cleaner multi-year headcount TREND narrative. Best available.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_010",
@@ -151,7 +173,12 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-02-06): the full 'We Face Intense Competition' risk factor, explicitly naming 'physical, e-commerce, and omnichannel retail' competitors, pricing pressure, and resource disparities."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-02-06): the full 'We Face Intense Competition' risk factor, explicitly naming 'physical, e-commerce, and omnichannel retail' competitors, pricing pressure, and resource disparities.",
+    "equivalent_chunk_ids": [
+      "AMZN_000101872426000014_item_1a_0001",
+      "AMZN_000101872426000026_item_1a_0001"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_011",
@@ -162,11 +189,14 @@
     "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
     "gold_answer_type": "chunk",
     "gold_chunk_ids": [
+      "AMZN_000101872426000004_item_7_0025",
       "AMZN_000101872426000004_item_7_0026"
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased sales, partially offset by spending on technology infrastructure... to support AWS business growth.' | CORRECTED Day 5: gold label was WRONG, not a near-miss. The originally-labeled _0025 discusses the FTC lawsuit settlement and North America/International segment operating income -- it never mentions AWS. The actual AWS driver sentence ('the increase in AWS operating income in 2025...is primarily due to increased sales, partially offset by spending on technology infrastructure') is in _0026, one chunk further, found by reading forward past the automated +/-1 adjacency check during the Day 5 near-miss investigation. This was a genuine Day 3 labeling error, not a chunking artifact."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): 'The increase in AWS operating income in 2025... is primarily due to increased sales, partially offset by spending on technology infrastructure... to support AWS business growth.' | CORRECTED Day 5: gold label was WRONG, not a near-miss. The originally-labeled _0025 discusses the FTC lawsuit settlement and North America/International segment operating income -- it never mentions AWS. The actual AWS driver sentence ('the increase in AWS operating income in 2025...is primarily due to increased sales, partially offset by spending on technology infrastructure') is in _0026, one chunk further, found by reading forward past the automated +/-1 adjacency check during the Day 5 near-miss investigation. This was a genuine Day 3 labeling error, not a chunking artifact. | Oct 5 audit correction: _0025 restored as gold alongside _0026. The Day 5 correction said _0025 'never mentions AWS'; it does: its final 40 words (the chunk overlap) contain the full answer sentence 'The increase in AWS operating income in 2025 ... is primarily due to increased sales, partially offset by spending on technology infrastructure'. Both chunks answer the question.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_012",
@@ -181,7 +211,13 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses fulfillment/data center capacity risk and cost of adding capacity."
+    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses fulfillment/data center capacity risk and cost of adding capacity.",
+    "equivalent_chunk_ids": [
+      "AMZN_000101872424000083_item_1a_0017",
+      "AMZN_000101872424000130_item_1a_0017",
+      "AMZN_000101872424000008_item_1a_0017"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_013",
@@ -196,7 +232,12 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicitly names 'changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google' \u2014 the App Store/platform-policy risk."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicitly names 'changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google' — the App Store/platform-policy risk.",
+    "equivalent_chunk_ids": [
+      "META_000162828026028526_item_1a_0011",
+      "META_000162828026050705_item_1a_0011"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_014",
@@ -211,7 +252,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'significant investments in our RL efforts' (RL = Reality Labs) but preview didn't show the actual operating-loss figures. Verify full text \u2014 may need a neighboring chunk with the $ numbers."
+    "notes": "Labeled by Claude, confidence=MODERATE: Mentions 'significant investments in our RL efforts' (RL = Reality Labs) but preview didn't show the actual operating-loss figures. Verify full text — may need a neighboring chunk with the $ numbers.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_015",
@@ -227,7 +270,14 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses export control restrictions on AI/GPU products, from the most recent 10-K."
+    "notes": "Labeled by Claude, confidence=HIGH: Directly discusses export control restrictions on AI/GPU products, from the most recent 10-K.",
+    "equivalent_chunk_ids": [
+      "NVDA_000104581025000230_item_1a_0018",
+      "NVDA_000104581025000230_item_1a_0020",
+      "NVDA_000104581024000029_item_1a_0049",
+      "NVDA_000104581023000017_item_1a_0042"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_016",
@@ -242,7 +292,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=MODERATE: Says revenue 'primarily attributable to the Compute & Networking segment' \u2014 Data Center is a platform WITHIN that segment, not a perfect 1:1 match to the question's exact segment name. Verify full text."
+    "notes": "Labeled by Claude, confidence=MODERATE: Says revenue 'primarily attributable to the Compute & Networking segment' — Data Center is a platform WITHIN that segment, not a perfect 1:1 match to the question's exact segment name. Verify full text.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_017",
@@ -257,7 +309,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicit customer concentration risk factor with real numbers (top 5 customers ~40% of net revenue; distributors 48%) \u2014 exactly the risk factor the question asks about."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (FY2025): explicit customer concentration risk factor with real numbers (top 5 customers ~40% of net revenue; distributors 48%) — exactly the risk factor the question asks about.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_018",
@@ -273,7 +327,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Directly describes both segments (semiconductor solutions; infrastructure software) and their relationship."
+    "notes": "Labeled by Claude, confidence=HIGH: Directly describes both segments (semiconductor solutions; infrastructure software) and their relationship.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_019",
@@ -289,7 +345,9 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-06-22, the same filing the mid-word title-split bug was diagnosed against): explicitly names OCI's multicloud competition with 'Microsoft Azure, Amazon Web Services and Google Cloud' and the risk that this strategy could lead customers to migrate away from Oracle's cloud offerings. This question was unlabelable before the section_splitter.py fix \u2014 Oracle's Item 1A content didn't exist in the corpus at all until it was re-extracted."
+    "notes": "Labeled by Claude, confidence=HIGH: Most recent 10-K (filed 2026-06-22, the same filing the mid-word title-split bug was diagnosed against): explicitly names OCI's multicloud competition with 'Microsoft Azure, Amazon Web Services and Google Cloud' and the risk that this strategy could lead customers to migrate away from Oracle's cloud offerings. This question was unlabelable before the section_splitter.py fix — Oracle's Item 1A content didn't exist in the corpus at all until it was re-extracted.",
+    "equivalent_chunk_ids": [],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "sh_020",
@@ -305,7 +363,13 @@
     ],
     "gold_sql_description": null,
     "refusal_reason": null,
-    "notes": "Labeled by Claude, confidence=HIGH: Directly lists cloud/license revenue components and drivers (contract renewals, customer satisfaction, pricing)."
+    "notes": "Labeled by Claude, confidence=HIGH: Directly lists cloud/license revenue components and drivers (contract renewals, customer satisfaction, pricing).",
+    "equivalent_chunk_ids": [
+      "ORCL_000095017023028914_item_7_0005",
+      "ORCL_000095017024075605_item_7_0002",
+      "ORCL_000095017024075605_item_7_0005"
+    ],
+    "equivalence_rule": "same company, token-set Jaccard >= 0.9 with a gold chunk: the same passage repeated in another filing; the question names no filing, so it answers the question equally"
   },
   {
     "id": "mhn_001",

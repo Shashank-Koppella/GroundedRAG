@@ -1,0 +1,245 @@
+{
+  "config": {
+    "retriever": "reranked",
+    "k": 5,
+    "context_mode": "retrieved",
+    "model": "openai/gpt-oss-120b",
+    "n_questions_attempted": 4,
+    "limit": 2
+  },
+  "scoring": {
+    "nli_model": "cross-encoder/nli-deberta-v3-base",
+    "label_order": [
+      "contradiction",
+      "entailment",
+      "neutral"
+    ],
+    "entail_threshold": 0.5,
+    "contradiction_threshold": 0.5,
+    "window_words": 140,
+    "n_resamples": 10000,
+    "seed": 42
+  },
+  "faithfulness_single_hop": {
+    "n_answers_scored": 1,
+    "n_sentences_total": 1,
+    "mean_answer_faithfulness": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "sentence_support_rate": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "sentence_contradiction_rate": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "answer_any_unsupported_rate": {
+      "estimate": 1.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    }
+  },
+  "by_gold_in_context": {
+    "gold_missing_from_context": {
+      "n_answers_scored": 1,
+      "n_sentences_total": 1,
+      "mean_answer_faithfulness": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 1,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_support_rate": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 1,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "sentence_contradiction_rate": {
+        "estimate": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 1,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      },
+      "answer_any_unsupported_rate": {
+        "estimate": 1.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ],
+        "ci_level": 0.95,
+        "n_clusters": 1,
+        "n_resamples": 10000,
+        "n_resamples_dropped": 0,
+        "small_n": true,
+        "seed": 42
+      }
+    }
+  },
+  "threshold_sensitivity_mean_answer_faithfulness": {
+    "0.3": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.5": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.7": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "0.9": {
+      "estimate": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 1,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    }
+  },
+  "refusal": {
+    "out_of_scope_refusal_rate": {
+      "estimate": 1.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 2,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": true,
+      "seed": 42
+    },
+    "single_hop_refused": {
+      "gold_in_context": 0,
+      "of_gold_in_context": 0,
+      "gold_missing": 1,
+      "of_gold_missing": 2
+    }
+  },
+  "per_answer_single_hop": [
+    {
+      "id": "sh_001",
+      "type": "single_hop",
+      "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "answer": "Apple Inc. 2022 Form 10‑K states that reliance on single‑source outsourcing partners in China mainland and other Asian locations can reduce the Company’s direct control over production and may adversely affect the quality or quantity of manufactured products【4】.",
+      "gold_in_context": false,
+      "context_chunk_ids": [
+        "AAPL_000032019323000106_item_1a_0043",
+        "AAPL_000032019324000123_item_1a_0009",
+        "AAPL_000032019322000108_item_1a_0043",
+        "AAPL_000032019322000108_item_1a_0012",
+        "AAPL_000032019324000123_item_1a_0002"
+      ],
+      "n_sentences": 1,
+      "n_supported": 0,
+      "n_contradicted": 0,
+      "n_unsupported": 1,
+      "n_windows": 15,
+      "sentences": [
+        {
+          "sentence": "Apple Inc. 2022 Form 10-K states that reliance on single-source outsourcing partners in China mainland and other Asian locations can reduce the Company's direct control over production and may adversely affect the quality or quantity of manufactured products.",
+          "verdict": "unsupported",
+          "max_entailment": 0.005874335755574985,
+          "max_contradiction": 0.001315339895088617,
+          "best_matching_chunk_id": "AAPL_000032019324000123_item_1a_0009"
+        }
+      ],
+      "gold_group": "gold_missing_from_context"
+    }
+  ],
+  "out_of_scope_answered": [],
+  "generation_errors": []
+}

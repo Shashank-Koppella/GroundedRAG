@@ -21,6 +21,9 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 
+# LLM response cache (Day 7): regenerable, can be large, keyed by prompt hash
+data/cache/
+
 # Eval set IS tracked (hand-labeled, small, and it's the artifact worth showing) — do not ignore data/eval_set/
 
 # --- Models / checkpoints ---
@@ -48,3 +51,6 @@ qdrant_storage/
 
 # --- Docker ---
 *.log
+
+# Corpus rebuild folders / backups (Oct 5): large, regenerable. data/processed_v1_backup holds the old corpus + embeddings.
+data/processed_*/

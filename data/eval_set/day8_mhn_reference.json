@@ -1,0 +1,907 @@
+{
+  "note": "    python -m scripts.build_mhn_reference",
+  "reference": {
+    "mhn_001": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 6.4255,
+      "expression": "pct_change(391035000000, 416161000000)",
+      "inputs": [
+        {
+          "ticker": "AAPL",
+          "metric": "revenue",
+          "value": 416161000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-09-29",
+          "end_date": "2025-09-27",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AAPL revenue, fiscal year ended 2025-09-27 (2024-09-29 to 2025-09-27, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "AAPL",
+          "metric": "revenue",
+          "value": 391035000000,
+          "basis": "fiscal_year",
+          "start_date": "2023-10-01",
+          "end_date": "2024-09-28",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AAPL revenue, fiscal year ended 2024-09-28 (2023-10-01 to 2024-09-28, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_002": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 19.4952,
+      "expression": "pct_change(93736000000, 112010000000)",
+      "inputs": [
+        {
+          "ticker": "AAPL",
+          "metric": "net_income",
+          "value": 112010000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-09-29",
+          "end_date": "2025-09-27",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AAPL net income, fiscal year ended 2025-09-27 (2024-09-29 to 2025-09-27, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "AAPL",
+          "metric": "net_income",
+          "value": 93736000000,
+          "basis": "fiscal_year",
+          "start_date": "2023-10-01",
+          "end_date": "2024-09-28",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AAPL net income, fiscal year ended 2024-09-28 (2023-10-01 to 2024-09-28, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_003": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 17.7887,
+      "expression": "pct_change(281724000000, 331839000000)",
+      "inputs": [
+        {
+          "ticker": "MSFT",
+          "metric": "revenue",
+          "value": 331839000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-07-01",
+          "end_date": "2026-06-30",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL MSFT revenue, fiscal year ended 2026-06-30 (2025-07-01 to 2026-06-30, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "MSFT",
+          "metric": "revenue",
+          "value": 281724000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL MSFT revenue, fiscal year ended 2025-06-30 (2024-07-01 to 2025-06-30, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_004": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 31.3428,
+      "expression": "pct_change(101832000000, 133749000000)",
+      "inputs": [
+        {
+          "ticker": "MSFT",
+          "metric": "net_income",
+          "value": 133749000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-07-01",
+          "end_date": "2026-06-30",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL MSFT net income, fiscal year ended 2026-06-30 (2025-07-01 to 2026-06-30, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "MSFT",
+          "metric": "net_income",
+          "value": 101832000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL MSFT net income, fiscal year ended 2025-06-30 (2024-07-01 to 2025-06-30, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_005": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 15.0901,
+      "expression": "pct_change(350018000000, 402836000000)",
+      "inputs": [
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 402836000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "Revenues",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL revenue, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag Revenues)"
+        },
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 350018000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-01",
+          "end_date": "2024-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL revenue, fiscal year ended 2024-12-31 (2024-01-01 to 2024-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_006": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 32.0142,
+      "expression": "pct_change(100118000000, 132170000000)",
+      "inputs": [
+        {
+          "ticker": "GOOGL",
+          "metric": "net_income",
+          "value": 132170000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL net income, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "GOOGL",
+          "metric": "net_income",
+          "value": 100118000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-01",
+          "end_date": "2024-12-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL net income, fiscal year ended 2024-12-31 (2024-01-01 to 2024-12-31, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_007": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 12.3778,
+      "expression": "pct_change(637959000000, 716924000000)",
+      "inputs": [
+        {
+          "ticker": "AMZN",
+          "metric": "revenue",
+          "value": 716924000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AMZN revenue, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "AMZN",
+          "metric": "revenue",
+          "value": 637959000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-01",
+          "end_date": "2024-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AMZN revenue, fiscal year ended 2024-12-31 (2024-01-01 to 2024-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_008": {
+      "kind": "margin",
+      "status": "ok",
+      "answer_percent": 10.8338,
+      "expression": "pct(77670000000, 716924000000)",
+      "inputs": [
+        {
+          "ticker": "AMZN",
+          "metric": "net_income",
+          "value": 77670000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AMZN net income, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "AMZN",
+          "metric": "revenue",
+          "value": 716924000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AMZN revenue, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_009": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 22.167,
+      "expression": "pct_change(164501000000, 200966000000)",
+      "inputs": [
+        {
+          "ticker": "META",
+          "metric": "revenue",
+          "value": 200966000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL META revenue, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "META",
+          "metric": "revenue",
+          "value": 164501000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-01",
+          "end_date": "2024-12-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL META revenue, fiscal year ended 2024-12-31 (2024-01-01 to 2024-12-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_010": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": -3.05,
+      "expression": "pct_change(62360000000, 60458000000)",
+      "inputs": [
+        {
+          "ticker": "META",
+          "metric": "net_income",
+          "value": 60458000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-01",
+          "end_date": "2025-12-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL META net income, fiscal year ended 2025-12-31 (2025-01-01 to 2025-12-31, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "META",
+          "metric": "net_income",
+          "value": 62360000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-01",
+          "end_date": "2024-12-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL META net income, fiscal year ended 2024-12-31 (2024-01-01 to 2024-12-31, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_011": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 65.4735,
+      "expression": "pct_change(130497000000, 215938000000)",
+      "inputs": [
+        {
+          "ticker": "NVDA",
+          "metric": "revenue",
+          "value": 215938000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-27",
+          "end_date": "2026-01-25",
+          "form": "10-K",
+          "tag_used": "Revenues",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL NVDA revenue, fiscal year ended 2026-01-25 (2025-01-27 to 2026-01-25, 10-K, tag Revenues)"
+        },
+        {
+          "ticker": "NVDA",
+          "metric": "revenue",
+          "value": 130497000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-29",
+          "end_date": "2025-01-26",
+          "form": "10-K",
+          "tag_used": "Revenues",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL NVDA revenue, fiscal year ended 2025-01-26 (2024-01-29 to 2025-01-26, 10-K, tag Revenues)"
+        }
+      ]
+    },
+    "mhn_012": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 64.7462,
+      "expression": "pct_change(72880000000, 120067000000)",
+      "inputs": [
+        {
+          "ticker": "NVDA",
+          "metric": "net_income",
+          "value": 120067000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-01-27",
+          "end_date": "2026-01-25",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL NVDA net income, fiscal year ended 2026-01-25 (2025-01-27 to 2026-01-25, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "NVDA",
+          "metric": "net_income",
+          "value": 72880000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-01-29",
+          "end_date": "2025-01-26",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL NVDA net income, fiscal year ended 2025-01-26 (2024-01-29 to 2025-01-26, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_013": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 23.8744,
+      "expression": "pct_change(51574000000, 63887000000)",
+      "inputs": [
+        {
+          "ticker": "AVGO",
+          "metric": "revenue",
+          "value": 63887000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-11-04",
+          "end_date": "2025-11-02",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AVGO revenue, fiscal year ended 2025-11-02 (2024-11-04 to 2025-11-02, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "AVGO",
+          "metric": "revenue",
+          "value": 51574000000,
+          "basis": "fiscal_year",
+          "start_date": "2023-10-30",
+          "end_date": "2024-11-03",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AVGO revenue, fiscal year ended 2024-11-03 (2023-10-30 to 2024-11-03, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_014": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 292.2986,
+      "expression": "pct_change(5895000000, 23126000000)",
+      "inputs": [
+        {
+          "ticker": "AVGO",
+          "metric": "net_income",
+          "value": 23126000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-11-04",
+          "end_date": "2025-11-02",
+          "form": "10-K",
+          "tag_used": "ProfitLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AVGO net income, fiscal year ended 2025-11-02 (2024-11-04 to 2025-11-02, 10-K, tag ProfitLoss)"
+        },
+        {
+          "ticker": "AVGO",
+          "metric": "net_income",
+          "value": 5895000000,
+          "basis": "fiscal_year",
+          "start_date": "2023-10-30",
+          "end_date": "2024-11-03",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2024",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL AVGO net income, fiscal year ended 2024-11-03 (2023-10-30 to 2024-11-03, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_015": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 17.3487,
+      "expression": "pct_change(57399000000, 67357000000)",
+      "inputs": [
+        {
+          "ticker": "ORCL",
+          "metric": "revenue",
+          "value": 67357000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-06-01",
+          "end_date": "2026-05-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL revenue, fiscal year ended 2026-05-31 (2025-06-01 to 2026-05-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "ORCL",
+          "metric": "revenue",
+          "value": 57399000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-06-01",
+          "end_date": "2025-05-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL revenue, fiscal year ended 2025-05-31 (2024-06-01 to 2025-05-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        }
+      ]
+    },
+    "mhn_016": {
+      "kind": "growth",
+      "status": "ok",
+      "caveats": [],
+      "answer_percent": 37.3222,
+      "expression": "pct_change(12443000000, 17087000000)",
+      "inputs": [
+        {
+          "ticker": "ORCL",
+          "metric": "net_income",
+          "value": 17087000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-06-01",
+          "end_date": "2026-05-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL net income, fiscal year ended 2026-05-31 (2025-06-01 to 2026-05-31, 10-K, tag NetIncomeLoss)"
+        },
+        {
+          "ticker": "ORCL",
+          "metric": "net_income",
+          "value": 12443000000,
+          "basis": "fiscal_year",
+          "start_date": "2024-06-01",
+          "end_date": "2025-05-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2025",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL net income, fiscal year ended 2025-05-31 (2024-06-01 to 2025-05-31, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    },
+    "mhn_017": {
+      "kind": "compare_growth",
+      "status": "ok",
+      "caveats": [],
+      "winner": "MSFT",
+      "criterion": "higher",
+      "parts": {
+        "AAPL": {
+          "status": "ok",
+          "caveats": [],
+          "answer_percent": 6.4255,
+          "expression": "pct_change(391035000000, 416161000000)",
+          "inputs": [
+            {
+              "ticker": "AAPL",
+              "metric": "revenue",
+              "value": 416161000000,
+              "basis": "fiscal_year",
+              "start_date": "2024-09-29",
+              "end_date": "2025-09-27",
+              "form": "10-K",
+              "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "fy_label": "2025",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL AAPL revenue, fiscal year ended 2025-09-27 (2024-09-29 to 2025-09-27, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+            },
+            {
+              "ticker": "AAPL",
+              "metric": "revenue",
+              "value": 391035000000,
+              "basis": "fiscal_year",
+              "start_date": "2023-10-01",
+              "end_date": "2024-09-28",
+              "form": "10-K",
+              "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "fy_label": "2024",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL AAPL revenue, fiscal year ended 2024-09-28 (2023-10-01 to 2024-09-28, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+            }
+          ]
+        },
+        "MSFT": {
+          "status": "ok",
+          "caveats": [],
+          "answer_percent": 17.7887,
+          "expression": "pct_change(281724000000, 331839000000)",
+          "inputs": [
+            {
+              "ticker": "MSFT",
+              "metric": "revenue",
+              "value": 331839000000,
+              "basis": "fiscal_year",
+              "start_date": "2025-07-01",
+              "end_date": "2026-06-30",
+              "form": "10-K",
+              "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "fy_label": "2026",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL MSFT revenue, fiscal year ended 2026-06-30 (2025-07-01 to 2026-06-30, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+            },
+            {
+              "ticker": "MSFT",
+              "metric": "revenue",
+              "value": 281724000000,
+              "basis": "fiscal_year",
+              "start_date": "2024-07-01",
+              "end_date": "2025-06-30",
+              "form": "10-K",
+              "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "fy_label": "2025",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL MSFT revenue, fiscal year ended 2025-06-30 (2024-07-01 to 2025-06-30, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+            }
+          ]
+        }
+      }
+    },
+    "mhn_018": {
+      "kind": "compare_growth",
+      "status": "ok",
+      "caveats": [],
+      "winner": "AVGO",
+      "criterion": "larger",
+      "parts": {
+        "NVDA": {
+          "status": "ok",
+          "caveats": [],
+          "answer_percent": 64.7462,
+          "expression": "pct_change(72880000000, 120067000000)",
+          "inputs": [
+            {
+              "ticker": "NVDA",
+              "metric": "net_income",
+              "value": 120067000000,
+              "basis": "fiscal_year",
+              "start_date": "2025-01-27",
+              "end_date": "2026-01-25",
+              "form": "10-K",
+              "tag_used": "NetIncomeLoss",
+              "fy_label": "2026",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL NVDA net income, fiscal year ended 2026-01-25 (2025-01-27 to 2026-01-25, 10-K, tag NetIncomeLoss)"
+            },
+            {
+              "ticker": "NVDA",
+              "metric": "net_income",
+              "value": 72880000000,
+              "basis": "fiscal_year",
+              "start_date": "2024-01-29",
+              "end_date": "2025-01-26",
+              "form": "10-K",
+              "tag_used": "NetIncomeLoss",
+              "fy_label": "2025",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL NVDA net income, fiscal year ended 2025-01-26 (2024-01-29 to 2025-01-26, 10-K, tag NetIncomeLoss)"
+            }
+          ]
+        },
+        "AVGO": {
+          "status": "ok",
+          "caveats": [],
+          "answer_percent": 292.2986,
+          "expression": "pct_change(5895000000, 23126000000)",
+          "inputs": [
+            {
+              "ticker": "AVGO",
+              "metric": "net_income",
+              "value": 23126000000,
+              "basis": "fiscal_year",
+              "start_date": "2024-11-04",
+              "end_date": "2025-11-02",
+              "form": "10-K",
+              "tag_used": "ProfitLoss",
+              "fy_label": "2025",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL AVGO net income, fiscal year ended 2025-11-02 (2024-11-04 to 2025-11-02, 10-K, tag ProfitLoss)"
+            },
+            {
+              "ticker": "AVGO",
+              "metric": "net_income",
+              "value": 5895000000,
+              "basis": "fiscal_year",
+              "start_date": "2023-10-30",
+              "end_date": "2024-11-03",
+              "form": "10-K",
+              "tag_used": "NetIncomeLoss",
+              "fy_label": "2024",
+              "fp_label": "FY",
+              "derived": false,
+              "note": "",
+              "citation": "XBRL AVGO net income, fiscal year ended 2024-11-03 (2023-10-30 to 2024-11-03, 10-K, tag NetIncomeLoss)"
+            }
+          ]
+        }
+      }
+    },
+    "mhn_019": {
+      "kind": "avg_quarters",
+      "status": "caveat",
+      "caveats": [
+        "1 of 4 quarters are derived Q4 (annual minus nine-month YTD)"
+      ],
+      "answer": 111466750000.0,
+      "expression": "mean(119796000000, 109896000000, 113829000000, 102346000000)",
+      "inputs": [
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 119796000000,
+          "basis": "quarter",
+          "start_date": "2026-04-01",
+          "end_date": "2026-06-30",
+          "form": "10-Q",
+          "tag_used": "Revenues",
+          "fy_label": "2026",
+          "fp_label": "Q2",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL revenue, quarter ended 2026-06-30 (2026-04-01 to 2026-06-30, 10-Q, tag Revenues)"
+        },
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 109896000000,
+          "basis": "quarter",
+          "start_date": "2026-01-01",
+          "end_date": "2026-03-31",
+          "form": "10-Q",
+          "tag_used": "Revenues",
+          "fy_label": "2026",
+          "fp_label": "Q1",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL revenue, quarter ended 2026-03-31 (2026-01-01 to 2026-03-31, 10-Q, tag Revenues)"
+        },
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 113829000000,
+          "basis": "quarter_derived",
+          "start_date": "2025-10-01",
+          "end_date": "2025-12-31",
+          "form": "10-K minus 10-Q",
+          "tag_used": "Revenues",
+          "fy_label": null,
+          "fp_label": null,
+          "derived": true,
+          "note": "Q4 derived = fiscal year 402,836,000,000 - nine-month YTD 289,007,000,000",
+          "citation": "XBRL GOOGL revenue, quarter (derived) ended 2025-12-31 (2025-10-01 to 2025-12-31, 10-K minus 10-Q, tag Revenues) [Q4 derived = fiscal year 402,836,000,000 - nine-month YTD 289,007,000,000]"
+        },
+        {
+          "ticker": "GOOGL",
+          "metric": "revenue",
+          "value": 102346000000,
+          "basis": "quarter",
+          "start_date": "2025-07-01",
+          "end_date": "2025-09-30",
+          "form": "10-Q",
+          "tag_used": "Revenues",
+          "fy_label": "2025",
+          "fp_label": "Q3",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL GOOGL revenue, quarter ended 2025-09-30 (2025-07-01 to 2025-09-30, 10-Q, tag Revenues)"
+        }
+      ]
+    },
+    "mhn_020": {
+      "kind": "ratio",
+      "status": "ok",
+      "answer": 3.942,
+      "expression": "ratio(67357000000, 17087000000)",
+      "inputs": [
+        {
+          "ticker": "ORCL",
+          "metric": "revenue",
+          "value": 67357000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-06-01",
+          "end_date": "2026-05-31",
+          "form": "10-K",
+          "tag_used": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL revenue, fiscal year ended 2026-05-31 (2025-06-01 to 2026-05-31, 10-K, tag RevenueFromContractWithCustomerExcludingAssessedTax)"
+        },
+        {
+          "ticker": "ORCL",
+          "metric": "net_income",
+          "value": 17087000000,
+          "basis": "fiscal_year",
+          "start_date": "2025-06-01",
+          "end_date": "2026-05-31",
+          "form": "10-K",
+          "tag_used": "NetIncomeLoss",
+          "fy_label": "2026",
+          "fp_label": "FY",
+          "derived": false,
+          "note": "",
+          "citation": "XBRL ORCL net income, fiscal year ended 2026-05-31 (2025-06-01 to 2026-05-31, 10-K, tag NetIncomeLoss)"
+        }
+      ]
+    }
+  }
+}

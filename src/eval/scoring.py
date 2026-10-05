@@ -14,6 +14,10 @@ no gold chunk to recall until the SQL tool exists in Phase B.
 """
 import json
 import random
+
+from src.eval.equivalence import relevant_ids
+
+SMALL_N = 30
 from pathlib import Path
 from typing import List, Dict, Callable
 
@@ -72,6 +76,8 @@ def score_retrieval(
     max_k = max(k_values)
     recall_by_k = {k: [] for k in k_values}
     rr_values = []
+    eq_by_k = {k: [] for k in k_values}
+    eq_rr = []
     per_question = []
 
     for q in scoreable:
@@ -83,6 +89,14 @@ def score_retrieval(
         rr = reciprocal_rank(q["gold_chunk_ids"], retrieved)
         row["reciprocal_rank"] = rr
         rr_values.append(rr)
+        # equivalence-aware relevance (src/eval/equivalence.py): gold plus the same passage repeated in
+        # other filings. Strict-gold numbers above stay the comparable-to-history headline.
+        rel = relevant_ids(q)
+        for k in k_values:
+            row[f"recall@{k}_with_equivalents"] = recall_at_k(rel, retrieved, k)
+            eq_by_k[k].append(row[f"recall@{k}_with_equivalents"])
+        row["reciprocal_rank_with_equivalents"] = reciprocal_rank(rel, retrieved)
+        eq_rr.append(row["reciprocal_rank_with_equivalents"])
         per_question.append(row)
 
     report = {
@@ -90,6 +104,10 @@ def score_retrieval(
         "n_skipped_unlabeled": len(skipped),
         "recall_at_k": {},
         "mrr": None,
+        "mrr_cutoff": max_k,          # the lists are cut at max_k, so "mrr" is MRR@max_k
+        "small_n": len(scoreable) < SMALL_N,
+        "recall_at_k_with_equivalents": {},
+        "mrr_with_equivalents": None,
         "per_question": per_question,
     }
     for k in k_values:
@@ -102,6 +120,12 @@ def score_retrieval(
         mrr_mean = sum(rr_values) / len(rr_values)
         lo, hi = bootstrap_ci(rr_values)
         report["mrr"] = {"mean": mrr_mean, "ci_95": [lo, hi]}
+    for k in k_values:
+        vals = eq_by_k[k]
+        if vals:
+            report["recall_at_k_with_equivalents"][k] = {"mean": sum(vals) / len(vals), "ci_95": list(bootstrap_ci(vals))}
+    if eq_rr:
+        report["mrr_with_equivalents"] = {"mean": sum(eq_rr) / len(eq_rr), "ci_95": list(bootstrap_ci(eq_rr))}
 
     return report
 

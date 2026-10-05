@@ -16,6 +16,7 @@ Usage (real, concrete command -- run from the repo root, with your venv active):
 Writes data/eval_set/day5_ablation_results.json with every stage's full report
 (including per-question detail) and prints the summary table to stdout.
 """
+import argparse
 import json
 import sys
 import time
@@ -27,7 +28,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from src.eval.keyword_baseline import load_chunks, KeywordBaseline
 from src.eval.scoring import score_retrieval, score_sql_routing_sanity
 from src.retrieval.bm25_retriever import BM25Retriever
-from src.retrieval.dense_retriever import DenseRetriever
+from src.retrieval.dense_retriever import DenseRetriever, IndexMismatchError, assert_index_matches
 from src.retrieval.hybrid_retriever import HybridRetriever
 from src.retrieval.reranker import RerankerRetriever
 
@@ -44,12 +45,24 @@ def summarize(name, report):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(REPO_ROOT / "data" / "eval_set" / "day5_ablation_results.json"))
+    ap.add_argument("--force", action="store_true", help="overwrite an existing results file (it is a record)")
+    args = ap.parse_args()
+    out_path = Path(args.out)
+    if out_path.exists() and not args.force:
+        sys.exit(f"{out_path} already exists and is a record of an earlier run. Pass --out <new name> to keep "
+                 f"both, or --force to overwrite it.")
     t0 = time.time()
     all_chunks = []
     for f in sorted((REPO_ROOT / "data" / "processed" / "chunks").glob("*.jsonl")):
         all_chunks.extend(load_chunks(str(f)))
     chunks_by_id = {c["chunk_id"]: c for c in all_chunks}
     print(f"Loaded {len(all_chunks)} chunks in {time.time() - t0:.1f}s")
+    try:
+        print(f"Qdrant OK: {assert_index_matches(len(all_chunks))} points match the chunk files")
+    except IndexMismatchError as exc:
+        sys.exit(f"\n{exc}\n")
 
     questions = json.loads((REPO_ROOT / "data" / "eval_set" / "eval_questions.json").read_text())
 
@@ -89,7 +102,6 @@ def main():
     summarize("Stage 2: RRF hybrid (BM25 + dense, k=60)", results["hybrid_rrf"])
     summarize("Stage 3: RRF hybrid + baseline reranker", results["hybrid_reranked"])
 
-    out_path = REPO_ROOT / "data" / "eval_set" / "day5_ablation_results.json"
     serializable = {k: v for k, v in results.items()}
     out_path.write_text(json.dumps(serializable, indent=2))
     print(f"\nWrote full results (including per-question detail) to {out_path}")

@@ -279,8 +279,16 @@ def _find_all_item_matches(text: str) -> list[ItemMatch]:
     return matches
 
 
+def _span_end(all_matches: list[ItemMatch], item_number: str, start: int, text_len: int) -> int:
+    for m in all_matches:
+        if m.start > start and m.item_number != item_number:
+            return m.start
+    return text_len
+
+
 def _find_section_span(
-    all_matches: list[ItemMatch], item_number: str, text_len: int
+    all_matches: list[ItemMatch], item_number: str, text_len: int,
+    text: str | None = None, min_words: int = 0,
 ) -> tuple[int, int] | None:
     """
     For one target item: start = the first non-TOC occurrence; end = the
@@ -315,20 +323,34 @@ def _find_section_span(
     # End = next header of a DIFFERENT item, checked against ALL matches
     # (not just non-TOC ones) — any real header legitimately bounds this
     # section regardless of how much text follows it in turn.
-    end = text_len
-    for m in all_matches:
-        if m.start > start and m.item_number != item_number:
-            end = m.start
-            break
+    end = _span_end(all_matches, item_number, start, text_len)
+
+    # Oct 5 audit fix (10-Q Item 1 only; opt-in via min_words). In MSFT/GOOGL/META/NVDA/ORCL 10-Qs the
+    # TOC's "Item 1. Financial Statements" line lists its sub-statements ("a) Income Statements ... 3"),
+    # which pushes its gap past TOC_GAP_THRESHOLD_CHARS, so the TOC entry was taken as the section and
+    # its span ended at the TOC's "Item 2": every item_1 was an ~100-word table-of-contents fragment
+    # (the module docstring's "borrowed title" explanation was not the actual mechanism). With
+    # min_words, a span shorter than that falls through to the next candidate occurrence of the same
+    # item that does reach it; if none does, the original choice stands (never worse than before).
+    if min_words and text is not None and len(text[start:end].split()) < min_words:
+        for m in non_toc_same_item[1:]:
+            cand_end = _span_end(all_matches, item_number, m.start, text_len)
+            if len(text[m.start:cand_end].split()) >= min_words:
+                return m.start, cand_end
 
     return start, end
 
 
-def split_into_items(text: str, target_items: dict[str, str]) -> dict[str, str]:
+def split_into_items(text: str, target_items: dict[str, str],
+                     min_words_by_item: dict[str, int] | None = None) -> dict[str, str]:
     """
     target_items: {"item_1a": "Risk Factors", ...} (see config.py)
+    min_words_by_item: optional {"item_1": 300}: a span shorter than this is treated as a TOC fragment
+        and the next occurrence of the same item is tried (used for 10-Q Item 1 only; see
+        _find_section_span). Items not listed behave exactly as before.
     Returns: {"item_1a": "<section text>", ...} — missing key if not found.
     """
+    min_words_by_item = min_words_by_item or {}
     matches = _find_all_item_matches(text)
     if not matches:
         return {}
@@ -336,7 +358,7 @@ def split_into_items(text: str, target_items: dict[str, str]) -> dict[str, str]:
     sections = {}
     for key in target_items:
         item_num = key.replace("item_", "")
-        span = _find_section_span(matches, item_num, len(text))
+        span = _find_section_span(matches, item_num, len(text), text, min_words_by_item.get(key, 0))
         if span is None:
             continue
         start, end = span

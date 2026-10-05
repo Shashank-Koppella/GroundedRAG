@@ -1,0 +1,1140 @@
+{
+  "router": "rules",
+  "set": "eval",
+  "route_accuracy": {
+    "n": 50,
+    "correct": 50,
+    "accuracy": 1.0,
+    "ci": {
+      "estimate": 1.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "ci_level": 0.95,
+      "n_clusters": 50,
+      "n_resamples": 10000,
+      "n_resamples_dropped": 0,
+      "small_n": false,
+      "seed": 42
+    }
+  },
+  "by_gold_route": {
+    "refuse": {
+      "n": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "retrieve": {
+      "n": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    },
+    "structured": {
+      "n": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    }
+  },
+  "by_difficulty": {
+    "multi_hop_numeric": {
+      "n": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    },
+    "out_of_scope": {
+      "n": 10,
+      "correct": 10,
+      "accuracy": 1.0
+    },
+    "single_hop": {
+      "n": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    }
+  },
+  "severity_counts": {
+    "correct": 50
+  },
+  "tickers_exact_when_route_correct": {
+    "n": 40,
+    "correct": 40
+  },
+  "refuse_reason_when_route_correct": {
+    "n": 0,
+    "correct": 0
+  },
+  "confusion_gold_to_pred": {
+    "refuse->refuse": 10,
+    "retrieve->retrieve": 20,
+    "structured->structured": 20
+  },
+  "n_ambiguous_excluded": 0,
+  "rows": [
+    {
+      "id": "sh_001",
+      "question": "What does Apple identify as a risk related to its dependence on manufacturing partners concentrated in China?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bidentif(y|ies|ied)\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_002",
+      "question": "What does Apple's MD&A cite as a driver of change in Services segment revenue?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bcite[sd]?\\b",
+          "\\brevenues?\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_003",
+      "question": "What does Apple's risk factors section say about exposure to foreign currency exchange rate fluctuations?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_004",
+      "question": "What does Microsoft's risk factors describe as risks associated with its investment in cloud and AI infrastructure capacity?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bdescribe[sd]?\\b",
+          "\\bcloud\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_005",
+      "question": "What does Microsoft's MD&A attribute as a driver of Intelligent Cloud segment revenue growth?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\battribute[sd]?\\b",
+          "\\brevenues?\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_006",
+      "question": "What does Microsoft's risk factors section say about cybersecurity and data breach risk?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_007",
+      "question": "What does Alphabet's risk factors section say about regulatory and antitrust scrutiny of its advertising business?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b",
+          "\\badvertising\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_008",
+      "question": "What does Alphabet's MD&A identify as a factor affecting Google Cloud segment performance?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bidentif(y|ies|ied)\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_009",
+      "question": "What does Alphabet's MD&A say about trends in headcount and operating expenses?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b",
+          "\\boperating (income|margin|loss|expenses?)\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_010",
+      "question": "What does Amazon's risk factors section describe about competitive pressure in its retail business?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bdescribe[sd]?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_011",
+      "question": "What does Amazon's MD&A cite as a driver of change in AWS segment operating income?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bcite[sd]?\\b",
+          "\\boperating (income|margin|loss|expenses?)\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_012",
+      "question": "What does Amazon's risk factors section say about risks related to fulfillment network capacity?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_013",
+      "question": "What does Meta's risk factors section say about risks tied to third-party platform or app-store policies?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "META"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_014",
+      "question": "What does Meta's MD&A say about Reality Labs segment operating losses?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "META"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_015",
+      "question": "What does Nvidia's risk factors section describe about export control and trade restriction risk?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "NVDA"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bdescribe[sd]?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_016",
+      "question": "What does Nvidia's MD&A attribute as the primary driver of Data Center segment revenue growth?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "NVDA"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\battribute[sd]?\\b",
+          "\\brevenues?\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_017",
+      "question": "What does Broadcom's risk factors section describe about customer concentration risk?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AVGO"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bdescribe[sd]?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_018",
+      "question": "What does Broadcom's MD&A say about the relationship between its semiconductor solutions and infrastructure software segments?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "AVGO"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bsay(s)?\\b",
+          "\\bsegments?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_019",
+      "question": "What does Oracle's risk factors section describe about competition in cloud infrastructure (OCI)?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bdescribe[sd]?\\b",
+          "\\bcloud\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "sh_020",
+      "question": "What does Oracle's MD&A cite as a driver of cloud services and license support revenue?",
+      "gold_route": "retrieve",
+      "pred": {
+        "route": "retrieve",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bcite[sd]?\\b",
+          "\\brevenues?\\b",
+          "\\bservices\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "single_hop",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_001",
+      "question": "What was Apple's year-over-year total revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_002",
+      "question": "By what percentage did Apple's net income change between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_003",
+      "question": "What was Microsoft's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_004",
+      "question": "What was the percentage change in Microsoft's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_005",
+      "question": "What was Alphabet's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_006",
+      "question": "What was the percentage change in Alphabet's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_007",
+      "question": "What was Amazon's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_008",
+      "question": "What was Amazon's net income margin (net income divided by revenue) for its most recent fiscal year in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_009",
+      "question": "What was Meta's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "META"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_010",
+      "question": "What was the percentage change in Meta's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "META"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_011",
+      "question": "What was Nvidia's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "NVDA"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_012",
+      "question": "What was the percentage change in Nvidia's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "NVDA"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_013",
+      "question": "What was Broadcom's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AVGO"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_014",
+      "question": "What was the percentage change in Broadcom's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AVGO"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_015",
+      "question": "What was Oracle's year-over-year revenue growth rate between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_016",
+      "question": "What was the percentage change in Oracle's net income between its two most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_017",
+      "question": "Between Apple and Microsoft, which had the higher year-over-year revenue growth rate in their most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "AAPL",
+          "MSFT"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_018",
+      "question": "Between Nvidia and Broadcom, which had the larger percentage increase in net income in their most recent fiscal years in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "NVDA",
+          "AVGO"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\bnet income\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_019",
+      "question": "What was Alphabet's average quarterly revenue across the four most recent quarters in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "mhn_020",
+      "question": "What was Oracle's revenue-to-net-income ratio for its most recent fiscal year in the dataset?",
+      "gold_route": "structured",
+      "pred": {
+        "route": "structured",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": null,
+        "fired": [
+          "\\brevenues?\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": true,
+      "refuse_reason_ok": null,
+      "difficulty": "multi_hop_numeric",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_001",
+      "question": "What is Apple's current stock price?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": "real_time",
+        "fired": [
+          "\\b(stock|share) price\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_002",
+      "question": "What did Tesla report as a risk factor in its most recent 10-K?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [],
+        "refuse_reason": "uncovered_company",
+        "fired": [
+          "tesla"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_003",
+      "question": "Should I buy Nvidia stock right now?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "NVDA"
+        ],
+        "refuse_reason": "real_time",
+        "fired": [
+          "\\bright now\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_004",
+      "question": "What is Microsoft's internal source code architecture for Azure?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "MSFT"
+        ],
+        "refuse_reason": "not_in_filings",
+        "fired": [
+          "\\bsource code\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_005",
+      "question": "What did Amazon's CEO say on last week's earnings call?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "AMZN"
+        ],
+        "refuse_reason": "real_time",
+        "fired": [
+          "\\blast week\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_006",
+      "question": "What color is Oracle's corporate logo?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "ORCL"
+        ],
+        "refuse_reason": "not_in_filings",
+        "fired": [
+          "\\blogo\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_007",
+      "question": "What will Meta's revenue be next fiscal year?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "META"
+        ],
+        "refuse_reason": "forecast",
+        "fired": [
+          "\\bwhat will\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_008",
+      "question": "What did Google's founder say about AI in a 2015 interview?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "GOOGL"
+        ],
+        "refuse_reason": "not_in_filings",
+        "fired": [
+          "\\binterview\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_009",
+      "question": "Compare Apple's product design philosophy to Samsung's.",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [
+          "AAPL"
+        ],
+        "refuse_reason": "uncovered_company",
+        "fired": [
+          "samsung + \\bcompare\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    },
+    {
+      "id": "oos_010",
+      "question": "What is the weather forecast for Cupertino this week?",
+      "gold_route": "refuse",
+      "pred": {
+        "route": "refuse",
+        "tickers": [],
+        "refuse_reason": "real_time",
+        "fired": [
+          "\\bthis (week|month)\\b"
+        ]
+      },
+      "correct": true,
+      "severity": "correct",
+      "tickers_ok": null,
+      "refuse_reason_ok": null,
+      "difficulty": "out_of_scope",
+      "ambiguous": false
+    }
+  ]
+}
